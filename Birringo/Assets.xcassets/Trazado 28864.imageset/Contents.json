@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "parte_arriba2x.png",
+      "filename" : "Trazado 28864.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Trazado 28864@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Trazado 28864@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
