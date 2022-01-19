@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Trazado 27224.png",
+      "filename" : "Ola.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Trazado 27224@2x.png",
+      "filename" : "Ola2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Trazado 27224@3x.png",
+      "filename" : "Ola3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
