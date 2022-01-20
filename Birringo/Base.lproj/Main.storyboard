@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="448"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="GJ7-ui-Sl9">
-                                        <rect key="frame" x="137" y="160" width="140" height="134.5"/>
+                                        <rect key="frame" x="137" y="160" width="140" height="145"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ola" translatesAutoresizingMaskIntoConstraints="NO" id="QNj-Bc-3Q5">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="313.5"/>
@@ -28,15 +28,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.9327833056" green="0.58282405140000004" blue="0.1389120817" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="GJ7-ui-Sl9" firstAttribute="leading" secondItem="Tfg-6E-Zb3" secondAttribute="leading" constant="137" id="7kI-An-qT8"/>
                                     <constraint firstItem="QNj-Bc-3Q5" firstAttribute="centerX" secondItem="Tfg-6E-Zb3" secondAttribute="centerX" id="Ppn-RY-1Ub"/>
                                     <constraint firstItem="GJ7-ui-Sl9" firstAttribute="centerX" secondItem="Tfg-6E-Zb3" secondAttribute="centerX" id="Skc-hj-IlI"/>
                                     <constraint firstItem="QNj-Bc-3Q5" firstAttribute="leading" secondItem="Tfg-6E-Zb3" secondAttribute="leading" id="aDC-68-atT"/>
                                     <constraint firstItem="QNj-Bc-3Q5" firstAttribute="height" secondItem="Tfg-6E-Zb3" secondAttribute="height" multiplier="0.7" id="cgg-Ut-AFr"/>
                                     <constraint firstItem="QNj-Bc-3Q5" firstAttribute="top" secondItem="Tfg-6E-Zb3" secondAttribute="top" id="jbm-Ms-r1h"/>
-                                    <constraint firstAttribute="trailing" secondItem="GJ7-ui-Sl9" secondAttribute="trailing" constant="137" id="pl1-Aw-3KI"/>
                                     <constraint firstItem="GJ7-ui-Sl9" firstAttribute="top" secondItem="Tfg-6E-Zb3" secondAttribute="top" constant="160" id="xMh-i4-jog"/>
-                                    <constraint firstItem="GJ7-ui-Sl9" firstAttribute="height" secondItem="Tfg-6E-Zb3" secondAttribute="height" multiplier="0.3" id="ycH-ph-fKy"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cd1-LD-m5t">
@@ -68,13 +65,13 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your don't have account," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AsP-kG-4ys">
-                                        <rect key="frame" x="95" y="322" width="186" height="20"/>
+                                        <rect key="frame" x="65" y="322" width="186" height="20"/>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xE1-tc-fmb">
-                                        <rect key="frame" x="283" y="316" width="63" height="32"/>
+                                        <rect key="frame" x="253" y="316" width="63" height="32"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
                                         <state key="normal" title="Sign up">
                                             <color key="titleColor" red="0.9327833056" green="0.58282405140000004" blue="0.1389120817" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -100,21 +97,19 @@
                                 <constraints>
                                     <constraint firstItem="nSr-6V-gw0" firstAttribute="top" secondItem="Cd1-LD-m5t" secondAttribute="top" constant="15" id="6q3-1A-kMC"/>
                                     <constraint firstItem="xE1-tc-fmb" firstAttribute="centerY" secondItem="AsP-kG-4ys" secondAttribute="centerY" id="9vB-tx-XwI"/>
-                                    <constraint firstItem="AsP-kG-4ys" firstAttribute="leading" secondItem="Cd1-LD-m5t" secondAttribute="leading" constant="95" id="Cxy-rq-Fpb"/>
                                     <constraint firstItem="xE1-tc-fmb" firstAttribute="leading" secondItem="AsP-kG-4ys" secondAttribute="trailing" constant="2" id="DbU-N1-Ezk"/>
                                     <constraint firstItem="Pmi-Ru-Qym" firstAttribute="top" secondItem="NEc-ud-Yew" secondAttribute="bottom" constant="45" id="FVx-Jl-Ekk"/>
-                                    <constraint firstAttribute="trailing" secondItem="HbV-1G-qXJ" secondAttribute="trailing" constant="250" id="IsO-2M-LWd"/>
                                     <constraint firstAttribute="trailing" secondItem="NEc-ud-Yew" secondAttribute="trailing" constant="30" id="JBX-Un-z5n"/>
                                     <constraint firstItem="qnO-Py-ERT" firstAttribute="leading" secondItem="Pmi-Ru-Qym" secondAttribute="trailing" constant="-37" id="Mt3-Gp-m5V"/>
                                     <constraint firstItem="HbV-1G-qXJ" firstAttribute="top" secondItem="Pmi-Ru-Qym" secondAttribute="bottom" constant="20" id="NKR-Cu-wdb"/>
                                     <constraint firstItem="Pmi-Ru-Qym" firstAttribute="leading" secondItem="NEc-ud-Yew" secondAttribute="leading" id="VKi-Mp-0no"/>
                                     <constraint firstItem="HbV-1G-qXJ" firstAttribute="leading" secondItem="Pmi-Ru-Qym" secondAttribute="leading" id="VzP-fy-hxb"/>
                                     <constraint firstItem="qnO-Py-ERT" firstAttribute="centerY" secondItem="Pmi-Ru-Qym" secondAttribute="centerY" id="WYn-EX-rit"/>
-                                    <constraint firstAttribute="trailing" secondItem="nSr-6V-gw0" secondAttribute="trailing" constant="302" id="aoM-hR-9aB"/>
                                     <constraint firstItem="qnO-Py-ERT" firstAttribute="height" secondItem="Pmi-Ru-Qym" secondAttribute="height" multiplier="0.709677" id="bAk-GJ-DdL"/>
                                     <constraint firstItem="NEc-ud-Yew" firstAttribute="leading" secondItem="Cd1-LD-m5t" secondAttribute="leading" constant="30" id="i3t-2A-YNN"/>
                                     <constraint firstItem="nSr-6V-gw0" firstAttribute="leading" secondItem="Cd1-LD-m5t" secondAttribute="leading" constant="34" id="klj-KA-Xrk"/>
                                     <constraint firstAttribute="bottom" secondItem="AsP-kG-4ys" secondAttribute="bottom" constant="16.5" id="uwT-pF-Jgf"/>
+                                    <constraint firstItem="AsP-kG-4ys" firstAttribute="leading" secondItem="Cd1-LD-m5t" secondAttribute="leading" constant="65" id="vU8-cg-Bbm"/>
                                     <constraint firstItem="NEc-ud-Yew" firstAttribute="top" secondItem="nSr-6V-gw0" secondAttribute="bottom" constant="40" id="wdT-Et-pKz"/>
                                     <constraint firstAttribute="trailing" secondItem="Pmi-Ru-Qym" secondAttribute="trailing" constant="30" id="xCf-uS-xGu"/>
                                     <constraint firstItem="3va-UK-E86" firstAttribute="leading" secondItem="Cd1-LD-m5t" secondAttribute="leading" constant="324" id="zc7-dl-4Z2"/>
