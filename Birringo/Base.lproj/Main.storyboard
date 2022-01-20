@@ -9,34 +9,6 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="EUk-g0-N5g">
-            <objects>
-                <viewController id="ahX-Pq-aAg" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="EMh-Kj-Sfr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="SrD-Ls-0fn">
-                                <rect key="frame" x="30" y="294" width="354" height="438"/>
-                                <color key="backgroundColor" red="0.96068006750000001" green="0.96084433790000001" blue="0.96066969629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Zcd-cw-8g3"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                        <constraints>
-                            <constraint firstItem="Zcd-cw-8g3" firstAttribute="bottom" secondItem="SrD-Ls-0fn" secondAttribute="bottom" constant="130" id="4lZ-mf-4pa"/>
-                            <constraint firstItem="SrD-Ls-0fn" firstAttribute="leading" secondItem="Zcd-cw-8g3" secondAttribute="leading" constant="30" id="De7-JZ-1NS"/>
-                            <constraint firstItem="Zcd-cw-8g3" firstAttribute="trailing" secondItem="SrD-Ls-0fn" secondAttribute="trailing" constant="30" id="ZXW-cS-NUs"/>
-                            <constraint firstItem="SrD-Ls-0fn" firstAttribute="centerX" secondItem="EMh-Kj-Sfr" secondAttribute="centerX" id="mUU-6f-mLB"/>
-                            <constraint firstItem="SrD-Ls-0fn" firstAttribute="top" secondItem="Zcd-cw-8g3" secondAttribute="top" constant="250" id="zkm-bq-geM"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cJ0-9L-3mm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="811.59420289855075" y="-753.34821428571422"/>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="afr-Jb-iJR">
             <objects>
                 <viewController id="fmg-cA-qHj" sceneMemberID="viewController">
@@ -216,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T09-aN-XtO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1605.7971014492755" y="-753.34821428571422"/>
+            <point key="canvasLocation" x="919" y="-473"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -231,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="89"/>
+            <point key="canvasLocation" x="-14" y="-473"/>
         </scene>
     </scenes>
     <resources>
@@ -245,9 +217,6 @@
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
