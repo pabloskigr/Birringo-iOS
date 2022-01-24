@@ -9,21 +9,71 @@ import UIKit
 
 class OnboardingVC: UIViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var pageControl: UIPageControl!
+    
+    var slides: [OnboardingSlide] = []
+    var currentPage = 0 {
+        didSet {
+            pageControl.currentPage = currentPage
+            if currentPage == slides.count - 1 {
+                nextBtn.setTitle("Comenzar", for: .normal)
+            } else {
+                nextBtn.setTitle("Siguiente", for: .normal)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        slides = [
+            OnboardingSlide(title: "Bienvenido", description: "A continuacion te mostramos que puedes hacer en la app", image: UIImage(named: "beer_image")!),
+            OnboardingSlide(title: "Encuentra las mejores cervezas y lugares cercanos", description: "Birringo usara tu ubicación para que puedas localizar los mejores lugares donde tomar cerveza, podrás descubrir nuevas cervezas y añadir las que mas te gusten a favoritos.",image: UIImage(named: "map")!),
+            OnboardingSlide(title: "Haz retos mientras descubres nuevas cervezas", description: "Con la sección de gamificación podrás ganar puntos realizando quest para subir de posicional en nuestro ranking, a que esperas?", image: UIImage(named: "ganador")!)
+        ]
+        
 
-        // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func nextBtnTapped(_ sender: UIButton) {
+        if currentPage == slides.count - 1 {
+            //Ir a home
+        } else {
+            currentPage += 1
+            let indexPath = IndexPath(item: currentPage, section: 0)
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
     }
-    */
 
+}
+
+extension OnboardingVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return slides.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as! OnboardingCollectionViewCell
+        cell.setup(slides[indexPath.row])
+        return cell
+    }
+    //Tamaño de cada vista del collection view
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let width = scrollView.frame.width
+        currentPage = Int(scrollView.contentOffset.x / width)
+        print("estoy aqui")
+    }
+
+   
+    
 }
