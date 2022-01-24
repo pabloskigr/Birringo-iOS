@@ -3,27 +3,42 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3300E94127972C77002C5B12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3300E94027972C77002C5B12 /* AppDelegate.swift */; };
 		3300E94327972C77002C5B12 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3300E94227972C77002C5B12 /* SceneDelegate.swift */; };
-		3300E94527972C77002C5B12 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3300E94427972C77002C5B12 /* ViewController.swift */; };
 		3300E94827972C77002C5B12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3300E94627972C77002C5B12 /* Main.storyboard */; };
 		3300E94A27972C78002C5B12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3300E94927972C78002C5B12 /* Assets.xcassets */; };
 		3300E94D27972C78002C5B12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3300E94B27972C78002C5B12 /* LaunchScreen.storyboard */; };
+		D4154148279DEA8A003E8313 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = D4154147279DEA8A003E8313 /* Lottie */; };
+		D415414E279DF5FD003E8313 /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415414D279DF5FD003E8313 /* LaunchScreenVC.swift */; };
+		D415415A279E0D38003E8313 /* beer_splash.json in Resources */ = {isa = PBXBuildFile; fileRef = D4154159279E0D38003E8313 /* beer_splash.json */; };
+		D415415C279E10EE003E8313 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415415B279E10ED003E8313 /* LoginVC.swift */; };
+		D415415E279E1B38003E8313 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415415D279E1B38003E8313 /* RegisterVC.swift */; };
+		D4CB6B74279EADF000981F25 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B73279EADF000981F25 /* OnboardingVC.swift */; };
+		D4CB6B77279EB30D00981F25 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B76279EB30D00981F25 /* UIView+Extension.swift */; };
+		D4CB6B79279EB40C00981F25 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B78279EB40C00981F25 /* OnboardingSlide.swift */; };
+		D4CB6B7C279EB94700981F25 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B7B279EB94700981F25 /* OnboardingCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3300E93D27972C77002C5B12 /* Birringo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birringo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3300E94027972C77002C5B12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3300E94227972C77002C5B12 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3300E94427972C77002C5B12 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3300E94727972C77002C5B12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3300E94927972C78002C5B12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3300E94C27972C78002C5B12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3300E94E27972C78002C5B12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D415414D279DF5FD003E8313 /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
+		D4154159279E0D38003E8313 /* beer_splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beer_splash.json; sourceTree = "<group>"; };
+		D415415B279E10ED003E8313 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		D415415D279E1B38003E8313 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		D4CB6B73279EADF000981F25 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
+		D4CB6B76279EB30D00981F25 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		D4CB6B78279EB40C00981F25 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
+		D4CB6B7B279EB94700981F25 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4154148279DEA8A003E8313 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +72,62 @@
 		3300E93F27972C77002C5B12 /* Birringo */ = {
 			isa = PBXGroup;
 			children = (
+				D4CB6B7A279EB91C00981F25 /* Cells */,
+				D4CB6B75279EB2E500981F25 /* Extensions */,
+				D4CB6B71279EAD9E00981F25 /* Models */,
+				D4CB6B70279EAD9500981F25 /* VC */,
+				D4154159279E0D38003E8313 /* beer_splash.json */,
 				3300E94027972C77002C5B12 /* AppDelegate.swift */,
 				3300E94227972C77002C5B12 /* SceneDelegate.swift */,
-				3300E94427972C77002C5B12 /* ViewController.swift */,
 				3300E94627972C77002C5B12 /* Main.storyboard */,
 				3300E94927972C78002C5B12 /* Assets.xcassets */,
 				3300E94B27972C78002C5B12 /* LaunchScreen.storyboard */,
 				3300E94E27972C78002C5B12 /* Info.plist */,
+				D415414D279DF5FD003E8313 /* LaunchScreenVC.swift */,
+				D415415B279E10ED003E8313 /* LoginVC.swift */,
+				D415415D279E1B38003E8313 /* RegisterVC.swift */,
 			);
 			path = Birringo;
+			sourceTree = "<group>";
+		};
+		D4CB6B70279EAD9500981F25 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				D4CB6B72279EADB100981F25 /* Onboarding */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		D4CB6B71279EAD9E00981F25 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D4CB6B78279EB40C00981F25 /* OnboardingSlide.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D4CB6B72279EADB100981F25 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				D4CB6B73279EADF000981F25 /* OnboardingVC.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		D4CB6B75279EB2E500981F25 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D4CB6B76279EB30D00981F25 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D4CB6B7A279EB91C00981F25 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D4CB6B7B279EB94700981F25 /* OnboardingCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +146,9 @@
 			dependencies = (
 			);
 			name = Birringo;
+			packageProductDependencies = (
+				D4154147279DEA8A003E8313 /* Lottie */,
+			);
 			productName = Birringo;
 			productReference = 3300E93D27972C77002C5B12 /* Birringo.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +176,9 @@
 				Base,
 			);
 			mainGroup = 3300E93427972C77002C5B12;
+			packageReferences = (
+				D4154146279DEA8A003E8313 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 3300E93E27972C77002C5B12 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -124,6 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D415415A279E0D38003E8313 /* beer_splash.json in Resources */,
 				3300E94D27972C78002C5B12 /* LaunchScreen.storyboard in Resources */,
 				3300E94A27972C78002C5B12 /* Assets.xcassets in Resources */,
 				3300E94827972C77002C5B12 /* Main.storyboard in Resources */,
@@ -137,9 +207,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3300E94527972C77002C5B12 /* ViewController.swift in Sources */,
 				3300E94127972C77002C5B12 /* AppDelegate.swift in Sources */,
+				D4CB6B77279EB30D00981F25 /* UIView+Extension.swift in Sources */,
+				D4CB6B74279EADF000981F25 /* OnboardingVC.swift in Sources */,
 				3300E94327972C77002C5B12 /* SceneDelegate.swift in Sources */,
+				D4CB6B79279EB40C00981F25 /* OnboardingSlide.swift in Sources */,
+				D415415C279E10EE003E8313 /* LoginVC.swift in Sources */,
+				D415414E279DF5FD003E8313 /* LaunchScreenVC.swift in Sources */,
+				D415415E279E1B38003E8313 /* RegisterVC.swift in Sources */,
+				D4CB6B7C279EB94700981F25 /* OnboardingCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +363,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V469DAHXMC;
 				INFOPLIST_FILE = Birringo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -305,6 +382,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V469DAHXMC;
 				INFOPLIST_FILE = Birringo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -339,6 +417,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D4154146279DEA8A003E8313 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D4154147279DEA8A003E8313 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4154146279DEA8A003E8313 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3300E93527972C77002C5B12 /* Project object */;
 }

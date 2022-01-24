@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "parte_arriba2x.png",
+      "filename" : "Ola.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Ola2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Ola3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
