@@ -12,6 +12,7 @@
 		3300E94827972C77002C5B12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3300E94627972C77002C5B12 /* Main.storyboard */; };
 		3300E94A27972C78002C5B12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3300E94927972C78002C5B12 /* Assets.xcassets */; };
 		3300E94D27972C78002C5B12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3300E94B27972C78002C5B12 /* LaunchScreen.storyboard */; };
+		D40EB9A8279F310D0026044E /* Accesory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40EB9A7279F310D0026044E /* Accesory.storyboard */; };
 		D4154148279DEA8A003E8313 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = D4154147279DEA8A003E8313 /* Lottie */; };
 		D415414E279DF5FD003E8313 /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415414D279DF5FD003E8313 /* LaunchScreenVC.swift */; };
 		D415415A279E0D38003E8313 /* beer_splash.json in Resources */ = {isa = PBXBuildFile; fileRef = D4154159279E0D38003E8313 /* beer_splash.json */; };
@@ -31,6 +32,7 @@
 		3300E94927972C78002C5B12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3300E94C27972C78002C5B12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3300E94E27972C78002C5B12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D40EB9A7279F310D0026044E /* Accesory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Accesory.storyboard; sourceTree = "<group>"; };
 		D415414D279DF5FD003E8313 /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		D4154159279E0D38003E8313 /* beer_splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beer_splash.json; sourceTree = "<group>"; };
 		D415415B279E10ED003E8313 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				3300E94027972C77002C5B12 /* AppDelegate.swift */,
 				3300E94227972C77002C5B12 /* SceneDelegate.swift */,
 				3300E94627972C77002C5B12 /* Main.storyboard */,
+				D40EB9A7279F310D0026044E /* Accesory.storyboard */,
 				3300E94927972C78002C5B12 /* Assets.xcassets */,
 				3300E94B27972C78002C5B12 /* LaunchScreen.storyboard */,
 				3300E94E27972C78002C5B12 /* Info.plist */,
@@ -195,6 +198,7 @@
 			files = (
 				D415415A279E0D38003E8313 /* beer_splash.json in Resources */,
 				3300E94D27972C78002C5B12 /* LaunchScreen.storyboard in Resources */,
+				D40EB9A8279F310D0026044E /* Accesory.storyboard in Resources */,
 				3300E94A27972C78002C5B12 /* Assets.xcassets in Resources */,
 				3300E94827972C77002C5B12 /* Main.storyboard in Resources */,
 			);
