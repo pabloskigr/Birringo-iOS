@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parte_arriba" translatesAutoresizingMaskIntoConstraints="NO" id="TQz-hs-XdC">
-                                <rect key="frame" x="-5" y="0.0" width="419" height="125.5"/>
+                                <rect key="frame" x="-5" y="0.0" width="424" height="125.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PERFIL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgX-2N-7lW">
-                                <rect key="frame" x="164" y="69.5" width="81" height="26"/>
+                                <rect key="frame" x="166.5" y="69.5" width="81" height="26"/>
                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="23"/>
                                 <color key="textColor" red="0.29016065600000002" green="0.29021644590000001" blue="0.29015710950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -86,7 +86,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="TgX-2N-7lW" firstAttribute="centerX" secondItem="TQz-hs-XdC" secondAttribute="centerX" id="5Zj-gP-we2"/>
-                            <constraint firstAttribute="trailing" secondItem="TQz-hs-XdC" secondAttribute="trailing" id="GIo-to-cXk"/>
+                            <constraint firstAttribute="trailing" secondItem="TQz-hs-XdC" secondAttribute="trailing" constant="-5" id="GIo-to-cXk"/>
                             <constraint firstItem="epW-y9-AJ5" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" constant="50" id="IWQ-25-zvT"/>
                             <constraint firstItem="epW-y9-AJ5" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" constant="-160" id="LHP-ur-sYJ"/>
                             <constraint firstItem="6C0-A9-HWL" firstAttribute="top" secondItem="AfQ-pZ-YBu" secondAttribute="bottom" constant="20" id="PeW-Yq-ZPH"/>
