@@ -462,9 +462,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUz-VF-5Ra">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parte_arriba" translatesAutoresizingMaskIntoConstraints="NO" id="QJf-4r-QDX">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Cmj-xT-f1r"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sUz-VF-5Ra" firstAttribute="top" secondItem="nLU-Fz-7E8" secondAttribute="top" id="Jj2-yB-k3h"/>
+                            <constraint firstItem="Cmj-xT-f1r" firstAttribute="trailing" secondItem="sUz-VF-5Ra" secondAttribute="trailing" id="PxW-WO-l4Y"/>
+                            <constraint firstItem="sUz-VF-5Ra" firstAttribute="leading" secondItem="Cmj-xT-f1r" secondAttribute="leading" id="aHA-KF-3bw"/>
+                            <constraint firstItem="sUz-VF-5Ra" firstAttribute="centerX" secondItem="nLU-Fz-7E8" secondAttribute="centerX" id="cXY-Eb-V5e"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house.fill" id="liA-Ec-bPY">
                         <color key="badgeColor" red="0.95294117649999999" green="0.58039215690000001" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -473,7 +487,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XKu-ze-vEy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5703" y="88"/>
+            <point key="canvasLocation" x="5702.898550724638" y="87.723214285714278"/>
         </scene>
         <!--Game-->
         <scene sceneID="5yr-he-62q">
@@ -605,6 +619,7 @@
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>
+        <image name="parte_arriba" width="376.5" height="110"/>
         <image name="password_show" width="18" height="12.5"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
