@@ -19,6 +19,7 @@
 		D415415A279E0D38003E8313 /* beer_splash.json in Resources */ = {isa = PBXBuildFile; fileRef = D4154159279E0D38003E8313 /* beer_splash.json */; };
 		D415415C279E10EE003E8313 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415415B279E10ED003E8313 /* LoginVC.swift */; };
 		D415415E279E1B38003E8313 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415415D279E1B38003E8313 /* RegisterVC.swift */; };
+		D4A370BC27A01A5C005A2113 /* HomeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A370BB27A01A5C005A2113 /* HomeTVCell.swift */; };
 		D4CB6B74279EADF000981F25 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B73279EADF000981F25 /* OnboardingVC.swift */; };
 		D4CB6B77279EB30D00981F25 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B76279EB30D00981F25 /* UIView+Extension.swift */; };
 		D4CB6B79279EB40C00981F25 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B78279EB40C00981F25 /* OnboardingSlide.swift */; };
@@ -39,6 +40,7 @@
 		D4154159279E0D38003E8313 /* beer_splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beer_splash.json; sourceTree = "<group>"; };
 		D415415B279E10ED003E8313 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		D415415D279E1B38003E8313 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		D4A370BB27A01A5C005A2113 /* HomeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVCell.swift; sourceTree = "<group>"; };
 		D4CB6B73279EADF000981F25 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
 		D4CB6B76279EB30D00981F25 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D4CB6B78279EB40C00981F25 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				D4CB6B7B279EB94700981F25 /* OnboardingCollectionViewCell.swift */,
+				D4A370BB27A01A5C005A2113 /* HomeTVCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				D4CB6B77279EB30D00981F25 /* UIView+Extension.swift in Sources */,
 				D4CB6B74279EADF000981F25 /* OnboardingVC.swift in Sources */,
 				3300E94327972C77002C5B12 /* SceneDelegate.swift in Sources */,
+				D4A370BC27A01A5C005A2113 /* HomeTVCell.swift in Sources */,
 				D4CB6B79279EB40C00981F25 /* OnboardingSlide.swift in Sources */,
 				D415415C279E10EE003E8313 /* LoginVC.swift in Sources */,
 				D415414E279DF5FD003E8313 /* LaunchScreenVC.swift in Sources */,

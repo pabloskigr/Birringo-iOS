@@ -511,7 +511,7 @@
                                                 <constraint firstItem="PCz-7w-Ww0" firstAttribute="leading" secondItem="ANE-Fx-H8G" secondAttribute="leading" id="xle-hf-lKy"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -575,6 +575,16 @@
             </objects>
             <point key="canvasLocation" x="5703" y="824"/>
         </scene>
+        <!--Accesory-->
+        <scene sceneID="9sC-Zg-Mz7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Accesory" id="fC9-Hj-Ych" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="person" catalog="system" selectedImage="person.fill" id="OE9-Az-8GN"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d5W-Ja-JLD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6656" y="676"/>
+        </scene>
         <!--Mapa-->
         <scene sceneID="b0n-Le-lk7">
             <objects>
@@ -599,31 +609,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfk-Qv-NA7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4825" y="824"/>
-        </scene>
-        <!--Perfil-->
-        <scene sceneID="Iqq-sf-0wr">
-            <objects>
-                <viewController id="8Cy-UV-Zbv" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dNJ-SU-8u3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Perfil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9P-dT-6Ke">
-                                <rect key="frame" x="186" y="438" width="40" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="7Ab-lZ-CJN"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Perfil" image="person" catalog="system" selectedImage="person.fill" id="SOH-1h-jh3"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5RR-G6-p5g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6588" y="824"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KYc-06-Kbc">
@@ -658,7 +643,7 @@
                         <segue destination="ddU-7O-Rdi" kind="relationship" relationship="viewControllers" id="UdV-VB-oen"/>
                         <segue destination="EJQ-vS-zte" kind="relationship" relationship="viewControllers" id="bWZ-bW-xNb"/>
                         <segue destination="BEz-Xk-4fU" kind="relationship" relationship="viewControllers" id="Mwa-IJ-6bB"/>
-                        <segue destination="8Cy-UV-Zbv" kind="relationship" relationship="viewControllers" id="HT8-uu-aUe"/>
+                        <segue destination="fC9-Hj-Ych" kind="relationship" relationship="viewControllers" id="t3b-eu-euE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lZe-ck-of3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

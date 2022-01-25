@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeVC: UIViewController, UITableViewDataSource,UICollectionViewDelegate {
+class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var home_tableView: UITableView!
     var arrayPrueba = ["Heineken", "Casaamigos", "Fireball", "KWAK"]
@@ -26,12 +26,7 @@ class HomeVC: UIViewController, UITableViewDataSource,UICollectionViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "homeCellid", for: indexPath) as? AppetizerCell {
-            
-            cell.appetizer = MockData.shared.appetizers[indexPath.row]
-            return cell
-            
-        } else {return UITableViewCell()}
+      return UITableViewCell()
     }
 
 }
