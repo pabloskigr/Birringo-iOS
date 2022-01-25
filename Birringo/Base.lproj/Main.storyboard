@@ -345,7 +345,10 @@
                                     <constraint firstAttribute="height" constant="50" id="5vT-GR-FUA"/>
                                     <constraint firstAttribute="width" constant="150" id="JxL-pD-MME"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="corneRadius">
                                         <real key="value" value="6"/>
