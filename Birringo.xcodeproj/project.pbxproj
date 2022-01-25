@@ -88,10 +88,6 @@
 				3300E94927972C78002C5B12 /* Assets.xcassets */,
 				3300E94B27972C78002C5B12 /* LaunchScreen.storyboard */,
 				3300E94E27972C78002C5B12 /* Info.plist */,
-				D415414D279DF5FD003E8313 /* LaunchScreenVC.swift */,
-				D415415B279E10ED003E8313 /* LoginVC.swift */,
-				D415415D279E1B38003E8313 /* RegisterVC.swift */,
-				D40EB9A9279F344B0026044E /* HomeVC.swift */,
 			);
 			path = Birringo;
 			sourceTree = "<group>";
@@ -99,6 +95,10 @@
 		D4CB6B70279EAD9500981F25 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				D415414D279DF5FD003E8313 /* LaunchScreenVC.swift */,
+				D415415B279E10ED003E8313 /* LoginVC.swift */,
+				D415415D279E1B38003E8313 /* RegisterVC.swift */,
+				D40EB9A9279F344B0026044E /* HomeVC.swift */,
 				D4CB6B72279EADB100981F25 /* Onboarding */,
 			);
 			path = VC;
