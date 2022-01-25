@@ -95,7 +95,7 @@
                             <constraint firstItem="LpS-Cg-TZj" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.47" id="uxs-5m-t9c"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="􀉪" id="4jb-KH-kwM"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="person.fill" catalog="system" id="4jb-KH-kwM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -107,7 +107,7 @@
         <image name="BeerCirculo" width="129" height="129"/>
         <image name="Ranking" width="48" height="48"/>
         <image name="parte_arriba" width="376.5" height="110"/>
-        <image name="􀉪" width="46" height="42"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
