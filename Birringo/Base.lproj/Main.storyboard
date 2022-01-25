@@ -346,7 +346,7 @@
                                     <constraint firstAttribute="width" constant="150" id="JxL-pD-MME"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Siguiente">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -458,9 +458,9 @@
                                 <rect key="frame" x="-5" y="0.0" width="424" height="125.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNm-eE-koF">
-                                <rect key="frame" x="170.5" y="70" width="73.5" height="25.5"/>
-                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="23"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="169.5" y="70" width="75.5" height="25.5"/>
+                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="23"/>
+                                <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Busqueda" translatesAutoresizingMaskIntoConstraints="NO" id="5nF-qZ-dc9">
