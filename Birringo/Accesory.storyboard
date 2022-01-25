@@ -17,8 +17,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parte_arriba" translatesAutoresizingMaskIntoConstraints="NO" id="TQz-hs-XdC">
-                                <rect key="frame" x="-5" y="0.0" width="419" height="110"/>
+                                <rect key="frame" x="-5" y="0.0" width="419" height="125.5"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PERFIL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgX-2N-7lW">
+                                <rect key="frame" x="164" y="69.5" width="81" height="26"/>
+                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="23"/>
+                                <color key="textColor" red="0.29016065600000002" green="0.29021644590000001" blue="0.29015710950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeerCirculo" translatesAutoresizingMaskIntoConstraints="NO" id="AfQ-pZ-YBu">
                                 <rect key="frame" x="147" y="159.5" width="120" height="129"/>
                             </imageView>
@@ -68,18 +74,21 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PERFIL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgX-2N-7lW">
-                                <rect key="frame" x="164" y="62" width="81" height="26"/>
-                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="23"/>
-                                <color key="textColor" red="0.29016065600000002" green="0.29021644590000001" blue="0.29015710950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camara" translatesAutoresizingMaskIntoConstraints="NO" id="epW-y9-AJ5">
+                                <rect key="frame" x="237" y="248.5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9LX-Lb-NzF"/>
+                                    <constraint firstAttribute="width" constant="40" id="gAO-eQ-DAp"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="TgX-2N-7lW" firstAttribute="centerX" secondItem="TQz-hs-XdC" secondAttribute="centerX" id="5Zj-gP-we2"/>
                             <constraint firstAttribute="trailing" secondItem="TQz-hs-XdC" secondAttribute="trailing" id="GIo-to-cXk"/>
+                            <constraint firstItem="epW-y9-AJ5" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" constant="50" id="IWQ-25-zvT"/>
+                            <constraint firstItem="epW-y9-AJ5" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" constant="-160" id="LHP-ur-sYJ"/>
                             <constraint firstItem="6C0-A9-HWL" firstAttribute="top" secondItem="AfQ-pZ-YBu" secondAttribute="bottom" constant="20" id="PeW-Yq-ZPH"/>
                             <constraint firstItem="TQz-hs-XdC" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="-5" id="WcB-Ei-owY"/>
                             <constraint firstItem="LpS-Cg-TZj" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="YMN-nW-Bqx"/>
@@ -92,6 +101,7 @@
                             <constraint firstItem="AfQ-pZ-YBu" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="q0H-eg-XC9"/>
                             <constraint firstItem="LpS-Cg-TZj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="qwN-jd-zoV"/>
                             <constraint firstItem="AfQ-pZ-YBu" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="147" id="rsj-5k-nn2"/>
+                            <constraint firstItem="TQz-hs-XdC" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.14" id="sKs-nu-odm"/>
                             <constraint firstItem="LpS-Cg-TZj" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.47" id="uxs-5m-t9c"/>
                         </constraints>
                     </view>
@@ -105,6 +115,7 @@
     </scenes>
     <resources>
         <image name="BeerCirculo" width="129" height="129"/>
+        <image name="Camara" width="24" height="24"/>
         <image name="Ranking" width="48" height="48"/>
         <image name="parte_arriba" width="376.5" height="110"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
