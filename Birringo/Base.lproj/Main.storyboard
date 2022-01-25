@@ -569,10 +569,10 @@
             </objects>
             <point key="canvasLocation" x="7523.188405797102" y="823.66071428571422"/>
         </scene>
-        <!--Accesory-->
+        <!--PerfilVC-->
         <scene sceneID="9sC-Zg-Mz7">
             <objects>
-                <viewControllerPlaceholder storyboardName="Accesory" id="fC9-Hj-Ych" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Accesory" referencedIdentifier="PerfilVC" id="fC9-Hj-Ych" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="NXH-xn-hFo"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5W-Ja-JLD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
