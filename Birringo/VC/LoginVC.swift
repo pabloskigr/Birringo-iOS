@@ -22,7 +22,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         view_loginBox.layer.cornerRadius = 30
         view_loginBox.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 
-       
     }
     
   

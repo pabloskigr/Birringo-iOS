@@ -49,10 +49,9 @@ class OnboardingVC: UIViewController {
 
     @IBAction func nextBtnTapped(_ sender: UIButton) {
         if currentPage == slides.count - 1 {
-            
             let mainTabBarController = storyboard!.instantiateViewController(identifier: "MainTabBarController")
             mainTabBarController.modalPresentationStyle = .fullScreen
-                   self.present(mainTabBarController, animated: true, completion: nil)
+            self.present(mainTabBarController, animated: true, completion: nil)
         } else {
             currentPage += 1
             let indexPath = IndexPath(item: currentPage, section: 0)
