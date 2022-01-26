@@ -4,16 +4,17 @@
 //
 //  Created by APPS2T on 18/1/22.
 //
-
+import IQKeyboardManagerSwift
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // IQKeyboardManager eleva la vista haciendo focus en el campo a rellenar
+        IQKeyboardManager.shared.enable = true
         return true
     }
 
@@ -30,7 +31,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 

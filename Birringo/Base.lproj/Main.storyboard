@@ -128,6 +128,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="HxW-eA-OYR"/>
                     <connections>
+                        <outlet property="email_login" destination="NEc-ud-Yew" id="ReV-zm-s7d"/>
+                        <outlet property="password_login" destination="Pmi-Ru-Qym" id="jU7-cq-S3V"/>
                         <outlet property="view_loginBox" destination="Cd1-LD-m5t" id="Jfq-he-CqJ"/>
                     </connections>
                 </viewController>
@@ -180,6 +182,18 @@
                                         <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" textContentType="username"/>
                                     </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Correo electronico" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ty0-q6-Hf7">
+                                        <rect key="frame" x="30" y="153" width="354" height="29"/>
+                                        <color key="textColor" systemColor="systemGray2Color"/>
+                                        <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Telefono" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BDy-7F-ioj">
+                                        <rect key="frame" x="30" y="212" width="354" height="29"/>
+                                        <color key="textColor" systemColor="systemGray2Color"/>
+                                        <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" textContentType="tel"/>
+                                    </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contraseña" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yhi-Aw-nmQ">
                                         <rect key="frame" x="30" y="271" width="354" height="29"/>
                                         <color key="textColor" systemColor="systemGray2Color"/>
@@ -223,18 +237,6 @@
                                             <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Correo electronico" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ty0-q6-Hf7">
-                                        <rect key="frame" x="30" y="153" width="354" height="29"/>
-                                        <color key="textColor" systemColor="systemGray2Color"/>
-                                        <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" textContentType="email"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Telefono" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BDy-7F-ioj">
-                                        <rect key="frame" x="30" y="212" width="354" height="29"/>
-                                        <color key="textColor" systemColor="systemGray2Color"/>
-                                        <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" textContentType="tel"/>
-                                    </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estoy de acuerdo con los" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9q-NS-YLc">
                                         <rect key="frame" x="60" y="350" width="110" height="12"/>
                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="10"/>
@@ -323,6 +325,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="email_register" destination="Ty0-q6-Hf7" id="VLj-Jc-wXN"/>
+                        <outlet property="password_register" destination="yhi-Aw-nmQ" id="Byu-BE-ahe"/>
+                        <outlet property="phone_register" destination="BDy-7F-ioj" id="ugC-CF-OsC"/>
+                        <outlet property="username_register" destination="e0q-7V-YXo" id="wO8-g0-tFO"/>
                         <outlet property="view_registerBox" destination="gQ7-zK-oLu" id="1e3-af-8FT"/>
                     </connections>
                 </viewController>
