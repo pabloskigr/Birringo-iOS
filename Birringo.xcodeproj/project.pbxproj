@@ -12,6 +12,9 @@
 		3300E94827972C77002C5B12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3300E94627972C77002C5B12 /* Main.storyboard */; };
 		3300E94A27972C78002C5B12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3300E94927972C78002C5B12 /* Assets.xcassets */; };
 		3300E94D27972C78002C5B12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3300E94B27972C78002C5B12 /* LaunchScreen.storyboard */; };
+		33A873C127A1A40D00383B4A /* FavoritosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A873C027A1A40D00383B4A /* FavoritosVC.swift */; };
+		33A873C327A1A69D00383B4A /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A873C227A1A69D00383B4A /* PhotoCollectionViewCell.swift */; };
+		33A873C727A1C20400383B4A /* PerfilOpstionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A873C627A1C20400383B4A /* PerfilOpstionsCell.swift */; };
 		33D1DD9A27A06201009CE75E /* PerfilVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D1DD9927A06201009CE75E /* PerfilVC.swift */; };
 		D40EB9A8279F310D0026044E /* Accesory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40EB9A7279F310D0026044E /* Accesory.storyboard */; };
 		D40EB9AA279F344B0026044E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40EB9A9279F344B0026044E /* HomeVC.swift */; };
@@ -37,6 +40,9 @@
 		3300E94927972C78002C5B12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3300E94C27972C78002C5B12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3300E94E27972C78002C5B12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33A873C027A1A40D00383B4A /* FavoritosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritosVC.swift; sourceTree = "<group>"; };
+		33A873C227A1A69D00383B4A /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		33A873C627A1C20400383B4A /* PerfilOpstionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilOpstionsCell.swift; sourceTree = "<group>"; };
 		33D1DD9927A06201009CE75E /* PerfilVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilVC.swift; sourceTree = "<group>"; };
 		D40EB9A7279F310D0026044E /* Accesory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Accesory.storyboard; sourceTree = "<group>"; };
 		D40EB9A9279F344B0026044E /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -108,6 +114,7 @@
 				D415415D279E1B38003E8313 /* RegisterVC.swift */,
 				D40EB9A9279F344B0026044E /* HomeVC.swift */,
 				33D1DD9927A06201009CE75E /* PerfilVC.swift */,
+				33A873C027A1A40D00383B4A /* FavoritosVC.swift */,
 				D4CB6B72279EADB100981F25 /* Onboarding */,
 			);
 			path = VC;
@@ -143,6 +150,8 @@
 			children = (
 				D4CB6B7B279EB94700981F25 /* OnboardingCollectionViewCell.swift */,
 				D4A370BB27A01A5C005A2113 /* HomeTVCell.swift */,
+				33A873C227A1A69D00383B4A /* PhotoCollectionViewCell.swift */,
+				33A873C627A1C20400383B4A /* PerfilOpstionsCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -231,12 +240,15 @@
 				D40EB9AA279F344B0026044E /* HomeVC.swift in Sources */,
 				D4CB6B77279EB30D00981F25 /* UIView+Extension.swift in Sources */,
 				D4CB6B74279EADF000981F25 /* OnboardingVC.swift in Sources */,
+				33A873C727A1C20400383B4A /* PerfilOpstionsCell.swift in Sources */,
 				33D1DD9A27A06201009CE75E /* PerfilVC.swift in Sources */,
 				3300E94327972C77002C5B12 /* SceneDelegate.swift in Sources */,
 				D4A370BC27A01A5C005A2113 /* HomeTVCell.swift in Sources */,
 				D4CB6B79279EB40C00981F25 /* OnboardingSlide.swift in Sources */,
+				33A873C127A1A40D00383B4A /* FavoritosVC.swift in Sources */,
 				D415415C279E10EE003E8313 /* LoginVC.swift in Sources */,
 				D415414E279DF5FD003E8313 /* LaunchScreenVC.swift in Sources */,
+				33A873C327A1A69D00383B4A /* PhotoCollectionViewCell.swift in Sources */,
 				D415415E279E1B38003E8313 /* RegisterVC.swift in Sources */,
 				D4CB6B7C279EB94700981F25 /* OnboardingCollectionViewCell.swift in Sources */,
 				D4A370BE27A063CE005A2113 /* TableHome.swift in Sources */,

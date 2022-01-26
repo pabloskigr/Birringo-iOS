@@ -13,6 +13,10 @@ struct Data {
     var ml:String
     var image:UIImage
 }
+struct PerfilData {
+    var title: String
+    var image: UIImage
+}
 
 struct MockData{
     
@@ -27,5 +31,10 @@ struct MockData{
         Data(titulo: "Cerveza 6", ml: "600", image: UIImage(named: "beer_image")!),
         Data(titulo: "Cerveza 7", ml: "650", image: UIImage(named: "beer_image")!),
         Data(titulo: "Cerveza 8", ml: "700", image: UIImage(named: "beer_image")!)
+    ]
+    static let datosPerfil: [PerfilData] = [
+        PerfilData(title: "Ajustes", image: UIImage(named: "Ajustes")!),
+        PerfilData(title: "Favoritos", image: UIImage(named: "Favoritos")!),
+        PerfilData(title: "Cerrar sesion", image: UIImage(named: "CerrarSesion")!)
     ]
 }
