@@ -9,7 +9,6 @@ import UIKit
 
 class PerfilOpstionsCell: UITableViewCell {
 
-    
     @IBOutlet weak var settingIcons: UIImageView!
     @IBOutlet weak var settingTitle: UILabel!
     var perfilData:PerfilData? {
@@ -18,8 +17,6 @@ class PerfilOpstionsCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        //contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0))
-       //contentView.backgroundColor = UIColor(named: "background_views")
     }
     
     private func renderUI(){

@@ -17,14 +17,18 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColors()
+        self.title = ""
+        self.navigationController?.tabBarItem.title = "Perfil"
         perfilTableView.dataSource = self
         perfilTableView.delegate = self
         
     }
     private func setupColors(){
-        perfilTableView.backgroundColor = UIColor(named: "background_views")
+        perfilTableView.corneRadius = 30
+        perfilTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tabBarController?.tabBar.backgroundColor = UIColor(named: "background_views")
-       /* perfilView.backgroundColor = UIColor(named: "background_views")*/
+        perfilView.backgroundColor = UIColor(named: "background_views")
+       
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -37,10 +41,6 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "perfilCellId", for: indexPath) as? PerfilOpstionsCell {
             
             cell.perfilData = MockData.datosPerfil[indexPath.row]
-            let bgColorView = UIView()
-            bgColorView.backgroundColor = UIColor.systemGray3
-            cell.selectedBackgroundView = bgColorView
-            cell.backgroundColor = UIColor(named: "background_views")
             return cell
             
         } else {
