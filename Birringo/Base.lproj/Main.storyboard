@@ -457,20 +457,20 @@
             <objects>
                 <viewController storyboardIdentifier="HomeVC" id="ddU-7O-Rdi" customClass="HomeVC" customModule="Birringo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nLU-Fz-7E8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parte_arriba" translatesAutoresizingMaskIntoConstraints="NO" id="s1S-UL-ZJK">
-                                <rect key="frame" x="-5" y="0.0" width="424" height="114"/>
+                                <rect key="frame" x="-5" y="0.0" width="424" height="125.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNm-eE-koF">
-                                <rect key="frame" x="169.5" y="64" width="75.5" height="25.5"/>
+                                <rect key="frame" x="169.5" y="70" width="75.5" height="25.5"/>
                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="23"/>
                                 <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Busqueda" translatesAutoresizingMaskIntoConstraints="NO" id="5nF-qZ-dc9">
-                                <rect key="frame" x="16.5" y="124" width="381" height="51"/>
+                                <rect key="frame" x="16.5" y="135.5" width="381" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -478,7 +478,7 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OmK-an-Qcc">
-                                <rect key="frame" x="20" y="175" width="374" height="638"/>
+                                <rect key="frame" x="20" y="186.5" width="374" height="709.5"/>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCellid" rowHeight="100" id="RoU-Jo-Kbn" customClass="HomeTVCell" customModule="Birringo" customModuleProvider="target">
@@ -568,19 +568,39 @@
             <objects>
                 <viewController id="BEz-Xk-4fU" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oc7-l7-tmI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gamificacion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAy-l5-szV">
-                                <rect key="frame" x="158" y="438" width="99" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="b2J-qo-fef">
+                                <rect key="frame" x="45" y="148" width="324" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parte_arriba" translatesAutoresizingMaskIntoConstraints="NO" id="Vcj-ny-mFa">
+                                <rect key="frame" x="-5" y="0.0" width="424" height="125.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAMIFICACION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ia6-fK-zZe">
+                                <rect key="frame" x="112" y="69.5" width="190" height="26"/>
+                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="23"/>
+                                <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QPv-4o-mTw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="b2J-qo-fef" firstAttribute="top" secondItem="Vcj-ny-mFa" secondAttribute="bottom" constant="22.5" id="3Pu-4a-jGC"/>
+                            <constraint firstAttribute="trailing" secondItem="Vcj-ny-mFa" secondAttribute="trailing" constant="-5" id="5CQ-ZN-A0K"/>
+                            <constraint firstItem="ia6-fK-zZe" firstAttribute="centerY" secondItem="Vcj-ny-mFa" secondAttribute="centerY" constant="20" id="An1-Wf-gwe"/>
+                            <constraint firstItem="Vcj-ny-mFa" firstAttribute="leading" secondItem="oc7-l7-tmI" secondAttribute="leading" constant="-5" id="BtB-sX-ezs"/>
+                            <constraint firstItem="Vcj-ny-mFa" firstAttribute="height" secondItem="oc7-l7-tmI" secondAttribute="height" multiplier="0.14" id="H2d-NO-mkJ"/>
+                            <constraint firstItem="ia6-fK-zZe" firstAttribute="centerX" secondItem="Vcj-ny-mFa" secondAttribute="centerX" id="IqL-dx-52L"/>
+                            <constraint firstItem="Vcj-ny-mFa" firstAttribute="top" secondItem="oc7-l7-tmI" secondAttribute="top" id="p7A-TO-5ZY"/>
+                            <constraint firstItem="b2J-qo-fef" firstAttribute="trailing" secondItem="Vcj-ny-mFa" secondAttribute="trailing" constant="-50" id="pgx-eb-Maj"/>
+                            <constraint firstItem="b2J-qo-fef" firstAttribute="leading" secondItem="Vcj-ny-mFa" secondAttribute="leading" constant="50" id="weK-ZO-qMb"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OHi-KL-mXr"/>
                 </viewController>
@@ -603,7 +623,7 @@
             <objects>
                 <viewController id="EJQ-vS-zte" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RYj-GU-L0i">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Maps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2m-AG-nd0">
@@ -646,7 +666,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="MainTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="Kux-DT-2d2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="QWn-tg-4cO">
+                    <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="QWn-tg-4cO">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -724,11 +744,11 @@
             </objects>
             <point key="canvasLocation" x="6613.04347826087" y="823.66071428571422"/>
         </scene>
-        <!--Profile-->
+        <!--Perfil-->
         <scene sceneID="IBa-CM-3uG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zQZ-Xu-1TL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" selectedImage="person.fill" id="OE9-Az-8GN"/>
+                    <tabBarItem key="tabBarItem" title="Perfil" image="person" catalog="system" selectedImage="person.fill" id="OE9-Az-8GN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="O7W-BM-jza">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
