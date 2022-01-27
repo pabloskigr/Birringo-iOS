@@ -13,9 +13,9 @@
 		3300E94A27972C78002C5B12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3300E94927972C78002C5B12 /* Assets.xcassets */; };
 		3300E94D27972C78002C5B12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3300E94B27972C78002C5B12 /* LaunchScreen.storyboard */; };
 		33A873C127A1A40D00383B4A /* FavoritosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A873C027A1A40D00383B4A /* FavoritosVC.swift */; };
-		33A873C327A1A69D00383B4A /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A873C227A1A69D00383B4A /* PhotoCollectionViewCell.swift */; };
 		33A873C727A1C20400383B4A /* PerfilOpstionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A873C627A1C20400383B4A /* PerfilOpstionsCell.swift */; };
 		33D1DD9A27A06201009CE75E /* PerfilVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D1DD9927A06201009CE75E /* PerfilVC.swift */; };
+		33DEED0F27A3106E0017C62D /* FavoritosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DEED0E27A3106E0017C62D /* FavoritosCell.swift */; };
 		D40EB9A8279F310D0026044E /* Accesory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40EB9A7279F310D0026044E /* Accesory.storyboard */; };
 		D40EB9AA279F344B0026044E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40EB9A9279F344B0026044E /* HomeVC.swift */; };
 		D4154148279DEA8A003E8313 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = D4154147279DEA8A003E8313 /* Lottie */; };
@@ -46,9 +46,9 @@
 		3300E94C27972C78002C5B12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3300E94E27972C78002C5B12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33A873C027A1A40D00383B4A /* FavoritosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritosVC.swift; sourceTree = "<group>"; };
-		33A873C227A1A69D00383B4A /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		33A873C627A1C20400383B4A /* PerfilOpstionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilOpstionsCell.swift; sourceTree = "<group>"; };
 		33D1DD9927A06201009CE75E /* PerfilVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilVC.swift; sourceTree = "<group>"; };
+		33DEED0E27A3106E0017C62D /* FavoritosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritosCell.swift; sourceTree = "<group>"; };
 		D40EB9A7279F310D0026044E /* Accesory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Accesory.storyboard; sourceTree = "<group>"; };
 		D40EB9A9279F344B0026044E /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		D415414D279DF5FD003E8313 /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
@@ -161,12 +161,12 @@
 			children = (
 				D4CB6B7B279EB94700981F25 /* OnboardingCollectionViewCell.swift */,
 				D4A370BB27A01A5C005A2113 /* HomeTVCell.swift */,
-				33A873C227A1A69D00383B4A /* PhotoCollectionViewCell.swift */,
 				33A873C627A1C20400383B4A /* PerfilOpstionsCell.swift */,
 				D4B746B427A2983F00984654 /* RankingCell.swift */,
 				D4B746B527A2983F00984654 /* RankingCell.xib */,
 				D4B746B827A2985600984654 /* QuestCell.swift */,
 				D4B746B927A2985600984654 /* QuestCell.xib */,
+				33DEED0E27A3106E0017C62D /* FavoritosCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -260,6 +260,7 @@
 				D4CB6B74279EADF000981F25 /* OnboardingVC.swift in Sources */,
 				33A873C727A1C20400383B4A /* PerfilOpstionsCell.swift in Sources */,
 				33D1DD9A27A06201009CE75E /* PerfilVC.swift in Sources */,
+				33DEED0F27A3106E0017C62D /* FavoritosCell.swift in Sources */,
 				3300E94327972C77002C5B12 /* SceneDelegate.swift in Sources */,
 				D4A370BC27A01A5C005A2113 /* HomeTVCell.swift in Sources */,
 				D4B746B627A2983F00984654 /* RankingCell.swift in Sources */,
@@ -267,7 +268,6 @@
 				33A873C127A1A40D00383B4A /* FavoritosVC.swift in Sources */,
 				D415415C279E10EE003E8313 /* LoginVC.swift in Sources */,
 				D415414E279DF5FD003E8313 /* LaunchScreenVC.swift in Sources */,
-				33A873C327A1A69D00383B4A /* PhotoCollectionViewCell.swift in Sources */,
 				D415415E279E1B38003E8313 /* RegisterVC.swift in Sources */,
 				D4B746B327A294F000984654 /* GamificacionVC.swift in Sources */,
 				D4CB6B7C279EB94700981F25 /* OnboardingCollectionViewCell.swift in Sources */,

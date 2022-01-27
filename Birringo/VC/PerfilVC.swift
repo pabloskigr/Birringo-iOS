@@ -11,7 +11,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UITableViewDataSource {
    
     @IBOutlet weak var perfilTableView: UITableView!
     @IBOutlet var perfilView: UIView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColors()
@@ -53,6 +53,16 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         perfilTableView.deselectRow(at: indexPath, animated: true)
+        
+        if (indexPath.row == 1)  {
+            let storyboard2 = UIStoryboard(name: "Accesory", bundle: nil)
+            let favoritosVC = storyboard2.instantiateViewController(identifier: "FavoritosVC") as? FavoritosVC
+            navigationController?.pushViewController(favoritosVC!, animated: true)
+            //present(registerVC!, animated: true, completion: nil)
+
+            
+    
+        }
     }
 }
 
