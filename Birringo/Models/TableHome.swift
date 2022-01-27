@@ -83,6 +83,11 @@ struct MockData{
         FavotitosData(title: "FAR WEST", image: UIImage(named: "cerveza-almeria")!),
         FavotitosData(title: "LEFFE", image: UIImage(named: "cerveza-leffe")!),
         FavotitosData(title: "Modelo", image: UIImage(named: "cerveza-Modelo")!),
-        FavotitosData(title: "La Virgen", image: UIImage(named: "Cervezas-la-Virgen")!)
+        FavotitosData(title: "La Virgen", image: UIImage(named: "Cervezas-la-Virgen")!),
+        FavotitosData(title: "FAR WEST", image: UIImage(named: "cerveza-almeria")!),
+        FavotitosData(title: "LEFFE", image: UIImage(named: "cerveza-leffe")!),
+        FavotitosData(title: "Modelo", image: UIImage(named: "cerveza-Modelo")!),
+        FavotitosData(title: "La Virgen", image: UIImage(named: "Cervezas-la-Virgen")!),
+        FavotitosData(title: "FAR WEST", image: UIImage(named: "cerveza-almeria")!)
     ]
 }
