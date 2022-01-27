@@ -6,26 +6,20 @@
 //
 
 import UIKit
-//
-//class FavoritosVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource{
-//   
-//    
-//   
-//    
-//    
-//    let collectionView = UICollectionView(
-//        frame: .zero,
-//        collectionViewLayout: UICollectionViewFlowLayout()
-//    )
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//    }
+
+class FavoritosVC: UIViewController{
 //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 6
+//        <#code#>
 //    }
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//           
-//       }
 //    
-//}
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        <#code#>
+//    }
+    
+   
+    
+   
+    
+   
+    
+}
