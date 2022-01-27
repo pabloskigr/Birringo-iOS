@@ -42,8 +42,8 @@ class OnboardingVC: UIViewController {
 
     }
     private func setupColors(){
-        onboardingView.backgroundColor = UIColor(named: "background")
-        collectionView.backgroundColor = UIColor(named: "background")
+        onboardingView.backgroundColor = UIColor(named: "background_white")
+        collectionView.backgroundColor = UIColor(named: "background_white")
     }
     
 

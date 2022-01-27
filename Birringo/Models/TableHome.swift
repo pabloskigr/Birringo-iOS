@@ -18,6 +18,18 @@ struct PerfilData {
     var image: UIImage
 }
 
+struct RankingData {
+    var image : UIImage
+    var username : String
+    var userPoints : Int
+}
+
+struct QuestData {
+    var title : String
+    var points : Int
+    //habira que añadir localizacion y descripcion para el detail.
+}
+
 struct MockData{
     
     static let datos: [Data] = [
@@ -36,5 +48,31 @@ struct MockData{
         PerfilData(title: "Ajustes", image: UIImage(named: "Ajustes")!),
         PerfilData(title: "Favoritos", image: UIImage(named: "Favoritos")!),
         PerfilData(title: "Cerrar sesion", image: UIImage(named: "CerrarSesion")!)
+    ]
+    
+    static let ranking: [RankingData] = [
+        RankingData(image: UIImage(named: "user_img")!, username: "Paco gonzalez", userPoints: 6450),
+        RankingData(image: UIImage(named: "user_img")!, username: "Juan gonzalez", userPoints: 5500),
+        RankingData(image: UIImage(named: "user_img")!, username: "Alberto gonzalez", userPoints: 4350),
+        RankingData(image: UIImage(named: "user_img")!, username: "Pablo gonzalez", userPoints: 3200),
+        RankingData(image: UIImage(named: "user_img")!, username: "Luis gonzalez", userPoints: 3000),
+        RankingData(image: UIImage(named: "user_img")!, username: "German gonzalez", userPoints: 2800),
+        RankingData(image: UIImage(named: "user_img")!, username: "Andres gonzalez", userPoints: 2750),
+        RankingData(image: UIImage(named: "user_img")!, username: "Pepe gonzalez", userPoints: 2400),
+        RankingData(image: UIImage(named: "user_img")!, username: "Ibai gonzalez", userPoints: 1650),
+        RankingData(image: UIImage(named: "user_img")!, username: "Siro gonzalez", userPoints: 800)
+    ]
+    
+    static let quest: [QuestData] = [
+        QuestData(title: "Ve al bar de paco", points: 20),
+        QuestData(title: "Escanea el QR del bar artemisa", points: 30),
+        QuestData(title: "Ve a cualquier bar y haz una foto", points: 10),
+        QuestData(title: "Ve al bar peor valorado de tu zona y sube foto", points: 30),
+        QuestData(title: "Ve a zukumbar y tomate algo", points: 20),
+        QuestData(title: "Ve al bar de paco", points: 20),
+        QuestData(title: "Escanea el QR del bar luisa", points: 30),
+        QuestData(title: "Ve a cualquier bar y haz una foto", points: 10),
+        QuestData(title: "Ve al bar mejor valorado de tu zona y sube foto", points: 30),
+        QuestData(title: "Ve a atten y tomate algo", points: 20)
     ]
 }

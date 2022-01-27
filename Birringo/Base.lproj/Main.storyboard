@@ -563,10 +563,10 @@
             </objects>
             <point key="canvasLocation" x="6613.04347826087" y="87.723214285714278"/>
         </scene>
-        <!--View Controller-->
+        <!--GamificacionVC-->
         <scene sceneID="5yr-he-62q">
             <objects>
-                <viewController id="BEz-Xk-4fU" sceneMemberID="viewController">
+                <viewController id="BEz-Xk-4fU" customClass="GamificacionVC" customModule="Birringo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oc7-l7-tmI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -574,9 +574,13 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="b2J-qo-fef">
                                 <rect key="frame" x="45" y="148" width="324" height="32"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Ranking"/>
+                                    <segment title="Quest"/>
                                 </segments>
+                                <color key="selectedSegmentTintColor" red="0.95294117649999999" green="0.58039215690000001" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="OnChangedSegmentedControl:" destination="BEz-Xk-4fU" eventType="valueChanged" id="Irs-SH-VU8"/>
+                                </connections>
                             </segmentedControl>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parte_arriba" translatesAutoresizingMaskIntoConstraints="NO" id="Vcj-ny-mFa">
                                 <rect key="frame" x="-5" y="0.0" width="424" height="125.5"/>
@@ -587,22 +591,47 @@
                                 <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="txg-hQ-F25">
+                                <rect key="frame" x="0.0" y="194" width="414" height="702"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="u2m-br-dA6">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u2m-br-dA6" id="P0O-9l-OKI">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QPv-4o-mTw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="b2J-qo-fef" firstAttribute="top" secondItem="Vcj-ny-mFa" secondAttribute="bottom" constant="22.5" id="3Pu-4a-jGC"/>
                             <constraint firstAttribute="trailing" secondItem="Vcj-ny-mFa" secondAttribute="trailing" constant="-5" id="5CQ-ZN-A0K"/>
+                            <constraint firstItem="b2J-qo-fef" firstAttribute="height" secondItem="Vcj-ny-mFa" secondAttribute="height" multiplier="0.247012" id="8ny-AF-5du"/>
+                            <constraint firstItem="txg-hQ-F25" firstAttribute="leading" secondItem="QPv-4o-mTw" secondAttribute="leading" id="9z2-gl-XKU"/>
                             <constraint firstItem="ia6-fK-zZe" firstAttribute="centerY" secondItem="Vcj-ny-mFa" secondAttribute="centerY" constant="20" id="An1-Wf-gwe"/>
                             <constraint firstItem="Vcj-ny-mFa" firstAttribute="leading" secondItem="oc7-l7-tmI" secondAttribute="leading" constant="-5" id="BtB-sX-ezs"/>
                             <constraint firstItem="Vcj-ny-mFa" firstAttribute="height" secondItem="oc7-l7-tmI" secondAttribute="height" multiplier="0.14" id="H2d-NO-mkJ"/>
                             <constraint firstItem="ia6-fK-zZe" firstAttribute="centerX" secondItem="Vcj-ny-mFa" secondAttribute="centerX" id="IqL-dx-52L"/>
+                            <constraint firstItem="txg-hQ-F25" firstAttribute="trailing" secondItem="QPv-4o-mTw" secondAttribute="trailing" id="KJJ-YT-yij"/>
+                            <constraint firstItem="txg-hQ-F25" firstAttribute="top" secondItem="b2J-qo-fef" secondAttribute="bottom" constant="15" id="Sub-xI-7cN"/>
+                            <constraint firstItem="txg-hQ-F25" firstAttribute="centerX" secondItem="oc7-l7-tmI" secondAttribute="centerX" id="a8g-ve-efF"/>
+                            <constraint firstAttribute="bottom" secondItem="txg-hQ-F25" secondAttribute="bottom" id="o1J-Ra-bei"/>
                             <constraint firstItem="Vcj-ny-mFa" firstAttribute="top" secondItem="oc7-l7-tmI" secondAttribute="top" id="p7A-TO-5ZY"/>
                             <constraint firstItem="b2J-qo-fef" firstAttribute="trailing" secondItem="Vcj-ny-mFa" secondAttribute="trailing" constant="-50" id="pgx-eb-Maj"/>
                             <constraint firstItem="b2J-qo-fef" firstAttribute="leading" secondItem="Vcj-ny-mFa" secondAttribute="leading" constant="50" id="weK-ZO-qMb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OHi-KL-mXr"/>
+                    <connections>
+                        <outlet property="gamificacionView" destination="oc7-l7-tmI" id="me0-V3-9Dt"/>
+                        <outlet property="gamificacion_tableView" destination="txg-hQ-F25" id="D7o-Og-3EE"/>
+                        <outlet property="segmentedControl" destination="b2J-qo-fef" id="eiW-eA-znP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dH8-lk-jwR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

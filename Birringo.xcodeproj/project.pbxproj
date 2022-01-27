@@ -26,6 +26,11 @@
 		D4A370BC27A01A5C005A2113 /* HomeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A370BB27A01A5C005A2113 /* HomeTVCell.swift */; };
 		D4A370BE27A063CE005A2113 /* TableHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A370BD27A063CE005A2113 /* TableHome.swift */; };
 		D4B746B127A1507F00984654 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D4B746B027A1507F00984654 /* IQKeyboardManagerSwift */; };
+		D4B746B327A294F000984654 /* GamificacionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B746B227A294F000984654 /* GamificacionVC.swift */; };
+		D4B746B627A2983F00984654 /* RankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B746B427A2983F00984654 /* RankingCell.swift */; };
+		D4B746B727A2983F00984654 /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B746B527A2983F00984654 /* RankingCell.xib */; };
+		D4B746BA27A2985600984654 /* QuestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B746B827A2985600984654 /* QuestCell.swift */; };
+		D4B746BB27A2985600984654 /* QuestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B746B927A2985600984654 /* QuestCell.xib */; };
 		D4CB6B74279EADF000981F25 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B73279EADF000981F25 /* OnboardingVC.swift */; };
 		D4CB6B77279EB30D00981F25 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B76279EB30D00981F25 /* UIView+Extension.swift */; };
 		D4CB6B79279EB40C00981F25 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B78279EB40C00981F25 /* OnboardingSlide.swift */; };
@@ -52,6 +57,11 @@
 		D415415D279E1B38003E8313 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		D4A370BB27A01A5C005A2113 /* HomeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVCell.swift; sourceTree = "<group>"; };
 		D4A370BD27A063CE005A2113 /* TableHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHome.swift; sourceTree = "<group>"; };
+		D4B746B227A294F000984654 /* GamificacionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamificacionVC.swift; sourceTree = "<group>"; };
+		D4B746B427A2983F00984654 /* RankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCell.swift; sourceTree = "<group>"; };
+		D4B746B527A2983F00984654 /* RankingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankingCell.xib; sourceTree = "<group>"; };
+		D4B746B827A2985600984654 /* QuestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestCell.swift; sourceTree = "<group>"; };
+		D4B746B927A2985600984654 /* QuestCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestCell.xib; sourceTree = "<group>"; };
 		D4CB6B73279EADF000981F25 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
 		D4CB6B76279EB30D00981F25 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D4CB6B78279EB40C00981F25 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
@@ -115,6 +125,7 @@
 				D40EB9A9279F344B0026044E /* HomeVC.swift */,
 				33D1DD9927A06201009CE75E /* PerfilVC.swift */,
 				33A873C027A1A40D00383B4A /* FavoritosVC.swift */,
+				D4B746B227A294F000984654 /* GamificacionVC.swift */,
 				D4CB6B72279EADB100981F25 /* Onboarding */,
 			);
 			path = VC;
@@ -152,6 +163,10 @@
 				D4A370BB27A01A5C005A2113 /* HomeTVCell.swift */,
 				33A873C227A1A69D00383B4A /* PhotoCollectionViewCell.swift */,
 				33A873C627A1C20400383B4A /* PerfilOpstionsCell.swift */,
+				D4B746B427A2983F00984654 /* RankingCell.swift */,
+				D4B746B527A2983F00984654 /* RankingCell.xib */,
+				D4B746B827A2985600984654 /* QuestCell.swift */,
+				D4B746B927A2985600984654 /* QuestCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -221,6 +236,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4B746BB27A2985600984654 /* QuestCell.xib in Resources */,
+				D4B746B727A2983F00984654 /* RankingCell.xib in Resources */,
 				D415415A279E0D38003E8313 /* beer_splash.json in Resources */,
 				3300E94D27972C78002C5B12 /* LaunchScreen.storyboard in Resources */,
 				D40EB9A8279F310D0026044E /* Accesory.storyboard in Resources */,
@@ -236,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4B746BA27A2985600984654 /* QuestCell.swift in Sources */,
 				3300E94127972C77002C5B12 /* AppDelegate.swift in Sources */,
 				D40EB9AA279F344B0026044E /* HomeVC.swift in Sources */,
 				D4CB6B77279EB30D00981F25 /* UIView+Extension.swift in Sources */,
@@ -244,12 +262,14 @@
 				33D1DD9A27A06201009CE75E /* PerfilVC.swift in Sources */,
 				3300E94327972C77002C5B12 /* SceneDelegate.swift in Sources */,
 				D4A370BC27A01A5C005A2113 /* HomeTVCell.swift in Sources */,
+				D4B746B627A2983F00984654 /* RankingCell.swift in Sources */,
 				D4CB6B79279EB40C00981F25 /* OnboardingSlide.swift in Sources */,
 				33A873C127A1A40D00383B4A /* FavoritosVC.swift in Sources */,
 				D415415C279E10EE003E8313 /* LoginVC.swift in Sources */,
 				D415414E279DF5FD003E8313 /* LaunchScreenVC.swift in Sources */,
 				33A873C327A1A69D00383B4A /* PhotoCollectionViewCell.swift in Sources */,
 				D415415E279E1B38003E8313 /* RegisterVC.swift in Sources */,
+				D4B746B327A294F000984654 /* GamificacionVC.swift in Sources */,
 				D4CB6B7C279EB94700981F25 /* OnboardingCollectionViewCell.swift in Sources */,
 				D4A370BE27A063CE005A2113 /* TableHome.swift in Sources */,
 			);

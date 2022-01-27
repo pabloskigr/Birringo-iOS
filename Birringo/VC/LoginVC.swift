@@ -38,7 +38,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         }
     }
     private func setupColors(){
-        view_loginBox.backgroundColor = UIColor(named: "background")
+        view_loginBox.backgroundColor = UIColor(named: "background_white")
     }
 }
 

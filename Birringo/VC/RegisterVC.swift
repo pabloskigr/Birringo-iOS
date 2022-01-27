@@ -43,7 +43,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate{
         }
     }
     private func setupColors(){
-        view_registerBox.backgroundColor = UIColor(named: "background")
+        view_registerBox.backgroundColor = UIColor(named: "background_white")
     }
 
 }

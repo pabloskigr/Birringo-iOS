@@ -9,8 +9,6 @@ import UIKit
 
 class PerfilVC: UIViewController,  UITableViewDelegate, UITableViewDataSource {
    
-    
-   
     @IBOutlet weak var perfilTableView: UITableView!
     @IBOutlet var perfilView: UIView!
     
@@ -28,6 +26,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UITableViewDataSource {
         perfilTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tabBarController?.tabBar.backgroundColor = UIColor(named: "background_views")
         perfilView.backgroundColor = UIColor(named: "background_views")
+        perfilTableView.backgroundColor = UIColor(named: "background_white")
        
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -39,7 +38,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "perfilCellId", for: indexPath) as? PerfilOpstionsCell {
-            
+            cell.backgroundColor = UIColor(named: "background_white")
             cell.perfilData = MockData.datosPerfil[indexPath.row]
             return cell
             
