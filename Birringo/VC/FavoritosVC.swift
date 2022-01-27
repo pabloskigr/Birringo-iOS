@@ -20,6 +20,7 @@ class FavoritosVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         favoritosTableView.delegate = self
         
     }
+    
     private func setupColors(){
         favoritosTableView.corneRadius = 30
         favoritosTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -48,6 +49,17 @@ class FavoritosVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         favoritosTableView.deselectRow(at: indexPath, animated: true)
+        
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            MockData.favoritos.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+            
+        }
+    }
+    
+
     
 }
