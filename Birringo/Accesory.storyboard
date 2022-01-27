@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -43,7 +44,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="perfilCellId" rowHeight="95" id="QDM-4f-ES5" customClass="PerfilOpstionsCell" customModule="Birringo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="95"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QDM-4f-ES5" id="2tQ-U0-8jQ">
                                             <rect key="frame" x="0.0" y="0.0" width="384.5" height="95"/>
@@ -130,11 +131,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lPD-dn-CgE">
-                                <rect key="frame" x="0.0" y="128" width="414" height="734"/>
+                                <rect key="frame" x="0.0" y="135.5" width="414" height="726.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="80" id="g3G-bJ-aUz" customClass="FavoritosCell" customModule="Birringo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="80"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g3G-bJ-aUz" id="ZHb-pf-pQx">
                                             <rect key="frame" x="0.0" y="0.0" width="384.5" height="80"/>
@@ -175,13 +176,13 @@
                             <constraint firstItem="lPD-dn-CgE" firstAttribute="leading" secondItem="qjn-mk-whc" secondAttribute="leading" id="1Pk-dI-hyc"/>
                             <constraint firstItem="Vaj-4I-fz9" firstAttribute="height" secondItem="mqG-9D-Pip" secondAttribute="height" multiplier="0.14" id="2cP-qw-7AC"/>
                             <constraint firstItem="qjn-mk-whc" firstAttribute="bottom" secondItem="lPD-dn-CgE" secondAttribute="bottom" id="3cF-nb-Mf6"/>
-                            <constraint firstItem="qjn-mk-whc" firstAttribute="top" secondItem="Vaj-4I-fz9" secondAttribute="top" constant="44" id="3fe-pG-mvt"/>
-                            <constraint firstItem="lPD-dn-CgE" firstAttribute="height" secondItem="mqG-9D-Pip" secondAttribute="height" multiplier="0.819" id="7Aj-kD-ngu"/>
+                            <constraint firstItem="lPD-dn-CgE" firstAttribute="top" secondItem="Vaj-4I-fz9" secondAttribute="bottom" constant="10" id="CvZ-6k-ivB"/>
                             <constraint firstItem="qjn-mk-whc" firstAttribute="leading" secondItem="Vaj-4I-fz9" secondAttribute="leading" constant="5" id="VgY-AY-wVO"/>
                             <constraint firstItem="kZY-t0-vqr" firstAttribute="centerX" secondItem="Vaj-4I-fz9" secondAttribute="centerX" id="WIR-vf-34w"/>
                             <constraint firstItem="qjn-mk-whc" firstAttribute="trailing" secondItem="lPD-dn-CgE" secondAttribute="trailing" id="Wrs-w3-pZK"/>
                             <constraint firstItem="kZY-t0-vqr" firstAttribute="centerY" secondItem="Vaj-4I-fz9" secondAttribute="centerY" constant="20" id="ap0-CE-lmy"/>
                             <constraint firstItem="Vaj-4I-fz9" firstAttribute="trailing" secondItem="qjn-mk-whc" secondAttribute="trailing" constant="5" id="p2g-p5-E3Z"/>
+                            <constraint firstItem="Vaj-4I-fz9" firstAttribute="top" secondItem="mqG-9D-Pip" secondAttribute="top" id="sGj-6B-zax"/>
                         </constraints>
                     </view>
                 </viewController>
