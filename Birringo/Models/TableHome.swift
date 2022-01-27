@@ -79,10 +79,15 @@ struct MockData{
         QuestData(title: "Ve al bar mejor valorado de tu zona y sube foto", points: 30),
         QuestData(title: "Ve a atten y tomate algo", points: 20)
     ]
-    static let favoritos: [FavotitosData] = [
+    static var favoritos: [FavotitosData] = [
         FavotitosData(title: "FAR WEST", image: UIImage(named: "cerveza-almeria")!),
         FavotitosData(title: "LEFFE", image: UIImage(named: "cerveza-leffe")!),
         FavotitosData(title: "Modelo", image: UIImage(named: "cerveza-Modelo")!),
-        FavotitosData(title: "La Virgen", image: UIImage(named: "Cervezas-la-Virgen")!)
+        FavotitosData(title: "La Virgen", image: UIImage(named: "Cervezas-la-Virgen")!),
+        FavotitosData(title: "FAR WEST", image: UIImage(named: "cerveza-almeria")!),
+        FavotitosData(title: "LEFFE", image: UIImage(named: "cerveza-leffe")!),
+        FavotitosData(title: "Modelo", image: UIImage(named: "cerveza-Modelo")!),
+        FavotitosData(title: "La Virgen", image: UIImage(named: "Cervezas-la-Virgen")!),
+        FavotitosData(title: "FAR WEST", image: UIImage(named: "cerveza-almeria")!)
     ]
 }
