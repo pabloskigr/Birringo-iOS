@@ -21,8 +21,6 @@ class QuestDetailVC: UIViewController {
         questTitle.text = questData?.title
         questLocation.text = questData?.localizacion
         questPoints.text = "Puntos: \(questData?.points ?? 0)"
-
-        
     }
     
 

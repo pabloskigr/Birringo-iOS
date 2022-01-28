@@ -54,6 +54,10 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         home_tableView.deselectRow(at: indexPath, animated: true)
+        if let detailVC = self.storyboard?.instantiateViewController(identifier: "BeerDetailVC") as? BeerDetailVC {
+            detailVC.beer = MockData.datos[indexPath.row]
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
 
 }

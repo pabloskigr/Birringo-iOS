@@ -13,7 +13,7 @@ class HomeTVCell: UITableViewCell {
     @IBOutlet weak var ml_cell: UILabel!
     @IBOutlet weak var image_cell: UIImageView!
     
-    var data:Data? {
+    var data:beerData? {
         didSet {renderUI()}
     }
     

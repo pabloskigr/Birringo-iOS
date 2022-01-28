@@ -569,7 +569,7 @@
         <!--Beer DetailVC-->
         <scene sceneID="0Ei-7V-WLi">
             <objects>
-                <viewController id="ME8-E7-kM1" customClass="BeerDetailVC" customModule="Birringo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BeerDetailVC" id="ME8-E7-kM1" customClass="BeerDetailVC" customModule="Birringo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iNu-Ev-dLj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -593,7 +593,7 @@
                                 <rect key="frame" x="0.0" y="519.5" width="414" height="342.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="kfY-3l-3RC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DetailTableCellid" rowHeight="60" id="kfY-3l-3RC" customClass="DetailCell" customModule="Birringo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kfY-3l-3RC" id="EF5-i2-Pks">
@@ -625,8 +625,16 @@
                                                 <constraint firstItem="Tuv-50-W4w" firstAttribute="centerY" secondItem="EF5-i2-Pks" secondAttribute="centerY" id="iLM-XM-rvP"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="barName" destination="fwg-8x-Zm0" id="pqh-mH-VIc"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="corneRadius">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjp-Jc-Y5G">
                                 <rect key="frame" x="349" y="312.5" width="48.5" height="37"/>
