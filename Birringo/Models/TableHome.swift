@@ -12,7 +12,14 @@ struct beerData {
     var titulo: String
     var ml:String
     var image:UIImage
+    var description: String
+    var location: [Bares]
 }
+
+struct Bares {
+    var title: String
+}
+
 struct PerfilData {
     var title: String
     var image: UIImage
@@ -38,17 +45,56 @@ struct FavotitosData {
 struct MockData{
     
     static let datos: [beerData] = [
-        beerData(titulo: "Heineken", ml: "750", image: UIImage(named: "beer_image")!),
-        beerData(titulo: "Estrella", ml: "500", image: UIImage(named: "beer_image")!),
-        beerData(titulo: "Cerveza 1", ml: "700", image: UIImage(named: "beer_image")!),
-        beerData(titulo: "Cerveza 2", ml: "600", image: UIImage(named: "beer_image")!),
-        beerData(titulo: "Cerveza 3", ml: "650", image: UIImage(named: "beer_image")!),
-        beerData(titulo: "Cerveza 4", ml: "450", image: UIImage(named: "beer_image")!),
-        beerData(titulo: "Cerveza 5", ml: "550", image: UIImage(named: "beer_image")!),
-        beerData(titulo: "Cerveza 6", ml: "600", image: UIImage(named: "beer_image")!),
-        beerData(titulo: "Cerveza 7", ml: "650", image: UIImage(named: "beer_image")!),
-        beerData(titulo: "Cerveza 8", ml: "700", image: UIImage(named: "beer_image")!)
+        beerData(titulo: "Heineken", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares1),
+        beerData(titulo: "Estrella Galicia", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares2),
+        beerData(titulo: "Leffe", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares3),
+        beerData(titulo: "La Virgen", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares4),
+        beerData(titulo: "El Alguila", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares5),
+        beerData(titulo: "Corona", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de Mexico de renombre conocida por todo el mundial", location: bares6),
+        beerData(titulo: "Life", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares7),
+        beerData(titulo: "BUD LiGHT", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares8)
     ]
+    static let bares1: [Bares] = [
+        Bares(title: "La virgen"),
+        Bares(title: "El Burro"),
+        Bares(title: "La Laguna"),
+    ]
+    static let bares2: [Bares] = [
+        Bares(title: "La virgen"),
+        Bares(title: "La Leña"),
+        Bares(title: "La mesa"),
+    ]
+    static let bares3: [Bares] = [
+        Bares(title: "El meson"),
+        Bares(title: "El Rincon de Paco"),
+        Bares(title: "Bar"),
+    ]
+    static let bares4: [Bares] = [
+        Bares(title: "El cienMontaditos"),
+        Bares(title: "La Sureña"),
+        Bares(title: "Artico"),
+    ]
+    static let bares5: [Bares] = [
+        Bares(title: "Artico"),
+        Bares(title: "La Maria"),
+        Bares(title: "La Negra"),
+    ]
+    static let bares6: [Bares] = [
+        Bares(title: "La Blanca"),
+        Bares(title: "La Lenta"),
+        Bares(title: "La virgen"),
+    ]
+    static let bares7: [Bares] = [
+        Bares(title: "El norte"),
+        Bares(title: "Los Nachos"),
+        Bares(title: "La virgen"),
+    ]
+    static let bares8: [Bares] = [
+        Bares(title: "La Marina"),
+        Bares(title: "La Juana"),
+        Bares(title: "La Luna"),
+    ]
+    
     static let datosPerfil: [PerfilData] = [
         PerfilData(title: "Ajustes", image: UIImage(named: "Ajustes")!),
         PerfilData(title: "Favoritos", image: UIImage(named: "Favoritos")!),
