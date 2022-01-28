@@ -31,6 +31,8 @@
 		D4B746B727A2983F00984654 /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B746B527A2983F00984654 /* RankingCell.xib */; };
 		D4B746BA27A2985600984654 /* QuestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B746B827A2985600984654 /* QuestCell.swift */; };
 		D4B746BB27A2985600984654 /* QuestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B746B927A2985600984654 /* QuestCell.xib */; };
+		D4B746BD27A3FAEF00984654 /* QuestDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B746BC27A3FAEF00984654 /* QuestDetailVC.swift */; };
+		D4B746BF27A4149700984654 /* BeerDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B746BE27A4149700984654 /* BeerDetailVC.swift */; };
 		D4CB6B74279EADF000981F25 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B73279EADF000981F25 /* OnboardingVC.swift */; };
 		D4CB6B77279EB30D00981F25 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B76279EB30D00981F25 /* UIView+Extension.swift */; };
 		D4CB6B79279EB40C00981F25 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B78279EB40C00981F25 /* OnboardingSlide.swift */; };
@@ -62,6 +64,8 @@
 		D4B746B527A2983F00984654 /* RankingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankingCell.xib; sourceTree = "<group>"; };
 		D4B746B827A2985600984654 /* QuestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestCell.swift; sourceTree = "<group>"; };
 		D4B746B927A2985600984654 /* QuestCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestCell.xib; sourceTree = "<group>"; };
+		D4B746BC27A3FAEF00984654 /* QuestDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDetailVC.swift; sourceTree = "<group>"; };
+		D4B746BE27A4149700984654 /* BeerDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailVC.swift; sourceTree = "<group>"; };
 		D4CB6B73279EADF000981F25 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
 		D4CB6B76279EB30D00981F25 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D4CB6B78279EB40C00981F25 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
@@ -126,7 +130,9 @@
 				33D1DD9927A06201009CE75E /* PerfilVC.swift */,
 				33A873C027A1A40D00383B4A /* FavoritosVC.swift */,
 				D4B746B227A294F000984654 /* GamificacionVC.swift */,
+				D4B746BC27A3FAEF00984654 /* QuestDetailVC.swift */,
 				D4CB6B72279EADB100981F25 /* Onboarding */,
+				D4B746BE27A4149700984654 /* BeerDetailVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 				3300E94127972C77002C5B12 /* AppDelegate.swift in Sources */,
 				D40EB9AA279F344B0026044E /* HomeVC.swift in Sources */,
 				D4CB6B77279EB30D00981F25 /* UIView+Extension.swift in Sources */,
+				D4B746BD27A3FAEF00984654 /* QuestDetailVC.swift in Sources */,
 				D4CB6B74279EADF000981F25 /* OnboardingVC.swift in Sources */,
 				33A873C727A1C20400383B4A /* PerfilOpstionsCell.swift in Sources */,
 				33D1DD9A27A06201009CE75E /* PerfilVC.swift in Sources */,
@@ -267,6 +274,7 @@
 				D4CB6B79279EB40C00981F25 /* OnboardingSlide.swift in Sources */,
 				33A873C127A1A40D00383B4A /* FavoritosVC.swift in Sources */,
 				D415415C279E10EE003E8313 /* LoginVC.swift in Sources */,
+				D4B746BF27A4149700984654 /* BeerDetailVC.swift in Sources */,
 				D415414E279DF5FD003E8313 /* LaunchScreenVC.swift in Sources */,
 				D415415E279E1B38003E8313 /* RegisterVC.swift in Sources */,
 				D4B746B327A294F000984654 /* GamificacionVC.swift in Sources */,

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 //PRUEBA DATA LOCAL
-struct Data {
+struct beerData {
     var titulo: String
     var ml:String
     var image:UIImage
@@ -27,6 +27,7 @@ struct RankingData {
 struct QuestData {
     var title : String
     var points : Int
+    var localizacion : String
     //habira que añadir localizacion y descripcion para el detail.
 }
 struct FavotitosData {
@@ -36,17 +37,17 @@ struct FavotitosData {
 
 struct MockData{
     
-    static let datos: [Data] = [
-        Data(titulo: "Heineken", ml: "750", image: UIImage(named: "beer_image")!),
-        Data(titulo: "Estrella", ml: "500", image: UIImage(named: "beer_image")!),
-        Data(titulo: "Cerveza 1", ml: "700", image: UIImage(named: "beer_image")!),
-        Data(titulo: "Cerveza 2", ml: "600", image: UIImage(named: "beer_image")!),
-        Data(titulo: "Cerveza 3", ml: "650", image: UIImage(named: "beer_image")!),
-        Data(titulo: "Cerveza 4", ml: "450", image: UIImage(named: "beer_image")!),
-        Data(titulo: "Cerveza 5", ml: "550", image: UIImage(named: "beer_image")!),
-        Data(titulo: "Cerveza 6", ml: "600", image: UIImage(named: "beer_image")!),
-        Data(titulo: "Cerveza 7", ml: "650", image: UIImage(named: "beer_image")!),
-        Data(titulo: "Cerveza 8", ml: "700", image: UIImage(named: "beer_image")!)
+    static let datos: [beerData] = [
+        beerData(titulo: "Heineken", ml: "750", image: UIImage(named: "beer_image")!),
+        beerData(titulo: "Estrella", ml: "500", image: UIImage(named: "beer_image")!),
+        beerData(titulo: "Cerveza 1", ml: "700", image: UIImage(named: "beer_image")!),
+        beerData(titulo: "Cerveza 2", ml: "600", image: UIImage(named: "beer_image")!),
+        beerData(titulo: "Cerveza 3", ml: "650", image: UIImage(named: "beer_image")!),
+        beerData(titulo: "Cerveza 4", ml: "450", image: UIImage(named: "beer_image")!),
+        beerData(titulo: "Cerveza 5", ml: "550", image: UIImage(named: "beer_image")!),
+        beerData(titulo: "Cerveza 6", ml: "600", image: UIImage(named: "beer_image")!),
+        beerData(titulo: "Cerveza 7", ml: "650", image: UIImage(named: "beer_image")!),
+        beerData(titulo: "Cerveza 8", ml: "700", image: UIImage(named: "beer_image")!)
     ]
     static let datosPerfil: [PerfilData] = [
         PerfilData(title: "Ajustes", image: UIImage(named: "Ajustes")!),
@@ -68,16 +69,16 @@ struct MockData{
     ]
     
     static let quest: [QuestData] = [
-        QuestData(title: "Ve al bar de paco", points: 20),
-        QuestData(title: "Escanea el QR del bar artemisa", points: 30),
-        QuestData(title: "Ve a cualquier bar y haz una foto", points: 10),
-        QuestData(title: "Ve al bar peor valorado de tu zona y sube foto", points: 30),
-        QuestData(title: "Ve a zukumbar y tomate algo", points: 20),
-        QuestData(title: "Ve al bar de paco", points: 20),
-        QuestData(title: "Escanea el QR del bar luisa", points: 30),
-        QuestData(title: "Ve a cualquier bar y haz una foto", points: 10),
-        QuestData(title: "Ve al bar mejor valorado de tu zona y sube foto", points: 30),
-        QuestData(title: "Ve a atten y tomate algo", points: 20)
+        QuestData(title: "Ve al bar de paco", points: 20, localizacion: "Bar de Paco"),
+        QuestData(title: "Escanea el QR del bar artemisa", points: 30, localizacion: "Bar Artemisa"),
+        QuestData(title: "Ve a cualquier bar y haz una foto", points: 10, localizacion: "Culaquier bar"),
+        QuestData(title: "Ve al bar peor valorado de tu zona y sube foto esnea el codigo", points: 30, localizacion: "Var peor valorado de tu zona"),
+        QuestData(title: "Ve a zukumbar y tomate algo", points: 20, localizacion: "Zukumbar"),
+        QuestData(title: "Ve al bar de paco", points: 20, localizacion: "Bar de Paco"),
+        QuestData(title: "Escanea el QR del bar luisa", points: 30, localizacion: "Bar de Luisa"),
+        QuestData(title: "Ve a cualquier bar y haz una foto", points: 10, localizacion: "Culaquier bar"),
+        QuestData(title: "Ve al bar mejor valorado de tu zona y sube foto", points: 30, localizacion: "Bar mejor valorado de tu zona"),
+        QuestData(title: "Ve a atten y tomate algo", points: 20, localizacion: "Bar Atten")
     ]
     static var favoritos: [FavotitosData] = [
         FavotitosData(title: "FAR WEST", image: UIImage(named: "cerveza-almeria")!),

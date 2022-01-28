@@ -76,7 +76,18 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        gamificacion_tableView.deselectRow(at: indexPath, animated: true)
+        let selectedIndex = self.segmentedControl.selectedSegmentIndex
+          switch selectedIndex
+          {
+          case 1:
+              if let questDetailVC = storyboard?.instantiateViewController(withIdentifier: "QuestDetailVC") as? QuestDetailVC {
+                  questDetailVC.questData = MockData.quest[indexPath.row]
+                  gamificacion_tableView.deselectRow(at: indexPath, animated: true)
+                  navigationController?.pushViewController(questDetailVC, animated: true)
+              }
+          default:
+              gamificacion_tableView.deselectRow(at: indexPath, animated: true)
+          }
     }
     
     func tableView( _ tableView : UITableView,  titleForHeaderInSection section: Int)->String? {
