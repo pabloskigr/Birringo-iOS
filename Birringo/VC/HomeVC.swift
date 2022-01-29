@@ -7,14 +7,18 @@
 
 import UIKit
 
-class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var home_tableView: UITableView!
     @IBOutlet var home_view: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColors()
+        searchBar.delegate = self
+        searchView.isHidden = true
         home_tableView.dataSource = self
         home_tableView.delegate = self
     }
@@ -58,6 +62,17 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             detailVC.beer = MockData.datos[indexPath.row]
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchView.isHidden = false
+        searchBar.showsCancelButton = true
+        }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.isEditing = false
+        searchBar.showsCancelButton = false
+        searchView.isHidden = true
+        searchBar.resignFirstResponder()
     }
 
 }

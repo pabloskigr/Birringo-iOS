@@ -9,8 +9,9 @@ import UIKit
 
 class QuestDetailVC: UIViewController {
     
-    
     var questData : QuestData?
+    @IBOutlet var questView: UIView!
+    @IBOutlet weak var questViewBox: UIView!
     @IBOutlet weak var questTitle: UILabel!
     @IBOutlet weak var questLocation: UILabel!
     @IBOutlet weak var questPoints: UILabel!
@@ -21,6 +22,12 @@ class QuestDetailVC: UIViewController {
         questTitle.text = questData?.title
         questLocation.text = questData?.localizacion
         questPoints.text = "Puntos: \(questData?.points ?? 0)"
+        setupColors()
+    }
+    
+    func setupColors(){
+        questView.backgroundColor = UIColor(named: "background_views")
+        questViewBox.backgroundColor = UIColor(named: "background_white")
     }
     
 

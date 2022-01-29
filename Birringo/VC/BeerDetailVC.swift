@@ -10,6 +10,7 @@ import UIKit
 class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
     var beer : beerData?
+    @IBOutlet var beerDetailView: UIView!
     @IBOutlet weak var beerName: UILabel!
     @IBOutlet weak var beerDescription: UILabel!
     @IBOutlet weak var beerImage: UIImageView!
@@ -19,10 +20,18 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         super.viewDidLoad()
         beerLocationsTableView.delegate = self
         beerLocationsTableView.dataSource = self
+        setupColors()
+       
         beerName.text = beer?.titulo
         beerDescription.text = beer?.description
         beerImage.image = beer?.image
 
+    }
+    
+    func setupColors(){
+        beerDetailView.backgroundColor = UIColor(named: "background_views")
+        beerLocationsTableView.backgroundColor = UIColor(named: "backgrpund_white")
+        beerLocationsTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
