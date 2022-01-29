@@ -35,6 +35,7 @@
 		D4CB6B77279EB30D00981F25 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B76279EB30D00981F25 /* UIView+Extension.swift */; };
 		D4CB6B79279EB40C00981F25 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B78279EB40C00981F25 /* OnboardingSlide.swift */; };
 		D4CB6B7C279EB94700981F25 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B7B279EB94700981F25 /* OnboardingCollectionViewCell.swift */; };
+		E9F5656427A54C87006440C4 /* AjustesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F5656327A54C87006440C4 /* AjustesVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		D4CB6B76279EB30D00981F25 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D4CB6B78279EB40C00981F25 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 		D4CB6B7B279EB94700981F25 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		E9F5656327A54C87006440C4 /* AjustesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjustesVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				33D1DD9927A06201009CE75E /* PerfilVC.swift */,
 				33A873C027A1A40D00383B4A /* FavoritosVC.swift */,
 				D4B746B227A294F000984654 /* GamificacionVC.swift */,
+				E9F5656327A54C87006440C4 /* AjustesVC.swift */,
 				D4CB6B72279EADB100981F25 /* Onboarding */,
 			);
 			path = VC;
@@ -263,6 +266,7 @@
 				33DEED0F27A3106E0017C62D /* FavoritosCell.swift in Sources */,
 				3300E94327972C77002C5B12 /* SceneDelegate.swift in Sources */,
 				D4A370BC27A01A5C005A2113 /* HomeTVCell.swift in Sources */,
+				E9F5656427A54C87006440C4 /* AjustesVC.swift in Sources */,
 				D4B746B627A2983F00984654 /* RankingCell.swift in Sources */,
 				D4CB6B79279EB40C00981F25 /* OnboardingSlide.swift in Sources */,
 				33A873C127A1A40D00383B4A /* FavoritosVC.swift in Sources */,
