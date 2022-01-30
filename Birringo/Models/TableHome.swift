@@ -37,23 +37,63 @@ struct QuestData {
     var localizacion : String
     //habira que añadir localizacion y descripcion para el detail.
 }
-struct FavotitosData {
-    var title: String
-    var image: UIImage
-}
-
 struct MockData{
     
     static let datos: [beerData] = [
         beerData(titulo: "Heineken", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares1),
-        beerData(titulo: "Estrella Galicia", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares2),
-        beerData(titulo: "Leffe", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares3),
-        beerData(titulo: "La Virgen", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares4),
-        beerData(titulo: "El Alguila", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares5),
-        beerData(titulo: "Corona", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de Mexico de renombre conocida por todo el mundial", location: bares6),
-        beerData(titulo: "Life", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares7),
-        beerData(titulo: "BUD LiGHT", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares8)
+        beerData(titulo: "Estrella Galicia", ml: "750", image: UIImage(named: "cerveza-almeria")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares2),
+        beerData(titulo: "Leffe", ml: "750", image: UIImage(named: "cerveza-leffe")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares3),
+        beerData(titulo: "La Virgen", ml: "750", image: UIImage(named: "cerveza-Modelo")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares4),
+        beerData(titulo: "El Alguila", ml: "750", image: UIImage(named: "Cervezas-la-Virgen")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares5),
+        beerData(titulo: "Corona", ml: "750", image: UIImage(named: "cerveza-Modelo")!, description: "Cerveza de Mexico de renombre conocida por todo el mundial", location: bares6),
+        beerData(titulo: "Life", ml: "750", image: UIImage(named: "cerveza-leffe")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares7),
+        beerData(titulo: "BUD LiGHT", ml: "750", image: UIImage(named: "cerveza-almeria")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares8)
     ]
+    
+    static let ale: [beerData] = [
+        beerData(titulo: "Heineken", ml: "750", image: UIImage(named: "cerveza-almeria")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares1),
+        beerData(titulo: "Estrella Galicia", ml: "750", image: UIImage(named: "Cervezas-la-Virgen")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares2),
+        beerData(titulo: "Leffe", ml: "750", image: UIImage(named: "cerveza-leffe")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares3),
+        beerData(titulo: "La Virgen", ml: "750", image: UIImage(named: "cerveza-Modelo")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares4),
+        beerData(titulo: "El Alguila", ml: "750", image: UIImage(named: "Cervezas-la-Virgen")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares5),
+        beerData(titulo: "Corona", ml: "750", image: UIImage(named: "cerveza-Modelo")!, description: "Cerveza de Mexico de renombre conocida por todo el mundial", location: bares6),
+        beerData(titulo: "Life", ml: "750", image: UIImage(named: "cerveza-leffe")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares7),
+        beerData(titulo: "BUD LiGHT", ml: "750", image: UIImage(named: "cerveza-Modelo")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares8)
+    ]
+    
+    static let tostada: [beerData] = [
+        beerData(titulo: "Heineken", ml: "750", image: UIImage(named: "cerveza-leffe")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares1),
+        beerData(titulo: "Estrella Galicia", ml: "750", image: UIImage(named: "cerveza-almeria")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares2),
+        beerData(titulo: "Leffe", ml: "750", image: UIImage(named: "cerveza-Modelo")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares3),
+        beerData(titulo: "La Virgen", ml: "750", image: UIImage(named: "Cervezas-la-Virgen")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares4),
+        beerData(titulo: "El Alguila", ml: "750", image: UIImage(named: "cerveza-leffe")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares5),
+        beerData(titulo: "Corona", ml: "750", image: UIImage(named: "cerveza-Modelo")!, description: "Cerveza de Mexico de renombre conocida por todo el mundial", location: bares6),
+        beerData(titulo: "Life", ml: "750", image: UIImage(named: "cerveza-leffe")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares7),
+        beerData(titulo: "BUD LiGHT", ml: "750", image: UIImage(named: "cerveza-almeria")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares8)
+    ]
+    
+    static let rubia: [beerData] = [
+        beerData(titulo: "Heineken", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares1),
+        beerData(titulo: "Estrella Galicia", ml: "750", image: UIImage(named: "cerveza-almeria")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares2),
+        beerData(titulo: "Leffe", ml: "750", image: UIImage(named: "cerveza-leffe")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares3),
+        beerData(titulo: "La Virgen", ml: "750", image: UIImage(named: "cerveza-Modelo")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares4),
+        beerData(titulo: "El Alguila", ml: "750", image: UIImage(named: "Cervezas-la-Virgen")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares5),
+        beerData(titulo: "Corona", ml: "750", image: UIImage(named: "cerveza-Modelo")!, description: "Cerveza de Mexico de renombre conocida por todo el mundial", location: bares6),
+        beerData(titulo: "Life", ml: "750", image: UIImage(named: "cerveza-leffe")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares7),
+        beerData(titulo: "BUD LiGHT", ml: "750", image: UIImage(named: "cerveza-almeria")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares8)
+    ]
+    static let negra: [beerData] = [
+        beerData(titulo: "Heineken", ml: "750", image: UIImage(named: "cerveza-almeria")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares1),
+        beerData(titulo: "Estrella Galicia", ml: "750", image: UIImage(named: "Cervezas-la-Virgen")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares2),
+        beerData(titulo: "Leffe", ml: "750", image: UIImage(named: "cerveza-leffe")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares3),
+        beerData(titulo: "La Virgen", ml: "750", image: UIImage(named: "cerveza-Modelo")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares4),
+        beerData(titulo: "El Alguila", ml: "750", image: UIImage(named: "Cervezas-la-Virgen")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares5),
+        beerData(titulo: "Corona", ml: "750", image: UIImage(named: "cerveza-Modelo")!, description: "Cerveza de Mexico de renombre conocida por todo el mundial", location: bares6),
+        beerData(titulo: "Life", ml: "750", image: UIImage(named: "cerveza-leffe")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares7),
+        beerData(titulo: "BUD LiGHT", ml: "750", image: UIImage(named: "cerveza-Modelo")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares8)
+    ]
+    
+    
     static let bares1: [Bares] = [
         Bares(title: "La virgen"),
         Bares(title: "El Burro"),
@@ -126,15 +166,14 @@ struct MockData{
         QuestData(title: "Ve al bar mejor valorado de tu zona y sube foto", points: 30, localizacion: "Bar mejor valorado de tu zona"),
         QuestData(title: "Ve a atten y tomate algo", points: 20, localizacion: "Bar Atten")
     ]
-    static var favoritos: [FavotitosData] = [
-        FavotitosData(title: "FAR WEST", image: UIImage(named: "cerveza-almeria")!),
-        FavotitosData(title: "LEFFE", image: UIImage(named: "cerveza-leffe")!),
-        FavotitosData(title: "Modelo", image: UIImage(named: "cerveza-Modelo")!),
-        FavotitosData(title: "La Virgen", image: UIImage(named: "Cervezas-la-Virgen")!),
-        FavotitosData(title: "FAR WEST", image: UIImage(named: "cerveza-almeria")!),
-        FavotitosData(title: "LEFFE", image: UIImage(named: "cerveza-leffe")!),
-        FavotitosData(title: "Modelo", image: UIImage(named: "cerveza-Modelo")!),
-        FavotitosData(title: "La Virgen", image: UIImage(named: "Cervezas-la-Virgen")!),
-        FavotitosData(title: "FAR WEST", image: UIImage(named: "cerveza-almeria")!)
+    static var favoritos: [beerData] = [
+        beerData(titulo: "FAR WEST", ml: "750", image: UIImage(named: "cerveza-almeria")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares1),
+        beerData(titulo: "LEFFE", ml: "750", image: UIImage(named: "cerveza-leffe")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares2),
+        beerData(titulo: "Modelo", ml: "750", image: UIImage(named: "cerveza-Modelo")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares3),
+        beerData(titulo: "La Virgen", ml: "750", image: UIImage(named: "Cervezas-la-Virgen")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares4),
+        beerData(titulo: "El Alguila", ml: "750", image: UIImage(named: "cerveza-almeria")!, description: "Cerveza de Española de renombre conocida por todo el mundial", location: bares5),
+        beerData(titulo: "FAR WEST", ml: "750", image: UIImage(named: "cerveza-leffe")!, description: "Cerveza de Mexico de renombre conocida por todo el mundial", location: bares6),
+        beerData(titulo: "Life", ml: "750", image: UIImage(named: "cerveza-Modelo")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares7),
+        beerData(titulo: "BUD LiGHT", ml: "750", image: UIImage(named: "Cervezas-la-Virgen")!, description: "Cerveza de USA de renombre conocida por todo el mundial", location: bares8)
     ]
 }

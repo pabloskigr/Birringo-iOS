@@ -15,16 +15,17 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var view_loginBox: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.hidesBackButton = true
+        setupColors()
         email_login.delegate = self
         password_login.delegate = self
-        setupColors()
-        view_loginBox.layer.cornerRadius = 30
-        view_loginBox.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-
     }
     
-  
+    private func setupColors(){
+        view_loginBox.backgroundColor = UIColor(named: "background_white")
+        view_loginBox.layer.cornerRadius = 30
+        view_loginBox.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+    
     @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             view.endEditing(true)
     }
@@ -33,12 +34,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         //Cuando pulse verificara las credenciales y ira al home.
     }
     @IBAction func signupTapped(_ sender: Any) {
-        if let registerVC = self.storyboard?.instantiateViewController(identifier: "RegisterVC") as? RegisterVC {
-            self.navigationController?.pushViewController(registerVC, animated: true)
+        if let registerVC = storyboard?.instantiateViewController(identifier: "RegisterVC") as? RegisterVC {
+        registerVC.modalPresentationStyle = .fullScreen
+        registerVC.modalTransitionStyle = .crossDissolve
+        self.present(registerVC, animated: true, completion: nil)
         }
     }
-    private func setupColors(){
-        view_loginBox.backgroundColor = UIColor(named: "background_white")
-    }
+   
 }
 

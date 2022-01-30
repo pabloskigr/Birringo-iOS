@@ -22,10 +22,10 @@ class FavoritosVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     private func setupColors(){
-        favoritosTableView.corneRadius = 30
-        favoritosTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tabBarController?.tabBar.backgroundColor = UIColor(named: "background_views")
         favoritosTableView.backgroundColor = UIColor(named: "background_white")
+        favoritosTableView.corneRadius = 30
+        favoritosTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
        
     }
     
@@ -49,6 +49,12 @@ class FavoritosVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         favoritosTableView.deselectRow(at: indexPath, animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let detailVC = storyboard.instantiateViewController(identifier: "BeerDetailVC") as? BeerDetailVC {
+            detailVC.beer = MockData.favoritos[indexPath.row]
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
+        
         
     }
     
@@ -56,7 +62,6 @@ class FavoritosVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         if editingStyle == UITableViewCell.EditingStyle.delete {
             MockData.favoritos.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-            
         }
     }
     

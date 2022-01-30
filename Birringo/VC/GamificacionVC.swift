@@ -17,18 +17,17 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupColors()
         gamificacion_tableView.delegate = self
         gamificacion_tableView.dataSource = self
-        setupColors()
-        gamificacion_tableView.layer.cornerRadius = 30
-        gamificacion_tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         gamificacion_tableView.register(nib, forCellReuseIdentifier: "RankingCellid")
-
     }
     
     private func setupColors(){
         gamificacionView.backgroundColor = UIColor(named: "background_views")
         gamificacion_tableView.backgroundColor = UIColor(named: "background_white")
+        gamificacion_tableView.layer.cornerRadius = 30
+        gamificacion_tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     @IBAction func OnChangedSegmentedControl(_ sender: UISegmentedControl) {
@@ -44,7 +43,6 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
              return MockData.ranking.count
          case 1:
              return MockData.quest.count
-         //Add other cases here
          default:
              return 0
          }
@@ -76,13 +74,13 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        gamificacion_tableView.deselectRow(at: indexPath, animated: true)
         let selectedIndex = self.segmentedControl.selectedSegmentIndex
           switch selectedIndex
           {
           case 1:
               if let questDetailVC = storyboard?.instantiateViewController(withIdentifier: "QuestDetailVC") as? QuestDetailVC {
                   questDetailVC.questData = MockData.quest[indexPath.row]
-                  gamificacion_tableView.deselectRow(at: indexPath, animated: true)
                   navigationController?.pushViewController(questDetailVC, animated: true)
               }
           default:

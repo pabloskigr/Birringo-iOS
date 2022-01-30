@@ -12,7 +12,7 @@ class FavoritosCell: UITableViewCell {
     
     @IBOutlet weak var favoritosTitle: UILabel!
     @IBOutlet weak var favoritosIcons: UIImageView!
-    var favoritosData:FavotitosData? {
+    var favoritosData:beerData? {
         didSet {renderUI()}
     }
     
@@ -22,7 +22,7 @@ class FavoritosCell: UITableViewCell {
     
     private func renderUI(){
         guard let favoritosData = favoritosData else {return}
-        favoritosTitle.text = favoritosData.title
+        favoritosTitle.text = favoritosData.titulo
         favoritosIcons.image = favoritosData.image
     }
 

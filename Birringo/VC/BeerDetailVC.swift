@@ -15,22 +15,24 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var beerDescription: UILabel!
     @IBOutlet weak var beerImage: UIImageView!
     @IBOutlet weak var beerLocationsTableView: UITableView!
+    @IBOutlet weak var favButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupColors()
         beerLocationsTableView.delegate = self
         beerLocationsTableView.dataSource = self
-        setupColors()
-       
+   
         beerName.text = beer?.titulo
         beerDescription.text = beer?.description
         beerImage.image = beer?.image
-
     }
     
     func setupColors(){
         beerDetailView.backgroundColor = UIColor(named: "background_views")
-        beerLocationsTableView.backgroundColor = UIColor(named: "backgrpund_white")
+        beerLocationsTableView.backgroundColor = UIColor(named: "background_white")
+        beerLocationsTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        beerLocationsTableView.corneRadius = 30
         beerLocationsTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
@@ -53,8 +55,9 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     
+    @IBAction func favTapped(_ sender: Any) {
+        favButton.isSelected = !favButton.isSelected
+        }
+        //si esta en modo default al pulsarlo añadir a favoritos, si esta en modo pulsado al pulsarlo quitar de favoritos
+    }
     
-
-
-
-}

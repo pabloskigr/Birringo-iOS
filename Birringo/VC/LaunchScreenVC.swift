@@ -36,9 +36,15 @@ class LaunchScreenVC: UIViewController {
     }
     
     func toLoginView(){
-        if let LoginVC = self.storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
+        /*if let LoginVC = self.storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
             self.navigationController?.pushViewController(LoginVC, animated: true)
             print("estoy aqui")
+        }*/
+        if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
+            loginVC.modalPresentationStyle = .fullScreen
+            loginVC.modalTransitionStyle = .crossDissolve
+        self.present(loginVC, animated: true, completion: nil)
         }
+        
     }
 }

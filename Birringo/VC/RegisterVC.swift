@@ -15,36 +15,45 @@ class RegisterVC: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var view_registerBox: UIView!
     @IBOutlet weak var phone_register: UITextField!
     @IBOutlet weak var password_register: UITextField!
+    @IBOutlet weak var checkboxButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.hidesBackButton = true
+        setupColors()
         username_register.delegate = self
         email_register.delegate = self
         phone_register.delegate = self
         password_register.delegate = self
-        setupColors()
+    }
+    
+    private func setupColors(){
+        view_registerBox.backgroundColor = UIColor(named: "background_white")
         view_registerBox.layer.cornerRadius = 30
         view_registerBox.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
- 
+
     @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             view.endEditing(true)
     }
     
     @IBAction func signinTapped(_ sender: Any) {
         if let loginVC = self.storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
-            self.navigationController?.pushViewController(loginVC, animated: true)
+            loginVC.modalPresentationStyle = .fullScreen
+            loginVC.modalTransitionStyle = .crossDissolve
+        self.present(loginVC, animated: true, completion: nil)
         }
     }
     @IBAction func registerBtnTapped(_ sender: Any) {
         if let tutorialVC = self.storyboard?.instantiateViewController(identifier: "OnboardingVC") as? OnboardingVC {
-            self.navigationController?.pushViewController(tutorialVC, animated: true)
+            tutorialVC.modalPresentationStyle = .fullScreen
+            tutorialVC.modalTransitionStyle = .crossDissolve
+        self.present(tutorialVC, animated: true, completion: nil)
         }
+        
     }
-    private func setupColors(){
-        view_registerBox.backgroundColor = UIColor(named: "background_white")
+ 
+    @IBAction func checkboxTapped(_ sender: Any) {
+        checkboxButton.isSelected = !checkboxButton.isSelected
     }
-
 }
 

@@ -22,11 +22,11 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UITableViewDataSource {
         
     }
     private func setupColors(){
-        perfilTableView.corneRadius = 30
-        perfilTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tabBarController?.tabBar.backgroundColor = UIColor(named: "background_views")
         perfilView.backgroundColor = UIColor(named: "background_views")
         perfilTableView.backgroundColor = UIColor(named: "background_white")
+        perfilTableView.corneRadius = 30
+        perfilTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
        
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,10 +58,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UITableViewDataSource {
             let storyboard2 = UIStoryboard(name: "Accesory", bundle: nil)
             let favoritosVC = storyboard2.instantiateViewController(identifier: "FavoritosVC") as? FavoritosVC
             navigationController?.pushViewController(favoritosVC!, animated: true)
-            //present(registerVC!, animated: true, completion: nil)
 
-            
-    
         }
     }
 }
