@@ -9,9 +9,12 @@ import UIKit
 
 class AjustesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet var ajustesTableView: UITableView!
-    @IBOutlet var ajustesView: UIView!
+    
+    @IBOutlet weak var ajustesTableView: UITableView!
+    
 
+    @IBOutlet var ajustesView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColors()
@@ -33,13 +36,13 @@ class AjustesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MockData.datosPerfil.count
+        return MockData.ajustes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "perfilCellId", for: indexPath) as? PerfilOpstionsCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "ajustesCellid", for: indexPath) as? AjustesCell {
             cell.backgroundColor = UIColor(named: "background_white")
-            cell.perfilData = MockData.datosPerfil[indexPath.row]
+            cell.ajustesData = MockData.ajustes[indexPath.row]
             return cell
             
         } else {
@@ -56,8 +59,8 @@ class AjustesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         if (indexPath.row == 1)  {
             let storyboard2 = UIStoryboard(name: "Accesory", bundle: nil)
-            let favoritosVC = storyboard2.instantiateViewController(identifier: "FavoritosVC") as? FavoritosVC
-            navigationController?.pushViewController(favoritosVC!, animated: true)
+            let terminosLegalesVC = storyboard2.instantiateViewController(identifier: "TerminosLegalesVC") as? TerminosLegalesVC
+            navigationController?.pushViewController(terminosLegalesVC!, animated: true)
             //present(registerVC!, animated: true, completion: nil)
 
             

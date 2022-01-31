@@ -36,6 +36,8 @@
 		D4CB6B79279EB40C00981F25 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B78279EB40C00981F25 /* OnboardingSlide.swift */; };
 		D4CB6B7C279EB94700981F25 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B7B279EB94700981F25 /* OnboardingCollectionViewCell.swift */; };
 		E9F5656427A54C87006440C4 /* AjustesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F5656327A54C87006440C4 /* AjustesVC.swift */; };
+		E9F5656627A7EFF3006440C4 /* AjustesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F5656527A7EFF3006440C4 /* AjustesCell.swift */; };
+		E9F5656827A7FF8E006440C4 /* TerminosLegalesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F5656727A7FF8E006440C4 /* TerminosLegalesVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		D4CB6B78279EB40C00981F25 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 		D4CB6B7B279EB94700981F25 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9F5656327A54C87006440C4 /* AjustesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjustesVC.swift; sourceTree = "<group>"; };
+		E9F5656527A7EFF3006440C4 /* AjustesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjustesCell.swift; sourceTree = "<group>"; };
+		E9F5656727A7FF8E006440C4 /* TerminosLegalesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminosLegalesVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,7 @@
 				33A873C027A1A40D00383B4A /* FavoritosVC.swift */,
 				D4B746B227A294F000984654 /* GamificacionVC.swift */,
 				E9F5656327A54C87006440C4 /* AjustesVC.swift */,
+				E9F5656727A7FF8E006440C4 /* TerminosLegalesVC.swift */,
 				D4CB6B72279EADB100981F25 /* Onboarding */,
 			);
 			path = VC;
@@ -170,6 +175,7 @@
 				D4B746B827A2985600984654 /* QuestCell.swift */,
 				D4B746B927A2985600984654 /* QuestCell.xib */,
 				33DEED0E27A3106E0017C62D /* FavoritosCell.swift */,
+				E9F5656527A7EFF3006440C4 /* AjustesCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -257,12 +263,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4B746BA27A2985600984654 /* QuestCell.swift in Sources */,
+				E9F5656827A7FF8E006440C4 /* TerminosLegalesVC.swift in Sources */,
 				3300E94127972C77002C5B12 /* AppDelegate.swift in Sources */,
 				D40EB9AA279F344B0026044E /* HomeVC.swift in Sources */,
 				D4CB6B77279EB30D00981F25 /* UIView+Extension.swift in Sources */,
 				D4CB6B74279EADF000981F25 /* OnboardingVC.swift in Sources */,
 				33A873C727A1C20400383B4A /* PerfilOpstionsCell.swift in Sources */,
 				33D1DD9A27A06201009CE75E /* PerfilVC.swift in Sources */,
+				E9F5656627A7EFF3006440C4 /* AjustesCell.swift in Sources */,
 				33DEED0F27A3106E0017C62D /* FavoritosCell.swift in Sources */,
 				3300E94327972C77002C5B12 /* SceneDelegate.swift in Sources */,
 				D4A370BC27A01A5C005A2113 /* HomeTVCell.swift in Sources */,

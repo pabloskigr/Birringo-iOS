@@ -17,6 +17,9 @@ struct PerfilData {
     var title: String
     var image: UIImage
 }
+struct AjustesData {
+    var title: String
+}
 
 struct RankingData {
     var image : UIImage
@@ -52,6 +55,11 @@ struct MockData{
         PerfilData(title: "Ajustes", image: UIImage(named: "Ajustes")!),
         PerfilData(title: "Favoritos", image: UIImage(named: "Favoritos")!),
         PerfilData(title: "Cerrar sesion", image: UIImage(named: "CerrarSesion")!)
+    ]
+    static let ajustes: [AjustesData] = [
+        AjustesData(title: "TUTORIAL"),
+        AjustesData(title: "TERMINOS LEGALES"),
+        AjustesData(title: "NOTIFICACIONES")
     ]
     
     static let ranking: [RankingData] = [
