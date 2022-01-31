@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
@@ -48,6 +49,14 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         beerLocationsTableView.deselectRow(at: indexPath, animated: true)
+        if let mapsVC = storyboard?.instantiateViewController(withIdentifier: "MapsVC") as? MapsVC {
+           
+            let latidud = beer?.location[indexPath.row].latitud
+            let longitud = beer?.location[indexPath.row].longitud
+            mapsVC.barName = beer?.location[indexPath.row].title
+            mapsVC.coordenadas = CLLocationCoordinate2DMake(latidud!, longitud!)
+            navigationController?.pushViewController(mapsVC, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

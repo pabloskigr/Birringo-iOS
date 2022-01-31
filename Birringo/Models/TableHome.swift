@@ -18,6 +18,8 @@ struct beerData {
 
 struct Bares {
     var title: String
+    var latitud: Double
+    var longitud: Double
 }
 
 struct PerfilData {
@@ -34,7 +36,7 @@ struct RankingData {
 struct QuestData {
     var title : String
     var points : Int
-    var localizacion : String
+    var location: [Bares]
     //habira que añadir localizacion y descripcion para el detail.
 }
 struct MockData{
@@ -95,46 +97,66 @@ struct MockData{
     
     
     static let bares1: [Bares] = [
-        Bares(title: "La virgen"),
-        Bares(title: "El Burro"),
-        Bares(title: "La Laguna"),
+        Bares(title: "La virgen", latitud: 40.44507263083099, longitud: -3.6707148455739422),
+        Bares(title: "El Burro", latitud: 40.4468810140345, longitud: -3.6965371429331326),
+        Bares(title: "La Laguna", latitud: 40.45033390335384, longitud: -3.6948503436539166)
     ]
     static let bares2: [Bares] = [
-        Bares(title: "La virgen"),
-        Bares(title: "La Leña"),
-        Bares(title: "La mesa"),
+        Bares(title: "La virgen", latitud: 40.44507263083099, longitud: -3.6707148455739422),
+        Bares(title: "La Leña", latitud: 40.4468810140345, longitud: -3.6965371429331326),
+        Bares(title: "La mesa", latitud: 40.45033390335384, longitud: -3.6948503436539166)
     ]
     static let bares3: [Bares] = [
-        Bares(title: "El meson"),
-        Bares(title: "El Rincon de Paco"),
-        Bares(title: "Bar"),
+        Bares(title: "El meson", latitud: 40.44507263083099, longitud: -3.6707148455739422),
+        Bares(title: "El Rincon de Paco", latitud: 40.4468810140345, longitud: -3.6965371429331326),
+        Bares(title: "Bar", latitud: 40.45033390335384, longitud: -3.6948503436539166)
     ]
     static let bares4: [Bares] = [
-        Bares(title: "El cienMontaditos"),
-        Bares(title: "La Sureña"),
-        Bares(title: "Artico"),
+        Bares(title: "El cienMontaditos", latitud: 40.44507263083099, longitud: -3.6707148455739422),
+        Bares(title: "La Sureña", latitud: 40.4468810140345, longitud: -3.6965371429331326),
+        Bares(title: "Artico", latitud: 40.45033390335384, longitud: -3.6948503436539166)
     ]
     static let bares5: [Bares] = [
-        Bares(title: "Artico"),
-        Bares(title: "La Maria"),
-        Bares(title: "La Negra"),
+        Bares(title: "Artico", latitud: 40.44507263083099, longitud: -3.6707148455739422),
+        Bares(title: "La Maria", latitud: 40.4468810140345, longitud: -3.6965371429331326),
+        Bares(title: "La Negra", latitud: 40.45033390335384, longitud: -3.6948503436539166)
     ]
     static let bares6: [Bares] = [
-        Bares(title: "La Blanca"),
-        Bares(title: "La Lenta"),
-        Bares(title: "La virgen"),
+        Bares(title: "La Blanca", latitud: 40.44507263083099, longitud: -3.6707148455739422),
+        Bares(title: "La Lenta", latitud: 40.4468810140345, longitud: -3.6965371429331326),
+        Bares(title: "La virgen", latitud: 40.45033390335384, longitud: -3.6948503436539166)
     ]
     static let bares7: [Bares] = [
-        Bares(title: "El norte"),
-        Bares(title: "Los Nachos"),
-        Bares(title: "La virgen"),
+        Bares(title: "El norte", latitud: 40.44507263083099, longitud: -3.6707148455739422),
+        Bares(title: "Los Nachos", latitud: 40.4468810140345, longitud: -3.6965371429331326),
+        Bares(title: "La virgen", latitud: 40.45033390335384, longitud: -3.6948503436539166)
     ]
     static let bares8: [Bares] = [
-        Bares(title: "La Marina"),
-        Bares(title: "La Juana"),
-        Bares(title: "La Luna"),
+        Bares(title: "La Marina", latitud: 40.44507263083099, longitud: -3.6707148455739422),
+        Bares(title: "La Juana", latitud: 40.4468810140345, longitud: -3.6965371429331326),
+        Bares(title: "La Luna", latitud: 40.45033390335384, longitud: -3.6948503436539166)
     ]
     
+    //Quest relacion 1:1
+    static let bar1: [Bares] = [
+        Bares(title: "Bar Paco", latitud: 40.44507263083099, longitud: -3.6707148455739422)
+    ]
+    static let bar2: [Bares] = [
+        Bares(title: "Bar artemisa", latitud: 40.44507263083099, longitud: -3.6707148455739422)
+    ]
+    static let bar3: [Bares] = [
+        Bares(title: "La virgen", latitud: 40.44507263083099, longitud: -3.6707148455739422)
+    ]
+    static let bar4: [Bares] = [
+        Bares(title: "La Lenta", latitud: 40.44507263083099, longitud: -3.6707148455739422)
+    ]
+    static let bar5: [Bares] = [
+        Bares(title: "Zukumbar", latitud: 40.45033390335384, longitud: -3.6948503436539166)
+    ]
+    static let bar6: [Bares] = [
+        Bares(title: "La luna", latitud: 40.45033390335384, longitud: -3.6948503436539166)
+    ]
+    //FIN BARES QUEST
     static let datosPerfil: [PerfilData] = [
         PerfilData(title: "Ajustes", image: UIImage(named: "Ajustes")!),
         PerfilData(title: "Favoritos", image: UIImage(named: "Favoritos")!),
@@ -155,16 +177,16 @@ struct MockData{
     ]
     
     static let quest: [QuestData] = [
-        QuestData(title: "Ve al bar de paco", points: 20, localizacion: "Bar de Paco"),
-        QuestData(title: "Escanea el QR del bar artemisa", points: 30, localizacion: "Bar Artemisa"),
-        QuestData(title: "Ve a cualquier bar y haz una foto", points: 10, localizacion: "Culaquier bar"),
-        QuestData(title: "Ve al bar peor valorado de tu zona y sube foto esnea el codigo", points: 30, localizacion: "Var peor valorado de tu zona"),
-        QuestData(title: "Ve a zukumbar y tomate algo", points: 20, localizacion: "Zukumbar"),
-        QuestData(title: "Ve al bar de paco", points: 20, localizacion: "Bar de Paco"),
-        QuestData(title: "Escanea el QR del bar luisa", points: 30, localizacion: "Bar de Luisa"),
-        QuestData(title: "Ve a cualquier bar y haz una foto", points: 10, localizacion: "Culaquier bar"),
-        QuestData(title: "Ve al bar mejor valorado de tu zona y sube foto", points: 30, localizacion: "Bar mejor valorado de tu zona"),
-        QuestData(title: "Ve a atten y tomate algo", points: 20, localizacion: "Bar Atten")
+        QuestData(title: "Ve al bar de paco", points: 20, location: bar1),
+        QuestData(title: "Escanea el QR del bar artemisa", points: 15, location: bar2),
+        QuestData(title: "Ve a el bar la Virgen", points: 10, location: bar3),
+        QuestData(title: "Ve al bar peor valorado llamado la Lenta", points: 30, location: bar4),
+        QuestData(title: "Ve a zukumbar y tomate algo", points: 20, location: bar5),
+        QuestData(title: "Ve al bar la luna", points: 20, location: bar6),
+        QuestData(title: "Escanea el QR del bar luisa", points: 30, location: bar1),
+        QuestData(title: "Ve a cualquier bar y haz una foto", points: 10, location: bar2),
+        QuestData(title: "Ve al bar mejor valorado de tu zona y sube foto", points: 30, location: bar3),
+        QuestData(title: "Ve a atten y tomate algo", points: 20, location: bar4)
     ]
     static var favoritos: [beerData] = [
         beerData(titulo: "FAR WEST", ml: "750", image: UIImage(named: "cerveza-almeria")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares1),

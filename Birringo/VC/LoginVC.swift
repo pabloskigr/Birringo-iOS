@@ -13,6 +13,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var password_login: UITextField!
     @IBOutlet weak var email_login: UITextField!
     @IBOutlet weak var view_loginBox: UIView!
+    @IBOutlet weak var passwordbutton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColors()
@@ -40,6 +41,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         self.present(registerVC, animated: true, completion: nil)
         }
     }
-   
+    @IBAction func passwordButton(_ sender: Any) {
+        passwordbutton.isSelected = !passwordbutton.isSelected
+        password_login.isSecureTextEntry.toggle()
+    }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class QuestDetailVC: UIViewController {
     
@@ -20,7 +21,7 @@ class QuestDetailVC: UIViewController {
         super.viewDidLoad()
         
         questTitle.text = questData?.title
-        questLocation.text = questData?.localizacion
+        questLocation.text = String((questData?.location[0].title) ?? "")
         questPoints.text = "Puntos: \(questData?.points ?? 0)"
         setupColors()
     }
@@ -32,11 +33,22 @@ class QuestDetailVC: UIViewController {
     
 
     @IBAction func ScannerButtonTapped(_ sender: Any) {
-        //Abrir scanenr QR
+        if let qrVC = storyboard?.instantiateViewController(identifier: "QRVC") as? QRVC {
+            qrVC.modalPresentationStyle = .fullScreen
+            qrVC.modalTransitionStyle = .crossDissolve
+        self.present(qrVC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func MapsButtonTapped(_ sender: Any) {
-        //Abrir mapa con ubicacion del quest
+        
+        if let mapsVC = storyboard?.instantiateViewController(withIdentifier: "MapsVC") as? MapsVC {
+            let latidud = questData?.location[0].latitud
+            let longitud = questData?.location[0].longitud
+            mapsVC.barName = questData?.location[0].title
+            mapsVC.coordenadas = CLLocationCoordinate2DMake(latidud!, longitud!)
+            navigationController?.pushViewController(mapsVC, animated: true)
+        }
     }
     
 }

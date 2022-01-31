@@ -23,6 +23,8 @@
 		D415415A279E0D38003E8313 /* beer_splash.json in Resources */ = {isa = PBXBuildFile; fileRef = D4154159279E0D38003E8313 /* beer_splash.json */; };
 		D415415C279E10EE003E8313 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415415B279E10ED003E8313 /* LoginVC.swift */; };
 		D415415E279E1B38003E8313 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415415D279E1B38003E8313 /* RegisterVC.swift */; };
+		D43217E327A7060000770DA2 /* MapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43217E227A7060000770DA2 /* MapsVC.swift */; };
+		D43217E527A73DDF00770DA2 /* QRVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43217E427A73DDF00770DA2 /* QRVC.swift */; };
 		D473DC8E27A447D5002B88E3 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D473DC8D27A447D5002B88E3 /* DetailCell.swift */; };
 		D4A370BC27A01A5C005A2113 /* HomeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A370BB27A01A5C005A2113 /* HomeTVCell.swift */; };
 		D4A370BE27A063CE005A2113 /* TableHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A370BD27A063CE005A2113 /* TableHome.swift */; };
@@ -58,6 +60,8 @@
 		D4154159279E0D38003E8313 /* beer_splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beer_splash.json; sourceTree = "<group>"; };
 		D415415B279E10ED003E8313 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		D415415D279E1B38003E8313 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		D43217E227A7060000770DA2 /* MapsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsVC.swift; sourceTree = "<group>"; };
+		D43217E427A73DDF00770DA2 /* QRVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRVC.swift; sourceTree = "<group>"; };
 		D473DC8D27A447D5002B88E3 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		D4A370BB27A01A5C005A2113 /* HomeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVCell.swift; sourceTree = "<group>"; };
 		D4A370BD27A063CE005A2113 /* TableHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHome.swift; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 				D4B746B227A294F000984654 /* GamificacionVC.swift */,
 				D4B746BC27A3FAEF00984654 /* QuestDetailVC.swift */,
 				D4B746BE27A4149700984654 /* BeerDetailVC.swift */,
+				D43217E227A7060000770DA2 /* MapsVC.swift */,
+				D43217E427A73DDF00770DA2 /* QRVC.swift */,
 				D4CB6B72279EADB100981F25 /* Onboarding */,
 			);
 			path = VC;
@@ -271,7 +277,9 @@
 				33A873C727A1C20400383B4A /* PerfilOpstionsCell.swift in Sources */,
 				33D1DD9A27A06201009CE75E /* PerfilVC.swift in Sources */,
 				33DEED0F27A3106E0017C62D /* FavoritosCell.swift in Sources */,
+				D43217E527A73DDF00770DA2 /* QRVC.swift in Sources */,
 				3300E94327972C77002C5B12 /* SceneDelegate.swift in Sources */,
+				D43217E327A7060000770DA2 /* MapsVC.swift in Sources */,
 				D4A370BC27A01A5C005A2113 /* HomeTVCell.swift in Sources */,
 				D4B746B627A2983F00984654 /* RankingCell.swift in Sources */,
 				D473DC8E27A447D5002B88E3 /* DetailCell.swift in Sources */,

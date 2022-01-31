@@ -16,6 +16,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var phone_register: UITextField!
     @IBOutlet weak var password_register: UITextField!
     @IBOutlet weak var checkboxButton: UIButton!
+    @IBOutlet weak var passwordButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,10 @@ class RegisterVC: UIViewController, UITextFieldDelegate{
  
     @IBAction func checkboxTapped(_ sender: Any) {
         checkboxButton.isSelected = !checkboxButton.isSelected
+    }
+    @IBAction func passwordButton(_ sender: Any) {
+        passwordButton.isSelected = !passwordButton.isSelected
+        password_register.isSecureTextEntry.toggle()
     }
 }
 

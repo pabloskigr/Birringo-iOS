@@ -132,13 +132,11 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
          }
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchView.isHidden = false
         searchBar.showsCancelButton = true
         }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.isEditing = false
         searchBar.showsCancelButton = false
-        searchView.isHidden = true
         searchBar.resignFirstResponder()
     }
 
