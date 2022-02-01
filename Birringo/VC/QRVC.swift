@@ -77,7 +77,7 @@ class QRVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
                if metadataObj.stringValue != nil {
                    labelQR.text = metadataObj.stringValue!
-                   if metadataObj.stringValue == "https://jonacedev"{
+                   if metadataObj.stringValue == "https://jonacedev.com/"{
                        qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
                        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5){
                            self.dismiss(animated: true, completion: nil)

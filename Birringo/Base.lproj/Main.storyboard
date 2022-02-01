@@ -664,16 +664,28 @@
                                                         <constraint firstAttribute="width" constant="30" id="aJY-FZ-v0x"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVM-pd-p8m">
+                                                    <rect key="frame" x="295.5" y="20.5" width="50" height="19.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="9TY-LC-PLd"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="jVM-pd-p8m" firstAttribute="centerY" secondItem="fwg-8x-Zm0" secondAttribute="centerY" id="2B7-iY-W65"/>
                                                 <constraint firstItem="Tuv-50-W4w" firstAttribute="leading" secondItem="EF5-i2-Pks" secondAttribute="leading" constant="20" symbolic="YES" id="FDS-xb-BtP"/>
                                                 <constraint firstItem="fwg-8x-Zm0" firstAttribute="centerY" secondItem="Tuv-50-W4w" secondAttribute="centerY" id="N7e-kT-izd"/>
                                                 <constraint firstItem="fwg-8x-Zm0" firstAttribute="leading" secondItem="Tuv-50-W4w" secondAttribute="trailing" constant="16" id="UIV-lP-U8q"/>
                                                 <constraint firstItem="Tuv-50-W4w" firstAttribute="height" secondItem="EF5-i2-Pks" secondAttribute="height" multiplier="0.4" id="dM2-Nc-Fw2"/>
+                                                <constraint firstAttribute="trailing" secondItem="jVM-pd-p8m" secondAttribute="trailing" constant="40" id="e1J-YW-M5O"/>
                                                 <constraint firstItem="Tuv-50-W4w" firstAttribute="centerY" secondItem="EF5-i2-Pks" secondAttribute="centerY" id="iLM-XM-rvP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="barDistanceLabel" destination="jVM-pd-p8m" id="6Pc-yB-B3U"/>
                                             <outlet property="barName" destination="fwg-8x-Zm0" id="pqh-mH-VIc"/>
                                         </connections>
                                     </tableViewCell>

@@ -8,9 +8,12 @@
 import UIKit
 import CoreLocation
 
-class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
    
     var beer : beerData?
+    var locationManager = CLLocationManager()
+    var barCordinates: CLLocation?
+    var userCordinate: CLLocation?
     @IBOutlet var beerDetailView: UIView!
     @IBOutlet weak var beerName: UILabel!
     @IBOutlet weak var beerDescription: UILabel!
@@ -18,12 +21,18 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var beerLocationsTableView: UITableView!
     @IBOutlet weak var favButton: UIButton!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColors()
         beerLocationsTableView.delegate = self
         beerLocationsTableView.dataSource = self
-   
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+
         beerName.text = beer?.titulo
         beerDescription.text = beer?.description
         beerImage.image = beer?.image
@@ -43,6 +52,10 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailTableCellid", for: indexPath) as! DetailCell
+        
+        userCordinate = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
+        barCordinates = CLLocation(latitude: (beer?.location[indexPath.row].latitud)!, longitude: (beer?.location[indexPath.row].longitud)!)
+        cell.distance = Int(userCordinate!.distance(from: barCordinates!))
         cell.bares = beer?.location[indexPath.row]
         cell.backgroundColor = UIColor(named: "background_white")
         return cell
@@ -51,10 +64,9 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         beerLocationsTableView.deselectRow(at: indexPath, animated: true)
         if let mapsVC = storyboard?.instantiateViewController(withIdentifier: "MapsVC") as? MapsVC {
            
-            let latidud = beer?.location[indexPath.row].latitud
-            let longitud = beer?.location[indexPath.row].longitud
             mapsVC.barName = beer?.location[indexPath.row].title
-            mapsVC.coordenadas = CLLocationCoordinate2DMake(latidud!, longitud!)
+            mapsVC.coordenadas = barCordinates?.coordinate
+            locationManager.stopUpdatingLocation()
             navigationController?.pushViewController(mapsVC, animated: true)
         }
     }
@@ -63,10 +75,8 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         return "Ubicaciones"
     }
     
-    
     @IBAction func favTapped(_ sender: Any) {
         favButton.isSelected = !favButton.isSelected
         }
         //si esta en modo default al pulsarlo añadir a favoritos, si esta en modo pulsado al pulsarlo quitar de favoritos
     }
-    
