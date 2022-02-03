@@ -55,7 +55,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         userCordinate = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
         barCordinates = CLLocation(latitude: (beer?.location[indexPath.row].latitud)!, longitude: (beer?.location[indexPath.row].longitud)!)
-        cell.distance = Int(userCordinate!.distance(from: barCordinates!))
+        cell.distance = userCordinate!.distance(from: barCordinates!)
         cell.bares = beer?.location[indexPath.row]
         cell.backgroundColor = UIColor(named: "background_white")
         return cell

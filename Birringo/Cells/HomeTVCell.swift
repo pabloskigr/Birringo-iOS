@@ -26,6 +26,7 @@ class HomeTVCell: UITableViewCell {
     private func renderUI(){
         guard let data = data else {return}
         title_cell.text = data.titulo
+        ml_cell.text = data.ml
         image_cell.image = data.image
     }
     
