@@ -12,11 +12,9 @@ class DetailCell: UITableViewCell {
     @IBOutlet weak var barName: UILabel!
     @IBOutlet weak var barDistanceLabel: UILabel!
     var bares:Bares? {
-        didSet {renderUI()}
-    }
-    
-    var distance: Double? {
-        didSet{renderUI()}
+        didSet {
+            renderUI()
+        }
     }
     
     override func layoutSubviews() {
@@ -24,14 +22,13 @@ class DetailCell: UITableViewCell {
     }
     
     private func renderUI(){
-        guard let bares = bares else {return}
+        guard var bares = bares else {return}
         barName.text = bares.title
-       
-        if distance ?? 0 > 1000 {
-            distance = distance! / 1000
-            barDistanceLabel.text = "\(round(distance ?? 0))km"
+        if bares.distance ?? 0 > 1000 {
+            bares.distance = bares.distance! / 1000
+            barDistanceLabel.text = "\(round(bares.distance ?? 0))km"
         } else {
-            barDistanceLabel.text = "\(round(distance ?? 0))m"
+            barDistanceLabel.text = "\(round(bares.distance ?? 0))m"
         }
     }
 

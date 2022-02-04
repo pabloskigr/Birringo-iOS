@@ -32,6 +32,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
         beerName.text = beer?.titulo
         beerDescription.text = beer?.description
         beerImage.image = beer?.image
@@ -54,7 +55,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         userCordinate = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
         barCordinates = CLLocation(latitude: (beer?.location[indexPath.row].latitud)!, longitude: (beer?.location[indexPath.row].longitud)!)
-        cell.distance = userCordinate!.distance(from: barCordinates!)
+        beer?.location[indexPath.row].distance = userCordinate?.distance(from: barCordinates!)
         cell.bares = beer?.location[indexPath.row]
         cell.backgroundColor = UIColor(named: "background_white")
         return cell
@@ -76,6 +77,8 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func favTapped(_ sender: Any) {
         favButton.isSelected = !favButton.isSelected
-        }
+        self.beer?.location.sort { $0.distance! < $1.distance! }
+        beerLocationsTableView.reloadData()
+    }
         //si esta en modo default al pulsarlo añadir a favoritos, si esta en modo pulsado al pulsarlo quitar de favoritos
     }

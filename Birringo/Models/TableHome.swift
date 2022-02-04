@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 //PRUEBA DATA LOCAL
 struct beerData {
     var titulo: String
@@ -20,6 +21,8 @@ struct Bares {
     var title: String
     var latitud: Double
     var longitud: Double
+    var distance : Double?
+   
 }
 
 struct PerfilData {
