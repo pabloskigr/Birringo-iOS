@@ -46,7 +46,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         home_tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         searchTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
-    
+    //Segmented control functions
     @IBAction func onChangedSegmentedControl(_ sender: UISegmentedControl) {
         counter = segmentedControlHome.selectedSegmentIndex
         self.home_tableView.reloadData()
@@ -65,7 +65,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
             home_tableView.reloadData()
         }
     }
-    
+    //Table view functions
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -191,6 +191,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         }
         return titleToReturn
     }
+    //Search bar functions
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
         searchView.isHidden = false
