@@ -21,6 +21,13 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
         gamificacion_tableView.delegate = self
         gamificacion_tableView.dataSource = self
         gamificacion_tableView.register(nib, forCellReuseIdentifier: "RankingCellid")
+    
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handlegesture(gesture:)))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handlegesture(gesture:)))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
     }
     
     private func setupColors(){
@@ -32,6 +39,19 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func OnChangedSegmentedControl(_ sender: UISegmentedControl) {
         self.gamificacion_tableView.reloadData()
+    }
+    
+    @objc func handlegesture(gesture: UISwipeGestureRecognizer){
+        if gesture.direction == UISwipeGestureRecognizer.Direction.left {
+            segmentedControl.selectedSegmentIndex = 1
+            gamificacion_tableView.reloadData()
+        }
+        
+        if gesture.direction == UISwipeGestureRecognizer.Direction.right {
+            segmentedControl.selectedSegmentIndex = 0
+            gamificacion_tableView.reloadData()
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

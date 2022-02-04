@@ -32,7 +32,6 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-
         beerName.text = beer?.titulo
         beerDescription.text = beer?.description
         beerImage.image = beer?.image

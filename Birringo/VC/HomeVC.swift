@@ -16,6 +16,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
     @IBOutlet var home_view: UIView!
     @IBOutlet weak var segmentedControlHome: UISegmentedControl!
     var arraybusqueda: [beerData] = []
+    var counter = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColors()
@@ -24,6 +25,14 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         home_tableView.delegate = self
         searchTableView.delegate = self
         searchTableView.dataSource = self
+        
+        segmentedControlHome.selectedSegmentIndex = counter
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handlegesture(gesture:)))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handlegesture(gesture:)))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
     }
     
     private func setupColors(){
@@ -39,7 +48,22 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
     }
     
     @IBAction func onChangedSegmentedControl(_ sender: UISegmentedControl) {
+        counter = segmentedControlHome.selectedSegmentIndex
         self.home_tableView.reloadData()
+    }
+    
+    @objc func handlegesture(gesture: UISwipeGestureRecognizer){
+        
+        if gesture.direction == UISwipeGestureRecognizer.Direction.left && counter < 4 {
+            counter += 1
+            segmentedControlHome.selectedSegmentIndex = counter
+            home_tableView.reloadData()
+        }
+        if gesture.direction == UISwipeGestureRecognizer.Direction.right && counter > 0 {
+            counter -= 1
+            segmentedControlHome.selectedSegmentIndex = counter
+            home_tableView.reloadData()
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
