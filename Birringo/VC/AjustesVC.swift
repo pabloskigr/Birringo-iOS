@@ -7,16 +7,21 @@
 
 import UIKit
 
-class AjustesVC: UIViewController {
+class AjustesVC: UIViewController{
     
     
+    @IBOutlet weak var ajustesView: UIView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupColors()
 
-//    private func setupColors(){
-//        tabBarController?.tabBar.backgroundColor = UIColor(named: "background_views")
-//        perfilView.backgroundColor = UIColor(named: "background_views")
-//        perfilTableView.backgroundColor = UIColor(named: "background_white")
-//        perfilTableView.corneRadius = 30
-//        perfilTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-//       
-//    }
+    }
+    
+    
+    private func setupColors(){
+        ajustesView.layer.cornerRadius = 30
+        ajustesView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+       
+    }
 }
