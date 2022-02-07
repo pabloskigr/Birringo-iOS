@@ -27,16 +27,40 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         setupColors()
         beerLocationsTableView.delegate = self
         beerLocationsTableView.dataSource = self
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        getUsersLocation()
         
         beerName.text = beer?.titulo
         beerDescription.text = beer?.description
         beerImage.image = beer?.image
         sortButton.setTitle("", for: .normal)
+    }
+    
+    func getUsersLocation(){
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            userCordinate = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
+        } else {
+            //Notificar al usuario que tiene el gps desactivado
+            print("GPS desactivado")
+        }
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        case .restricted:
+            //Notificar al usuario. Localizacion restringida por configuracion paternal
+            break
+        case .denied:
+            print("Localizacion restringida para la app en ajustes")
+            break
+        case .authorizedAlways, .authorizedWhenInUse:
+            print("Permisos OK")
+        @unknown default:
+            break
+        }
     }
     
     func setupColors(){
@@ -53,10 +77,9 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailTableCellid", for: indexPath) as! DetailCell
-        
-        userCordinate = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
+        //añadir distancia a la cerveza
         barCordinates = CLLocation(latitude: (beer?.location[indexPath.row].latitud)!, longitude: (beer?.location[indexPath.row].longitud)!)
-        beer?.location[indexPath.row].distance = userCordinate?.distance(from: barCordinates!)
+        beer?.location[indexPath.row].distance = userCordinate?.distance(from: barCordinates!) ?? 0
         cell.bares = beer?.location[indexPath.row]
         cell.backgroundColor = UIColor(named: "background_white")
         return cell
