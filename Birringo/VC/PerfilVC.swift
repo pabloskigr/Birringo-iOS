@@ -54,6 +54,13 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         perfilTableView.deselectRow(at: indexPath, animated: true)
         
+        if (indexPath.row == 0)  {
+            let storyboard2 = UIStoryboard(name: "Accesory", bundle: nil)
+            let ajustesVC = storyboard2.instantiateViewController(identifier: "AjustesVC") as? AjustesVC
+            navigationController?.pushViewController(ajustesVC!, animated: true)
+
+        }
+        
         if (indexPath.row == 1)  {
             let storyboard2 = UIStoryboard(name: "Accesory", bundle: nil)
             let favoritosVC = storyboard2.instantiateViewController(identifier: "FavoritosVC") as? FavoritosVC
