@@ -20,7 +20,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var beerImage: UIImageView!
     @IBOutlet weak var beerLocationsTableView: UITableView!
     @IBOutlet weak var favButton: UIButton!
-    
+    @IBOutlet weak var sortButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +36,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         beerName.text = beer?.titulo
         beerDescription.text = beer?.description
         beerImage.image = beer?.image
+        sortButton.setTitle("", for: .normal)
     }
     
     func setupColors(){
@@ -77,8 +78,17 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func favTapped(_ sender: Any) {
         favButton.isSelected = !favButton.isSelected
-        self.beer?.location.sort { $0.distance! < $1.distance! }
-        beerLocationsTableView.reloadData()
     }
         //si esta en modo default al pulsarlo añadir a favoritos, si esta en modo pulsado al pulsarlo quitar de favoritos
+    @IBAction func sortButtonTapped(_ sender: Any) {
+        sortButton.isSelected = !sortButton.isSelected
+        if sortButton.isSelected == true {
+            self.beer?.location.sort { $0.distance! < $1.distance! }
+            beerLocationsTableView.reloadData()
+        } else {
+            self.beer?.location.sort { $0.distance! > $1.distance! }
+            beerLocationsTableView.reloadData()
+        }
+        
     }
+}

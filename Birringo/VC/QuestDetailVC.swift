@@ -8,17 +8,26 @@
 import UIKit
 import CoreLocation
 
-class QuestDetailVC: UIViewController {
+class QuestDetailVC: UIViewController, CLLocationManagerDelegate {
     
     var questData : QuestData?
+    var locationManager = CLLocationManager()
+    var barCordinates: CLLocation?
+    var userCordinate: CLLocation?
     @IBOutlet var questView: UIView!
     @IBOutlet weak var questViewBox: UIView!
     @IBOutlet weak var questTitle: UILabel!
     @IBOutlet weak var questLocation: UILabel!
     @IBOutlet weak var questPoints: UILabel!
+    @IBOutlet weak var questDistance: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         
         questTitle.text = questData?.title
         questLocation.text = String((questData?.location[0].title) ?? "")
@@ -29,6 +38,21 @@ class QuestDetailVC: UIViewController {
     func setupColors(){
         questView.backgroundColor = UIColor(named: "background_views")
         questViewBox.backgroundColor = UIColor(named: "background_white")
+        questDistance.text = "Distancia: \(obtainDistance())"
+    }
+    
+    func obtainDistance() -> String{
+        
+        userCordinate = CLLocation(latitude:(locationManager.location?.coordinate.latitude)!,longitude:(locationManager.location?.coordinate.longitude)!)
+        barCordinates = CLLocation(latitude: (questData?.location[0].latitud)!, longitude: (questData?.location[0].longitud)!)
+        var distance = userCordinate?.distance(from: barCordinates!) ?? 0
+        
+        if distance > 1000 {
+            distance = distance / 1000
+            return "\(round(distance))km"
+        } else {
+            return "\(round(distance))m"
+        }
     }
     
 
