@@ -10,8 +10,8 @@ import CoreLocation
 
 class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
    
-    var beer : beerData?
     var locationManager = CLLocationManager()
+    var beer : beerData?
     var barCordinates: CLLocation?
     var userCordinate: CLLocation?
     @IBOutlet var beerDetailView: UIView!
@@ -37,9 +37,8 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func getUsersLocation(){
         if CLLocationManager.locationServicesEnabled(){
-            locationManager = CLLocationManager()
             locationManager.delegate = self
-            userCordinate = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
+            locationManagerDidChangeAuthorization(locationManager)
         } else {
             //Notificar al usuario que tiene el gps desactivado
             print("GPS desactivado")
@@ -57,6 +56,9 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             print("Localizacion restringida para la app en ajustes")
             break
         case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+            userCordinate = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
+            beerLocationsTableView.reloadData()
             print("Permisos OK")
         @unknown default:
             break
@@ -90,7 +92,6 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
            
             mapsVC.barName = beer?.location[indexPath.row].title
             mapsVC.coordenadas = barCordinates?.coordinate
-            locationManager.stopUpdatingLocation()
             navigationController?.pushViewController(mapsVC, animated: true)
         }
     }
