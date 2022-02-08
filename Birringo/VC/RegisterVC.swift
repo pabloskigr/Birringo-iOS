@@ -32,11 +32,10 @@ class RegisterVC: UIViewController, UITextFieldDelegate{
         view_registerBox.layer.cornerRadius = 30
         view_registerBox.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
-
+    //Al pulsar intro se oculta el teclado
     @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             view.endEditing(true)
     }
-    
     @IBAction func signinTapped(_ sender: Any) {
         if let loginVC = self.storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
             loginVC.modalPresentationStyle = .fullScreen
@@ -50,7 +49,6 @@ class RegisterVC: UIViewController, UITextFieldDelegate{
             tutorialVC.modalTransitionStyle = .crossDissolve
         self.present(tutorialVC, animated: true, completion: nil)
         }
-        
     }
  
     @IBAction func checkboxTapped(_ sender: Any) {

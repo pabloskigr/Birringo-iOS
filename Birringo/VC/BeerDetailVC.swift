@@ -50,7 +50,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
         case .restricted:
-            //Notificar al usuario. Localizacion restringida por configuracion paternal
+            print("Notificar al usuario. Localizacion restringida por configuracion paternal")
             break
         case .denied:
             print("Localizacion restringida para la app en ajustes")

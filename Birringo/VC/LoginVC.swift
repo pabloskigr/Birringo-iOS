@@ -26,7 +26,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         view_loginBox.layer.cornerRadius = 30
         view_loginBox.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
-    
+    //Al pulsar intro se oculta el teclado
     @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             view.endEditing(true)
     }
@@ -44,6 +44,13 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBAction func passwordButton(_ sender: Any) {
         passwordbutton.isSelected = !passwordbutton.isSelected
         password_login.isSecureTextEntry.toggle()
+    }
+    @IBAction func forgotPasswordTapped(_ sender: Any) {
+        if let recoverPassVC = storyboard?.instantiateViewController(identifier: "RecoverPassVC") as? RecoverPassVC {
+        recoverPassVC.modalPresentationStyle = .fullScreen
+        recoverPassVC.modalTransitionStyle = .crossDissolve
+        self.present(recoverPassVC, animated: true, completion: nil)
+        }
     }
 }
 

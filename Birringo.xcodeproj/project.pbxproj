@@ -18,6 +18,7 @@
 		33DEED0F27A3106E0017C62D /* FavoritosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DEED0E27A3106E0017C62D /* FavoritosCell.swift */; };
 		D40EB9A8279F310D0026044E /* Accesory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40EB9A7279F310D0026044E /* Accesory.storyboard */; };
 		D40EB9AA279F344B0026044E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40EB9A9279F344B0026044E /* HomeVC.swift */; };
+		D410A1C827B28AE10056FD7B /* RecoverPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D410A1C727B28AE10056FD7B /* RecoverPassVC.swift */; };
 		D4154148279DEA8A003E8313 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = D4154147279DEA8A003E8313 /* Lottie */; };
 		D415414E279DF5FD003E8313 /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415414D279DF5FD003E8313 /* LaunchScreenVC.swift */; };
 		D415415A279E0D38003E8313 /* beer_splash.json in Resources */ = {isa = PBXBuildFile; fileRef = D4154159279E0D38003E8313 /* beer_splash.json */; };
@@ -57,6 +58,7 @@
 		33DEED0E27A3106E0017C62D /* FavoritosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritosCell.swift; sourceTree = "<group>"; };
 		D40EB9A7279F310D0026044E /* Accesory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Accesory.storyboard; sourceTree = "<group>"; };
 		D40EB9A9279F344B0026044E /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		D410A1C727B28AE10056FD7B /* RecoverPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPassVC.swift; sourceTree = "<group>"; };
 		D415414D279DF5FD003E8313 /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		D4154159279E0D38003E8313 /* beer_splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beer_splash.json; sourceTree = "<group>"; };
 		D415415B279E10ED003E8313 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				D415414D279DF5FD003E8313 /* LaunchScreenVC.swift */,
 				D415415B279E10ED003E8313 /* LoginVC.swift */,
 				D415415D279E1B38003E8313 /* RegisterVC.swift */,
+				D410A1C727B28AE10056FD7B /* RecoverPassVC.swift */,
 				D40EB9A9279F344B0026044E /* HomeVC.swift */,
 				33D1DD9927A06201009CE75E /* PerfilVC.swift */,
 				E97ED38827B1173000F4052B /* AjustesVC.swift */,
@@ -273,6 +276,7 @@
 			files = (
 				E97ED38927B1173000F4052B /* AjustesVC.swift in Sources */,
 				D4B746BA27A2985600984654 /* QuestCell.swift in Sources */,
+				D410A1C827B28AE10056FD7B /* RecoverPassVC.swift in Sources */,
 				3300E94127972C77002C5B12 /* AppDelegate.swift in Sources */,
 				D40EB9AA279F344B0026044E /* HomeVC.swift in Sources */,
 				D4CB6B77279EB30D00981F25 /* UIView+Extension.swift in Sources */,

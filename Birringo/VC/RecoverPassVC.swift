@@ -7,23 +7,33 @@
 
 import UIKit
 
-class RecoverPassVC: UIViewController {
+class RecoverPassVC: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var recoverPassView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupColors()
+        emailTextField.delegate = self
+        
 
-        // Do any additional setup after loading the view.
+    }
+    private func setupColors(){
+        recoverPassView.backgroundColor = UIColor(named: "background_white")
+        emailTextField.backgroundColor = UIColor(named: "background_white")
+        recoverPassView.layer.cornerRadius = 30
+        recoverPassView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+
+    @IBAction func sendButtonTapped(_ sender: Any) {
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func backButtonTapped(_ sender: Any) {
+        if let loginVC = self.storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
+        loginVC.modalPresentationStyle = .fullScreen
+        loginVC.modalTransitionStyle = .crossDissolve
+        self.present(loginVC, animated: true, completion: nil)
+        }
     }
-    */
-
 }
