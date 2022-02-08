@@ -7,7 +7,8 @@
 
 import UIKit
 
-class AjustesVC: UIViewController{
+class AjustesVC: UIViewController, UITableViewDataSource, UITableViewDelegate{
+    
     
     
     @IBOutlet weak var ajustesView: UIView!
@@ -24,4 +25,11 @@ class AjustesVC: UIViewController{
         ajustesView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
        
     }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            <#code#>
+        }
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            <#code#>
+        }
 }
