@@ -1241,15 +1241,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="if5-jk-3IN">
-                                <rect key="frame" x="359" y="739" width="54" height="34"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="373" y="723" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="3zQ-fr-EwK"/>
+                                    <constraint firstAttribute="height" constant="40" id="OU4-hR-GWD"/>
+                                </constraints>
+                                <color key="tintColor" red="0.95294117649999999" green="0.58039215690000001" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="location.square.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
+                                </state>
                                 <connections>
                                     <action selector="userLocationTapped:" destination="EJQ-vS-zte" eventType="touchUpInside" id="0ml-1J-iSo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utl-Px-vt2">
-                                <rect key="frame" x="359" y="690" width="54" height="34"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="373" y="668" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="aX5-7L-ka8"/>
+                                    <constraint firstAttribute="width" constant="40" id="nYO-ff-hVb"/>
+                                </constraints>
+                                <state key="normal" image="BeerCirculo"/>
                                 <connections>
                                     <action selector="barLocationTapped:" destination="EJQ-vS-zte" eventType="touchUpInside" id="mbd-Yc-7tp"/>
                                 </connections>
@@ -1261,7 +1272,7 @@
                             <constraint firstItem="K9q-nk-1zT" firstAttribute="top" secondItem="RYj-GU-L0i" secondAttribute="top" id="I6z-Jw-XyF"/>
                             <constraint firstItem="K9q-nk-1zT" firstAttribute="leading" secondItem="eI6-aH-Cc5" secondAttribute="leading" id="Tr7-Ht-Unp"/>
                             <constraint firstItem="utl-Px-vt2" firstAttribute="trailing" secondItem="if5-jk-3IN" secondAttribute="trailing" id="Vqk-xu-lFD"/>
-                            <constraint firstItem="eI6-aH-Cc5" firstAttribute="bottom" secondItem="if5-jk-3IN" secondAttribute="bottom" constant="70" id="Wt9-rh-fJy"/>
+                            <constraint firstItem="eI6-aH-Cc5" firstAttribute="bottom" secondItem="if5-jk-3IN" secondAttribute="bottom" constant="80" id="Wt9-rh-fJy"/>
                             <constraint firstItem="eI6-aH-Cc5" firstAttribute="bottom" secondItem="K9q-nk-1zT" secondAttribute="bottom" id="Y50-FT-jas"/>
                             <constraint firstItem="eI6-aH-Cc5" firstAttribute="trailing" secondItem="if5-jk-3IN" secondAttribute="trailing" constant="15" id="hQJ-0W-k5g"/>
                             <constraint firstItem="eI6-aH-Cc5" firstAttribute="trailing" secondItem="K9q-nk-1zT" secondAttribute="trailing" id="m0x-YK-jhA"/>
@@ -1382,6 +1393,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BeerCirculo" width="129" height="129"/>
         <image name="Cervezas-la-Virgen" width="800" height="650"/>
         <image name="Corazon" width="24.666666030883789" height="22.666666030883789"/>
         <image name="Flecha" width="64" height="64"/>
@@ -1396,6 +1408,7 @@
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="like2" width="24.666666030883789" height="22.666666030883789"/>
         <image name="location-pin" width="512" height="512"/>
+        <image name="location.square.fill" catalog="system" width="128" height="114"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="notShowPassword" width="30" height="25"/>
