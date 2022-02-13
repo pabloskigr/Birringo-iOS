@@ -38,15 +38,12 @@ class OnboardingVC: UIViewController {
             OnboardingSlide(title: "Encuentra las mejores cervezas y lugares cercanos", description: "Birringo usara tu ubicación para que puedas localizar los mejores lugares donde tomar cerveza.",image: UIImage(named: "map")!),
             OnboardingSlide(title: "Haz retos mientras descubres nuevas cervezas", description: "Con la sección de gamificación podrás ganar puntos realizando quest para subir de posicion en el ranking de la app.", image: UIImage(named: "ganador")!)
         ]
-        
-
     }
     private func setupColors(){
         onboardingView.backgroundColor = UIColor(named: "background_white")
         collectionView.backgroundColor = UIColor(named: "background_white")
     }
     
-
     @IBAction func nextBtnTapped(_ sender: UIButton) {
         if currentPage == slides.count - 1 {
             let mainTabBarController = storyboard!.instantiateViewController(identifier: "MainTabBarController")

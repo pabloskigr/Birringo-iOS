@@ -18,6 +18,9 @@ class RegisterVC: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var checkboxButton: UIButton!
     @IBOutlet weak var passwordButton: UIButton!
     
+    var response : Response?
+    var params :  [String : Any]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColors()
@@ -44,10 +47,56 @@ class RegisterVC: UIViewController, UITextFieldDelegate{
         }
     }
     @IBAction func registerBtnTapped(_ sender: Any) {
-        if let tutorialVC = self.storyboard?.instantiateViewController(identifier: "OnboardingVC") as? OnboardingVC {
-            tutorialVC.modalPresentationStyle = .fullScreen
-            tutorialVC.modalTransitionStyle = .crossDissolve
-        self.present(tutorialVC, animated: true, completion: nil)
+     
+        params = [
+            "name" : username_register.text ?? "",
+            "email" : email_register.text ?? "",
+            "password" : password_register.text ?? "",
+            "telefono" : Int(phone_register.text ?? "")!
+        ]
+        
+        if !password_register.text!.isEmpty && !username_register.text!.isEmpty && !email_register.text!.isEmpty {
+            if checkboxButton.isSelected{
+                NetworkManager.shared.registerUser(params: params){
+                    response, error  in DispatchQueue.main.async {
+                        self.response = response
+                        if response?.status == 1 && response?.msg == "Registro completado" {
+                            
+                            Session.shared.api_token = response?.api_token
+                            let defaults = UserDefaults.standard
+                            defaults.set(Session.shared.api_token, forKey: "api_token")
+          
+                            if let tutorialVC = self.storyboard?.instantiateViewController(identifier: "OnboardingVC") as? OnboardingVC {
+                                tutorialVC.modalPresentationStyle = .fullScreen
+                                tutorialVC.modalTransitionStyle = .crossDissolve
+                            self.present(tutorialVC, animated: true, completion: nil)
+                            }
+                        } else if error == .badData {
+                            let alert = UIAlertController(title: "Error", message: "Ha habido un error", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        } else if error == .errorConnection {
+                            let alert = UIAlertController(title: "Error", message: "Servidor no responde", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                            
+                        } else {
+                            let alert = UIAlertController(title: "Datos no validos", message: "\(response?.msg ?? "Datos introducidos no validos")", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    }
+                }
+            }
+            else {
+                let alert = UIAlertController(title: "Terminos y condiciones", message: "Acepta los terminos y condiciones", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        } else {
+            let alert = UIAlertController(title: "Error", message: "Faltan campos por rellenar", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
  
