@@ -19,6 +19,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
     var counter = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkApiToken()
         setupColors()
         searchBar.delegate = self
         home_tableView.dataSource = self
@@ -33,6 +34,19 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handlegesture(gesture:)))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
+    }
+    
+    func checkApiToken(){
+        if UserDefaults.standard.string(forKey: "api_token") != nil{
+            Session.shared.api_token = UserDefaults.standard.string(forKey: "api_token")
+            print(Session.shared.api_token!)
+        } else {
+            if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
+            loginVC.modalPresentationStyle = .fullScreen
+            loginVC.modalTransitionStyle = .crossDissolve
+            self.present(loginVC, animated: true, completion: nil)
+            }
+        }
     }
     
     private func setupColors(){

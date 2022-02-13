@@ -8,7 +8,16 @@
 import UIKit
 
 class PerfilVC: UIViewController,  UITableViewDelegate, UITableViewDataSource {
-   
+    
+    enum Opciones : Int {
+        case ajustes = 0, favoritos, cerrarSesion
+    }
+    var ajustes : Opciones = .ajustes
+    var favoritos : Opciones = .favoritos
+    var cerrarSesion : Opciones = .cerrarSesion
+    
+    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    let storyboard2 = UIStoryboard(name: "Accesory", bundle: nil)
     @IBOutlet weak var perfilTableView: UITableView!
     @IBOutlet var perfilView: UIView!
 
@@ -54,17 +63,23 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         perfilTableView.deselectRow(at: indexPath, animated: true)
         
-        if (indexPath.row == 0)  {
-            let storyboard2 = UIStoryboard(name: "Accesory", bundle: nil)
+        if (indexPath.row == ajustes.rawValue)  {
             let ajustesVC = storyboard2.instantiateViewController(identifier: "AjustesVC") as? AjustesVC
             navigationController?.pushViewController(ajustesVC!, animated: true)
-
         }
         
-        if (indexPath.row == 1)  {
-            let storyboard2 = UIStoryboard(name: "Accesory", bundle: nil)
+        if (indexPath.row == favoritos.rawValue)  {
             let favoritosVC = storyboard2.instantiateViewController(identifier: "FavoritosVC") as? FavoritosVC
             navigationController?.pushViewController(favoritosVC!, animated: true)
+        }
+        
+        if (indexPath.row == cerrarSesion.rawValue)  {
+            UserDefaults.standard.removeObject(forKey: "api_token")
+            if let loginVC = mainStoryboard.instantiateViewController(identifier: "LoginVC") as? LoginVC {
+                loginVC.modalPresentationStyle = .fullScreen
+                loginVC.modalTransitionStyle = .crossDissolve
+            self.present(loginVC, animated: true, completion: nil)
+            }
 
         }
     }
