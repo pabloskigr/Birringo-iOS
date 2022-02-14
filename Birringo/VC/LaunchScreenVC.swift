@@ -12,13 +12,12 @@ class LaunchScreenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let jsonName = "beer_splash"
         let animation = Animation.named(jsonName)
-
         // Load animation to AnimationView
         let animationView = AnimationView(animation: animation)
         animationView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
-
         // Add animationView as subview
         view.addSubview(animationView)
         animationView.play()
@@ -30,21 +29,28 @@ class LaunchScreenVC: UIViewController {
                     animationView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
                 ])
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.toLoginView()
+            self.checkApiToken()
         }
         
     }
     
-    func toLoginView(){
-        /*if let LoginVC = self.storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
-            self.navigationController?.pushViewController(LoginVC, animated: true)
-            print("estoy aqui")
-        }*/
-        if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
+    func checkApiToken(){
+        if UserDefaults.standard.string(forKey: "api_token") != nil{
+            Session.shared.api_token = UserDefaults.standard.string(forKey: "api_token")
+            print(Session.shared.api_token!)
+            toHomeview()
+        } else {
+            if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
             loginVC.modalPresentationStyle = .fullScreen
             loginVC.modalTransitionStyle = .crossDissolve
-        self.present(loginVC, animated: true, completion: nil)
+            self.present(loginVC, animated: true, completion: nil)
+            }
         }
-        
+    }
+    
+    func toHomeview(){
+        let mainTabBarController = storyboard!.instantiateViewController(identifier: "MainTabBarController")
+        mainTabBarController.modalPresentationStyle = .fullScreen
+        self.present(mainTabBarController, animated: true, completion: nil)
     }
 }
