@@ -75,10 +75,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="pAE-og-JHj"/>
                                         </constraints>
-                                        <state key="normal" image="passwordShow">
-                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
+                                        <state key="normal" image="passwordShow"/>
                                         <state key="selected" image="notShowPassword"/>
                                         <connections>
                                             <action selector="passwordButton:" destination="ahX-Pq-aAg" eventType="touchUpInside" id="6CV-Za-LGM"/>
