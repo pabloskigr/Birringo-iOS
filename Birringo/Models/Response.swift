@@ -11,9 +11,10 @@ struct Response: Codable {
     var status : Int
     var msg : String
     var api_token : String?
-    //var listado_empleados : [UserData]?
+    var beers : [Beer]?
     var datos_perfil : UserData?
 }
+
 struct UserData : Codable {
     var id : Int?
     var name : String?
@@ -22,3 +23,27 @@ struct UserData : Codable {
     var telefono : Int?
     var puntos : Int?
 }
+
+struct Beer : Codable {
+    var id : Int?
+    var titulo : String?
+    var graduacion : String?
+    var tipo : String?
+    var imagen : String?
+    var imagen2 : String?
+    var descripcion : String?
+    var pubs : [Pubs]?
+}
+
+struct Pubs : Codable {
+    var id : Int?
+    var titulo : String?
+    var calle : String?
+    var latitud : Double?
+    var longitud : Double?
+    var distance : Double?
+}
+
+
+
+

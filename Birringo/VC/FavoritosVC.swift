@@ -51,7 +51,7 @@ class FavoritosVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         favoritosTableView.deselectRow(at: indexPath, animated: true)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let detailVC = storyboard.instantiateViewController(identifier: "BeerDetailVC") as? BeerDetailVC {
-            detailVC.beer = MockData.favoritos[indexPath.row]
+           // detailVC.beer = MockData.favoritos[indexPath.row]
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
         

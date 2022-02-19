@@ -9,25 +9,33 @@ import UIKit
 
 class HomeTVCell: UITableViewCell {
     
-    @IBOutlet weak var title_cell: UILabel!
-    @IBOutlet weak var ml_cell: UILabel!
-    @IBOutlet weak var image_cell: UIImageView!
+ 
+    @IBOutlet weak var beerImage: UIImageView!
+    @IBOutlet weak var beerTitle: UILabel!
+    @IBOutlet weak var beerGraduation: UILabel!
     
-    var data:beerData? {
+    var data:Beer? {
         didSet {renderUI()}
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        //contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0))
-       //contentView.backgroundColor = UIColor(named: "background_views")
-    }
-    
+
     private func renderUI(){
-        guard let data = data else {return}
-        title_cell.text = data.titulo
-        ml_cell.text = "\(data.ml)ml"
-        image_cell.image = data.image
+        guard let data = data else {
+            return
+        }
+        beerTitle.text = data.titulo ?? "no hay titulo"
+        beerGraduation.text = "\(data.graduacion ?? "0")%"
+        
+        NetworkManager.shared.getImageFrom(imageUrl: data.imagen ?? ""){
+            image in DispatchQueue.main.async {
+                //self.indicatorView.isHidden = true
+                if let image = image {
+                    self.beerImage.image = image
+                } else {
+                    //Si el usuario del cual obtenemos los datos no tiene imagen de perfil en la base de datos se le asignara na por defecto.
+                    self.beerImage.image = UIImage(named: "cerveza-almeria")!
+                }
+            }
+        }
     }
     
     

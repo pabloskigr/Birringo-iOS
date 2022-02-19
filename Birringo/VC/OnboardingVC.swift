@@ -34,9 +34,9 @@ class OnboardingVC: UIViewController {
         setupColors()
         
         slides = [
-            OnboardingSlide(title: "Bienvenido", description: "A continuacion te mostramos que puedes hacer en la app", image: UIImage(named: "beer_image")!),
-            OnboardingSlide(title: "Encuentra las mejores cervezas y lugares cercanos", description: "Birringo usara tu ubicación para que puedas localizar los mejores lugares donde tomar cerveza.",image: UIImage(named: "map")!),
-            OnboardingSlide(title: "Haz retos mientras descubres nuevas cervezas", description: "Con la sección de gamificación podrás ganar puntos realizando quest para subir de posicion en el ranking de la app.", image: UIImage(named: "ganador")!)
+            OnboardingSlide(title: "Bienvenido 😊 ", description: "A continuacion te mostramos que puedes hacer en la app.", image: UIImage(named: "beer_image")!),
+            OnboardingSlide(title: "Encuentra las mejores cervezas y lugares cercanos 📍", description: "Birringo usara tu ubicación para que puedas localizar los mejores lugares donde tomar cerveza.",image: UIImage(named: "map")!),
+            OnboardingSlide(title: "Haz retos mientras descubres nuevas cervezas 🍺", description: "En la sección de gamificación podrás ganar puntos realizando quest para subir de posicion en el ranking de la app.", image: UIImage(named: "ganador")!)
         ]
     }
     private func setupColors(){

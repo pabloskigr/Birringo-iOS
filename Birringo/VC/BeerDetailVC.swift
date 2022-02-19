@@ -11,7 +11,7 @@ import CoreLocation
 class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
    
     var locationManager = CLLocationManager()
-    var beer : beerData?
+    var beer : Beer?
     var barCordinates: CLLocation?
     var userCordinate: CLLocation?
     @IBOutlet var beerDetailView: UIView!
@@ -29,10 +29,21 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         beerLocationsTableView.dataSource = self
         getUsersLocation()
         
-        beerName.text = beer?.titulo
-        beerDescription.text = beer?.description
-        beerImage.image = beer?.image
         sortButton.setTitle("", for: .normal)
+        beerName.text = beer?.titulo
+        beerDescription.text = beer?.descripcion
+        NetworkManager.shared.getImageFrom(imageUrl: beer?.imagen2 ?? ""){
+            image in DispatchQueue.main.async {
+                //self.indicatorView.isHidden = true
+                if let image = image {
+                    self.beerImage.image = image
+                } else {
+                    //Si el usuario del cual obtenemos los datos no tiene imagen de perfil en la base de datos se le asignara na por defecto.
+                    self.beerImage.image = UIImage(named: "Cervezas-la-Virgen")!
+                }
+            }
+        }
+      
     }
     
     func getUsersLocation(){
@@ -74,23 +85,22 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return beer!.location.count
+        return beer!.pubs?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailTableCellid", for: indexPath) as! DetailCell
         //añadir distancia a la cerveza
-        barCordinates = CLLocation(latitude: (beer?.location[indexPath.row].latitud)!, longitude: (beer?.location[indexPath.row].longitud)!)
-        beer?.location[indexPath.row].distance = userCordinate?.distance(from: barCordinates!) ?? 0
-        cell.bares = beer?.location[indexPath.row]
+        barCordinates = CLLocation(latitude: (beer?.pubs![indexPath.row].latitud)!, longitude: (beer?.pubs![indexPath.row].longitud)!)
+        beer?.pubs![indexPath.row].distance = userCordinate?.distance(from: barCordinates!) ?? 0
+        cell.bares = beer?.pubs![indexPath.row]
         cell.backgroundColor = UIColor(named: "background_white")
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         beerLocationsTableView.deselectRow(at: indexPath, animated: true)
         if let mapsVC = storyboard?.instantiateViewController(withIdentifier: "MapsVC") as? MapsVC {
-           
-            mapsVC.barName = beer?.location[indexPath.row].title
+            mapsVC.barName = beer?.pubs![indexPath.row].titulo
             mapsVC.coordenadas = barCordinates?.coordinate
             navigationController?.pushViewController(mapsVC, animated: true)
         }
@@ -107,10 +117,10 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBAction func sortButtonTapped(_ sender: Any) {
         sortButton.isSelected = !sortButton.isSelected
         if sortButton.isSelected == true {
-            self.beer?.location.sort { $0.distance! < $1.distance! }
+            self.beer?.pubs!.sort { $0.distance! < $1.distance! }
             beerLocationsTableView.reloadData()
         } else {
-            self.beer?.location.sort { $0.distance! > $1.distance! }
+            self.beer?.pubs!.sort { $0.distance! > $1.distance! }
             beerLocationsTableView.reloadData()
         }
         

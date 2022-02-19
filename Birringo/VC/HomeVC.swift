@@ -15,8 +15,13 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet var home_view: UIView!
     @IBOutlet weak var segmentedControlHome: UISegmentedControl!
+    @IBOutlet weak var indicatorView: UIView!
+    
     var arraybusqueda: [beerData] = []
     var counter = 0
+    var response : Response?
+    var titleToReturn = "IPA"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //checkApiToken()
@@ -28,6 +33,8 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         searchTableView.dataSource = self
         
         segmentedControlHome.selectedSegmentIndex = counter
+        getBeers(tipo: "IPA")
+        
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handlegesture(gesture:)))
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
@@ -35,6 +42,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
     }
+    
     private func setupColors(){
         tabBarController?.tabBar.backgroundColor = UIColor(named: "background_views")
         home_tableView.backgroundColor = UIColor(named: "background_white")
@@ -46,10 +54,11 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         home_tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         searchTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
+    
     //Segmented control functions
     @IBAction func onChangedSegmentedControl(_ sender: UISegmentedControl) {
         counter = segmentedControlHome.selectedSegmentIndex
-        self.home_tableView.reloadData()
+        checkSegmentedIndex()
     }
     
     @objc func handlegesture(gesture: UISwipeGestureRecognizer){
@@ -57,14 +66,59 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         if gesture.direction == UISwipeGestureRecognizer.Direction.left && counter < 4 {
             counter += 1
             segmentedControlHome.selectedSegmentIndex = counter
-            home_tableView.reloadData()
+            checkSegmentedIndex()
         }
         if gesture.direction == UISwipeGestureRecognizer.Direction.right && counter > 0 {
             counter -= 1
             segmentedControlHome.selectedSegmentIndex = counter
-            home_tableView.reloadData()
+            checkSegmentedIndex()
         }
     }
+    
+    func checkSegmentedIndex(){
+        self.indicatorView.isHidden = false
+        
+        let selectedIndex = self.segmentedControlHome.selectedSegmentIndex
+         switch selectedIndex
+         {
+         case 0:
+             getBeers(tipo: "IPA")
+         case 1:
+             getBeers(tipo: "Ale")
+         case 2:
+             getBeers(tipo : "Rubia")
+         case 3:
+             getBeers(tipo : "Rubia")
+         case 4:
+             getBeers(tipo : "Rubia")
+         default:
+             getBeers(tipo: "IPA")
+         }
+    }
+    
+    func getBeers(tipo : String){
+        NetworkManager.shared.obtenerCervezasTiposMain(apiToken: Session.shared.api_token!, tipo: tipo){
+            response, errors in DispatchQueue.main.async {
+                self.response = response
+                self.indicatorView.isHidden = true
+                
+                if response?.status == 1 && response?.msg == "Cervezas encontradas" {
+                    self.titleToReturn = tipo
+                    self.home_tableView.reloadData()
+                } else if errors == .badData {
+                    self.displayAlert(title: "Error", message: "Ha habido un error")
+                    
+                } else if errors == .errorConnection {
+                    self.displayAlert(title: "Error", message: "El servidor no responde")
+                    
+                } else if response?.status == 0 {
+                    //Si hay algun fallo nos devolvera el error en el response y se le mostrara al usuario mediante un alert
+                    self.displayAlert(title: "Error", message: "\(response?.msg ?? "Se ha producido un error")")
+                }
+            }
+        }
+    }
+    
     //Table view functions
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -73,22 +127,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var countToReturn = 0
         if tableView == home_tableView {
-            let selectedIndex = self.segmentedControlHome.selectedSegmentIndex
-             switch selectedIndex
-             {
-             case 0:
-                 countToReturn = MockData.datos.count
-             case 1:
-                 countToReturn = MockData.ale.count
-             case 2:
-                 countToReturn = MockData.tostada.count
-             case 3:
-                 countToReturn = MockData.rubia.count
-             case 4:
-                 countToReturn = MockData.negra.count
-             default:
-                 countToReturn = 0
-             }
+            countToReturn = response?.beers?.count ?? 0
         } else if tableView == searchTableView {
             countToReturn = arraybusqueda.count
         }
@@ -100,32 +139,13 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         if tableView == home_tableView {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "homeCellid", for: indexPath) as? HomeTVCell {
                 cell.backgroundColor = UIColor(named: "background_white")
-                let selectedIndex = self.segmentedControlHome.selectedSegmentIndex
-                  switch selectedIndex
-                  {
-                  case 0:
-                      cell.data = MockData.datos[indexPath.row]
-                      cellToReturn = cell
-                  case 1:
-                      cell.data = MockData.ale[indexPath.row]
-                      cellToReturn = cell
-                  case 2:
-                      cell.data = MockData.tostada[indexPath.row]
-                      cellToReturn = cell
-                  case 3:
-                      cell.data = MockData.rubia[indexPath.row]
-                      cellToReturn = cell
-                  case 4:
-                      cell.data = MockData.negra[indexPath.row]
-                      cellToReturn = cell
-                  default:
-                      cellToReturn = UITableViewCell()
-                }
+                cell.data = response?.beers![indexPath.row]
+                cellToReturn = cell
             }
         } else if tableView == searchTableView {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "homeCellid", for: indexPath) as? HomeTVCell {
                 cell.backgroundColor = UIColor(named: "background_white")
-                cell.data = arraybusqueda[indexPath.row]
+                //cell.data = arraybusqueda[indexPath.row]
                 cellToReturn = cell
             } else {
                 cellToReturn = UITableViewCell()
@@ -140,57 +160,26 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         if tableView == home_tableView {
             home_tableView.deselectRow(at: indexPath, animated: true)
             if let detailVC = self.storyboard?.instantiateViewController(identifier: "BeerDetailVC") as? BeerDetailVC {
-                let selectedIndex = self.segmentedControlHome.selectedSegmentIndex
-                  switch selectedIndex
-                  {
-                  case 0:
-                      detailVC.beer = MockData.datos[indexPath.row]
-                  case 1:
-                      detailVC.beer = MockData.ale[indexPath.row]
-                  case 2:
-                      detailVC.beer = MockData.tostada[indexPath.row]
-                  case 3:
-                      detailVC.beer = MockData.rubia[indexPath.row]
-                  case 4:
-                      detailVC.beer = MockData.negra[indexPath.row]
-                  default:
-                      detailVC.beer = MockData.datos[indexPath.row]
-                  }
+                detailVC.beer = response?.beers![indexPath.row]
                 self.navigationController?.pushViewController(detailVC, animated: true)
             }
         } else if tableView == searchTableView {
             searchTableView.deselectRow(at: indexPath, animated: true)
             if let detailVC = self.storyboard?.instantiateViewController(identifier: "BeerDetailVC") as? BeerDetailVC {
-                detailVC.beer = arraybusqueda[indexPath.row]
+                //detailVC.beer = arraybusqueda[indexPath.row]
                 self.navigationController?.pushViewController(detailVC, animated: true)
             }
         }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var titleToReturn = ""
-        if tableView == home_tableView {
-            let selectedIndex = self.segmentedControlHome.selectedSegmentIndex
-             switch selectedIndex
-             {
-             case 0:
-                 titleToReturn = "Lager"
-             case 1:
-                 titleToReturn = "Ale"
-             case 2:
-                 titleToReturn = "Tostada"
-             case 3:
-                 titleToReturn = "Rubia"
-             case 4:
-                 titleToReturn = "Negra"
-             default:
-                 titleToReturn = ""
-             }
-        } else if tableView == searchTableView {
+       if tableView == searchTableView {
             titleToReturn = "Resultados"
-        }
+       }
         return titleToReturn
     }
+    
+    
     //Search bar functions
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
@@ -217,6 +206,13 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         }
         self.searchTableView.reloadData()
         
+    }
+    
+    // Funcion para instanciar alerts.
+    func displayAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 
 

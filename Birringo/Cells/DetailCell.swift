@@ -11,7 +11,7 @@ class DetailCell: UITableViewCell {
     
     @IBOutlet weak var barName: UILabel!
     @IBOutlet weak var barDistanceLabel: UILabel!
-    var bares:Bares? {
+    var bares:Pubs? {
         didSet {
             renderUI()
         }
@@ -23,7 +23,7 @@ class DetailCell: UITableViewCell {
     
     private func renderUI(){
         guard var bares = bares else {return}
-        barName.text = bares.title
+        barName.text = bares.titulo
         if bares.distance ?? 0 > 1000 {
             bares.distance = bares.distance! / 1000
             barDistanceLabel.text = "\(round(bares.distance ?? 0))km"

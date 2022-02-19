@@ -52,7 +52,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate{
             "name" : username_register.text ?? "",
             "email" : email_register.text ?? "",
             "password" : password_register.text ?? "",
-            "telefono" : Int(phone_register.text ?? "")!
+            "telefono" : Int(phone_register.text ?? "") ?? 0
         ]
         
         if !password_register.text!.isEmpty && !username_register.text!.isEmpty && !email_register.text!.isEmpty {

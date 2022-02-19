@@ -161,7 +161,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
     //Funcion para convertir imagen a base64 con el fin de enviarlo posteriormente al servidor donde se almacenara.
     func convertImageToBase64(image: UIImage) -> String {
         let imageData = image.jpegData(compressionQuality: 0.6)!
-            return imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+        return imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
     }
     
     //Table view functions

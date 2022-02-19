@@ -23,6 +23,7 @@ final class NetworkManager {
     var recoverPassURL = "recoverPass"
     var getUserProfileURL = "getUserProfile?api_token="
     var uploadProfilImageURL = "uploadProfileImage?api_token="
+    var getCervezasTiposMainURL = "obtenerCervezasTiposMain?api_token="
     
     // var getEmployeeListURL = "listado_empleados?api_token="
     //var editUserDataURL = "modificar_datos/"
@@ -170,6 +171,37 @@ final class NetworkManager {
         }
   
     }
+    
+    func obtenerCervezasTiposMain(apiToken: String , tipo : String , completion: @escaping (Response?, NetworkError?) -> Void){
+     
+        Connection().connectGetData(to: getCervezasTiposMainURL + apiToken + "&tipo=" + tipo){
+            data, error in
+            
+            guard let data = data else {
+                completion(nil, .badData)
+                return
+            }
+            
+            guard error == nil else {
+                completion(nil, .badData)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(Response.self, from: data)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    completion(response, nil)
+                }
+            } catch {
+                completion(nil, .badData)
+                print("error al decodificar")
+            }
+            
+        }
+    }
+    
+    
     
     //El edit no esta hecho aun solo estrcuturado.
     func editUserData(id : String ,apiToken: String, params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void) {
