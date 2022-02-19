@@ -17,14 +17,13 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
     @IBOutlet weak var segmentedControlHome: UISegmentedControl!
     @IBOutlet weak var indicatorView: UIView!
     
-    var arraybusqueda: [beerData] = []
     var counter = 0
     var response : Response?
-    var titleToReturn = "IPA"
+    var titleToReturn = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //checkApiToken()
+      
         setupColors()
         searchBar.delegate = self
         home_tableView.dataSource = self
@@ -75,6 +74,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         }
     }
     
+ 
     func checkSegmentedIndex(){
         self.indicatorView.isHidden = false
         
@@ -105,6 +105,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
                 if response?.status == 1 && response?.msg == "Cervezas encontradas" {
                     self.titleToReturn = tipo
                     self.home_tableView.reloadData()
+
                 } else if errors == .badData {
                     self.displayAlert(title: "Error", message: "Ha habido un error")
                     
@@ -129,7 +130,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         if tableView == home_tableView {
             countToReturn = response?.beers?.count ?? 0
         } else if tableView == searchTableView {
-            countToReturn = arraybusqueda.count
+            countToReturn = response?.beers?.count ?? 0
         }
         return countToReturn
     }
@@ -137,20 +138,19 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cellToReturn = UITableViewCell()
         if tableView == home_tableView {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "homeCellid", for: indexPath) as? HomeTVCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "homeCellid", for: indexPath) as? BeerListHomeCell {
                 cell.backgroundColor = UIColor(named: "background_white")
                 cell.data = response?.beers![indexPath.row]
                 cellToReturn = cell
             }
         } else if tableView == searchTableView {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "homeCellid", for: indexPath) as? HomeTVCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "homeCellid", for: indexPath) as? BeerListHomeCell {
                 cell.backgroundColor = UIColor(named: "background_white")
-                //cell.data = arraybusqueda[indexPath.row]
+                cell.data = response?.beers![indexPath.row]
                 cellToReturn = cell
             } else {
                 cellToReturn = UITableViewCell()
             }
-            
         }
         return cellToReturn
     }
@@ -166,16 +166,13 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         } else if tableView == searchTableView {
             searchTableView.deselectRow(at: indexPath, animated: true)
             if let detailVC = self.storyboard?.instantiateViewController(identifier: "BeerDetailVC") as? BeerDetailVC {
-                //detailVC.beer = arraybusqueda[indexPath.row]
+                detailVC.beer = response?.beers![indexPath.row]
                 self.navigationController?.pushViewController(detailVC, animated: true)
             }
         }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-       if tableView == searchTableView {
-            titleToReturn = "Resultados"
-       }
         return titleToReturn
     }
     
@@ -184,10 +181,13 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
         searchView.isHidden = false
+        self.titleToReturn = "Ultimas novedades"
+        searchBeers(input: "")
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchView.isHidden = true
-        arraybusqueda = []
+        response = nil
+        self.titleToReturn = "Ultimas novedades"
         self.searchTableView.reloadData()
         self.isEditing = false
         searchBar.text = ""
@@ -198,13 +198,33 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         searchBar.resignFirstResponder()
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        arraybusqueda = []
-        for busqueda in MockData.datos{
-            if busqueda.titulo.uppercased().contains(searchText.uppercased()){
-                arraybusqueda.append(busqueda)
+        response = nil
+        self.titleToReturn = "Resultados"
+        searchBeers(input: searchText.uppercased())
+    }
+    
+    func searchBeers(input : String){
+        self.indicatorView.isHidden = false
+        
+        NetworkManager.shared.obtenerCervezasPorBusqueda(apiToken: Session.shared.api_token!, input: input){
+            response, errors in DispatchQueue.main.async {
+                self.response = response
+                self.indicatorView.isHidden = true
+                
+                if response?.status == 1 && response?.msg == "Cervezas encontradas" {
+                    self.searchTableView.reloadData()
+                } else if errors == .badData {
+                    self.displayAlert(title: "Error", message: "Ha habido un error")
+                    
+                } else if errors == .errorConnection {
+                    self.displayAlert(title: "Error", message: "El servidor no responde")
+                    
+                } else if response?.status == 0 {
+                    //Si hay algun fallo nos devolvera el error en el response y se le mostrara al usuario mediante un alert
+                    self.displayAlert(title: "Error", message: "\(response?.msg ?? "Se ha producido un error")")
+                }
             }
         }
-        self.searchTableView.reloadData()
         
     }
     

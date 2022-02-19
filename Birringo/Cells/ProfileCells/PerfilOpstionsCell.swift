@@ -8,7 +8,7 @@
 import UIKit
 
 class PerfilOpstionsCell: UITableViewCell {
-
+    //Aqui se gestionan las opciones de cerrar sesion, ir a favoritos o ajustes.
     @IBOutlet weak var settingIcons: UIImageView!
     @IBOutlet weak var settingTitle: UILabel!
     var perfilData:PerfilData? {

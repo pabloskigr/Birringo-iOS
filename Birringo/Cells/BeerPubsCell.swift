@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailCell: UITableViewCell {
+class BeerPubsCell: UITableViewCell {
     
     @IBOutlet weak var barName: UILabel!
     @IBOutlet weak var barDistanceLabel: UILabel!

@@ -23,16 +23,12 @@ class QuestDetailVC: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        setupColors()
+        getUserLocation()
         
         questTitle.text = questData?.title
         questLocation.text = String((questData?.location[0].title) ?? "")
         questPoints.text = "Puntos: \(questData?.points ?? 0)"
-        setupColors()
     }
     
     func setupColors(){
@@ -52,6 +48,36 @@ class QuestDetailVC: UIViewController, CLLocationManagerDelegate {
             return "\(round(distance))km"
         } else {
             return "\(round(distance))m"
+        }
+    }
+    
+    
+    func getUserLocation(){
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManagerDidChangeAuthorization(locationManager)
+        } else {
+            //Notificar al usuario que tiene el gps desactivado
+            print("GPS desactivado")
+        }
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        case .restricted:
+            print("Notificar al usuario. Localizacion restringida por configuracion paternal")
+            break
+        case .denied:
+            print("Localizacion restringida para la app en ajustes")
+            break
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+            userCordinate = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
+            print("Permisos OK")
+        @unknown default:
+            break
         }
     }
     

@@ -11,20 +11,17 @@ import CoreLocation
 
 class MapsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
+    @IBOutlet weak var barLocatonButton: UIButton!
     @IBOutlet weak var map: MKMapView!
     var locationManager = CLLocationManager()
     var coordenadas: CLLocationCoordinate2D?
-    @IBOutlet weak var barLocatonButton: UIButton!
+    var userCordinate: CLLocationCoordinate2D?
     var barName: String?
-    //Se podria añadir una descripcion
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserLocation()
         barLocatonButton.setTitle("", for: .normal)
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
         map.delegate = self
         map.showsUserLocation = true
         
@@ -44,8 +41,38 @@ class MapsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations)
+        //print(locations)
     }
+    
+    func getUserLocation(){
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManagerDidChangeAuthorization(locationManager)
+        } else {
+            //Notificar al usuario que tiene el gps desactivado
+            print("GPS desactivado")
+        }
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        case .restricted:
+            print("Notificar al usuario. Localizacion restringida por configuracion paternal")
+            break
+        case .denied:
+            print("Localizacion restringida para la app en ajustes")
+            break
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+            userCordinate = CLLocationCoordinate2D(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
+        @unknown default:
+            break
+        }
+    }
+    
+ 
     @IBAction func userLocationTapped(_ sender: Any) {
         self.map.setCenter(self.map.userLocation.coordinate, animated: true)
         let region = MKCoordinateRegion(center: map.userLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
@@ -58,7 +85,6 @@ class MapsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     func mapThis(destinationCord: CLLocationCoordinate2D){
-        let userCordinate = locationManager.location?.coordinate
         
         let userPlaceMark = MKPlacemark(coordinate: userCordinate!)
         let destPlacemark = MKPlacemark(coordinate: destinationCord)

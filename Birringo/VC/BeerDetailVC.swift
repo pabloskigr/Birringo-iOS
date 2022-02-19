@@ -27,7 +27,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         setupColors()
         beerLocationsTableView.delegate = self
         beerLocationsTableView.dataSource = self
-        getUsersLocation()
+        getUserLocation()
         
         sortButton.setTitle("", for: .normal)
         beerName.text = beer?.titulo
@@ -46,7 +46,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
       
     }
     
-    func getUsersLocation(){
+    func getUserLocation(){
         if CLLocationManager.locationServicesEnabled(){
             locationManager.delegate = self
             locationManagerDidChangeAuthorization(locationManager)
@@ -89,7 +89,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailTableCellid", for: indexPath) as! DetailCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailTableCellid", for: indexPath) as! BeerPubsCell
         //añadir distancia a la cerveza
         barCordinates = CLLocation(latitude: (beer?.pubs![indexPath.row].latitud)!, longitude: (beer?.pubs![indexPath.row].longitud)!)
         beer?.pubs![indexPath.row].distance = userCordinate?.distance(from: barCordinates!) ?? 0

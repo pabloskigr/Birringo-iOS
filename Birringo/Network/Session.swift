@@ -7,8 +7,9 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
-final class Session {
+final class Session{
     
     static let shared = Session()
     private init(){}

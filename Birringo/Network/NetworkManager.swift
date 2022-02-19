@@ -24,6 +24,7 @@ final class NetworkManager {
     var getUserProfileURL = "getUserProfile?api_token="
     var uploadProfilImageURL = "uploadProfileImage?api_token="
     var getCervezasTiposMainURL = "obtenerCervezasTiposMain?api_token="
+    var getCervezasPorBusquedaURL = "obtenerCervezas?api_token="
     
     // var getEmployeeListURL = "listado_empleados?api_token="
     //var editUserDataURL = "modificar_datos/"
@@ -200,6 +201,37 @@ final class NetworkManager {
             
         }
     }
+    
+    func obtenerCervezasPorBusqueda(apiToken: String , input : String , completion: @escaping (Response?, NetworkError?) -> Void){
+     
+        Connection().connectGetData(to: getCervezasPorBusquedaURL + apiToken + "&busqueda=" + input){
+            data, error in
+            
+            guard let data = data else {
+                completion(nil, .badData)
+                return
+            }
+            
+            guard error == nil else {
+                completion(nil, .badData)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(Response.self, from: data)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    completion(response, nil)
+                }
+            } catch {
+                completion(nil, .badData)
+                print("error al decodificar")
+            }
+            
+        }
+    }
+    
+    
     
     
     

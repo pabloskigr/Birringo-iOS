@@ -33,8 +33,8 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
         loadProfileData()
         perfilTableView.dataSource = self
         perfilTableView.delegate = self
-        usernameTextField.text = nil
-        userEmailTextField.text = nil
+        usernameTextField.text = ""
+        userEmailTextField.text = ""
         self.title = ""
         self.navigationController?.tabBarItem.title = "Perfil"
     }
@@ -120,7 +120,6 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let selectedImage = info[.originalImage] as? UIImage{
-            self.userProfileImage.image = selectedImage
             let imageStringData = convertImageToBase64(image: selectedImage)
             self.indicatorView.isHidden = false
 

@@ -27,8 +27,8 @@
 		D43217E327A7060000770DA2 /* MapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43217E227A7060000770DA2 /* MapsVC.swift */; };
 		D43217E527A73DDF00770DA2 /* QRVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43217E427A73DDF00770DA2 /* QRVC.swift */; };
 		D44E4A7827C0F4F600B5A373 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44E4A7727C0F4F600B5A373 /* Connection.swift */; };
-		D473DC8E27A447D5002B88E3 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D473DC8D27A447D5002B88E3 /* DetailCell.swift */; };
-		D4A370BC27A01A5C005A2113 /* HomeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A370BB27A01A5C005A2113 /* HomeTVCell.swift */; };
+		D473DC8E27A447D5002B88E3 /* BeerPubsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D473DC8D27A447D5002B88E3 /* BeerPubsCell.swift */; };
+		D4A370BC27A01A5C005A2113 /* BeerListHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A370BB27A01A5C005A2113 /* BeerListHomeCell.swift */; };
 		D4A370BE27A063CE005A2113 /* TableHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A370BD27A063CE005A2113 /* TableHome.swift */; };
 		D4B746B127A1507F00984654 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D4B746B027A1507F00984654 /* IQKeyboardManagerSwift */; };
 		D4B746B327A294F000984654 /* GamificacionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B746B227A294F000984654 /* GamificacionVC.swift */; };
@@ -70,8 +70,8 @@
 		D43217E227A7060000770DA2 /* MapsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsVC.swift; sourceTree = "<group>"; };
 		D43217E427A73DDF00770DA2 /* QRVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRVC.swift; sourceTree = "<group>"; };
 		D44E4A7727C0F4F600B5A373 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
-		D473DC8D27A447D5002B88E3 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
-		D4A370BB27A01A5C005A2113 /* HomeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVCell.swift; sourceTree = "<group>"; };
+		D473DC8D27A447D5002B88E3 /* BeerPubsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerPubsCell.swift; sourceTree = "<group>"; };
+		D4A370BB27A01A5C005A2113 /* BeerListHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListHomeCell.swift; sourceTree = "<group>"; };
 		D4A370BD27A063CE005A2113 /* TableHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHome.swift; sourceTree = "<group>"; };
 		D4B746B227A294F000984654 /* GamificacionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamificacionVC.swift; sourceTree = "<group>"; };
 		D4B746B427A2983F00984654 /* RankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCell.swift; sourceTree = "<group>"; };
@@ -139,6 +139,64 @@
 			path = Birringo;
 			sourceTree = "<group>";
 		};
+		D44E4A7927C1A47A00B5A373 /* MainVC */ = {
+			isa = PBXGroup;
+			children = (
+				D415414D279DF5FD003E8313 /* LaunchScreenVC.swift */,
+				D40EB9A9279F344B0026044E /* HomeVC.swift */,
+				D43217E227A7060000770DA2 /* MapsVC.swift */,
+				D4B746B227A294F000984654 /* GamificacionVC.swift */,
+				33D1DD9927A06201009CE75E /* PerfilVC.swift */,
+			);
+			path = MainVC;
+			sourceTree = "<group>";
+		};
+		D44E4A7A27C1A4A400B5A373 /* LoginRegisterVC */ = {
+			isa = PBXGroup;
+			children = (
+				D415415B279E10ED003E8313 /* LoginVC.swift */,
+				D415415D279E1B38003E8313 /* RegisterVC.swift */,
+				D410A1C727B28AE10056FD7B /* RecoverPassVC.swift */,
+			);
+			path = LoginRegisterVC;
+			sourceTree = "<group>";
+		};
+		D44E4A7B27C1A5A400B5A373 /* GamificationCells */ = {
+			isa = PBXGroup;
+			children = (
+				D4B746B427A2983F00984654 /* RankingCell.swift */,
+				D4B746B527A2983F00984654 /* RankingCell.xib */,
+				D4B746B827A2985600984654 /* QuestCell.swift */,
+				D4B746B927A2985600984654 /* QuestCell.xib */,
+			);
+			path = GamificationCells;
+			sourceTree = "<group>";
+		};
+		D44E4A7C27C1A5CE00B5A373 /* TutorialCell */ = {
+			isa = PBXGroup;
+			children = (
+				D4CB6B7B279EB94700981F25 /* OnboardingCollectionViewCell.swift */,
+			);
+			path = TutorialCell;
+			sourceTree = "<group>";
+		};
+		D44E4A7D27C1A60800B5A373 /* ProfileCells */ = {
+			isa = PBXGroup;
+			children = (
+				33A873C627A1C20400383B4A /* PerfilOpstionsCell.swift */,
+				33DEED0E27A3106E0017C62D /* FavoritosCell.swift */,
+			);
+			path = ProfileCells;
+			sourceTree = "<group>";
+		};
+		D44E4A7E27C1A71400B5A373 /* TutorialVC */ = {
+			isa = PBXGroup;
+			children = (
+				D4CB6B73279EADF000981F25 /* OnboardingVC.swift */,
+			);
+			path = TutorialVC;
+			sourceTree = "<group>";
+		};
 		D4B859FD27B9149A00F73278 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,20 +210,14 @@
 		D4CB6B70279EAD9500981F25 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				D415414D279DF5FD003E8313 /* LaunchScreenVC.swift */,
-				D415415B279E10ED003E8313 /* LoginVC.swift */,
-				D415415D279E1B38003E8313 /* RegisterVC.swift */,
-				D410A1C727B28AE10056FD7B /* RecoverPassVC.swift */,
-				D40EB9A9279F344B0026044E /* HomeVC.swift */,
-				33D1DD9927A06201009CE75E /* PerfilVC.swift */,
+				D44E4A7E27C1A71400B5A373 /* TutorialVC */,
+				D44E4A7A27C1A4A400B5A373 /* LoginRegisterVC */,
+				D44E4A7927C1A47A00B5A373 /* MainVC */,
 				E97ED38827B1173000F4052B /* AjustesVC.swift */,
 				33A873C027A1A40D00383B4A /* FavoritosVC.swift */,
-				D4B746B227A294F000984654 /* GamificacionVC.swift */,
+				D43217E427A73DDF00770DA2 /* QRVC.swift */,
 				D4B746BC27A3FAEF00984654 /* QuestDetailVC.swift */,
 				D4B746BE27A4149700984654 /* BeerDetailVC.swift */,
-				D43217E227A7060000770DA2 /* MapsVC.swift */,
-				D43217E427A73DDF00770DA2 /* QRVC.swift */,
-				D4CB6B73279EADF000981F25 /* OnboardingVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -191,15 +243,11 @@
 		D4CB6B7A279EB91C00981F25 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				D4CB6B7B279EB94700981F25 /* OnboardingCollectionViewCell.swift */,
-				D4A370BB27A01A5C005A2113 /* HomeTVCell.swift */,
-				33A873C627A1C20400383B4A /* PerfilOpstionsCell.swift */,
-				D4B746B427A2983F00984654 /* RankingCell.swift */,
-				D4B746B527A2983F00984654 /* RankingCell.xib */,
-				D4B746B827A2985600984654 /* QuestCell.swift */,
-				D4B746B927A2985600984654 /* QuestCell.xib */,
-				33DEED0E27A3106E0017C62D /* FavoritosCell.swift */,
-				D473DC8D27A447D5002B88E3 /* DetailCell.swift */,
+				D44E4A7D27C1A60800B5A373 /* ProfileCells */,
+				D44E4A7C27C1A5CE00B5A373 /* TutorialCell */,
+				D44E4A7B27C1A5A400B5A373 /* GamificationCells */,
+				D4A370BB27A01A5C005A2113 /* BeerListHomeCell.swift */,
+				D473DC8D27A447D5002B88E3 /* BeerPubsCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -303,9 +351,9 @@
 				3300E94327972C77002C5B12 /* SceneDelegate.swift in Sources */,
 				D4B859FF27B914B300F73278 /* Response.swift in Sources */,
 				D43217E327A7060000770DA2 /* MapsVC.swift in Sources */,
-				D4A370BC27A01A5C005A2113 /* HomeTVCell.swift in Sources */,
+				D4A370BC27A01A5C005A2113 /* BeerListHomeCell.swift in Sources */,
 				D4B746B627A2983F00984654 /* RankingCell.swift in Sources */,
-				D473DC8E27A447D5002B88E3 /* DetailCell.swift in Sources */,
+				D473DC8E27A447D5002B88E3 /* BeerPubsCell.swift in Sources */,
 				D4CB6B79279EB40C00981F25 /* OnboardingSlide.swift in Sources */,
 				33A873C127A1A40D00383B4A /* FavoritosVC.swift in Sources */,
 				D415415C279E10EE003E8313 /* LoginVC.swift in Sources */,
