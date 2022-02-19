@@ -11,14 +11,14 @@ struct Response: Codable {
     var status : Int
     var msg : String
     var api_token : String?
-    var listado_empleados : [UserData]?
+    //var listado_empleados : [UserData]?
     var datos_perfil : UserData?
-    //Como esruturar datos?
 }
 struct UserData : Codable {
-    var id : Int
-    var name : String
+    var id : Int?
+    var name : String?
     var email : String?
-    var password : String?
-    var telefono : String?
+    var imagen : String?
+    var telefono : Int?
+    var puntos : Int?
 }

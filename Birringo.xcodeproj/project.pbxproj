@@ -26,6 +26,7 @@
 		D415415E279E1B38003E8313 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415415D279E1B38003E8313 /* RegisterVC.swift */; };
 		D43217E327A7060000770DA2 /* MapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43217E227A7060000770DA2 /* MapsVC.swift */; };
 		D43217E527A73DDF00770DA2 /* QRVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43217E427A73DDF00770DA2 /* QRVC.swift */; };
+		D44E4A7827C0F4F600B5A373 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44E4A7727C0F4F600B5A373 /* Connection.swift */; };
 		D473DC8E27A447D5002B88E3 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D473DC8D27A447D5002B88E3 /* DetailCell.swift */; };
 		D4A370BC27A01A5C005A2113 /* HomeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A370BB27A01A5C005A2113 /* HomeTVCell.swift */; };
 		D4A370BE27A063CE005A2113 /* TableHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A370BD27A063CE005A2113 /* TableHome.swift */; };
@@ -68,6 +69,7 @@
 		D415415D279E1B38003E8313 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		D43217E227A7060000770DA2 /* MapsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsVC.swift; sourceTree = "<group>"; };
 		D43217E427A73DDF00770DA2 /* QRVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRVC.swift; sourceTree = "<group>"; };
+		D44E4A7727C0F4F600B5A373 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		D473DC8D27A447D5002B88E3 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		D4A370BB27A01A5C005A2113 /* HomeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVCell.swift; sourceTree = "<group>"; };
 		D4A370BD27A063CE005A2113 /* TableHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHome.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				D4B85A0027B914C300F73278 /* NetworkManager.swift */,
 				D4B85A0227B914CE00F73278 /* Session.swift */,
+				D44E4A7727C0F4F600B5A373 /* Connection.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				3300E94127972C77002C5B12 /* AppDelegate.swift in Sources */,
 				D40EB9AA279F344B0026044E /* HomeVC.swift in Sources */,
 				D4CB6B77279EB30D00981F25 /* UIView+Extension.swift in Sources */,
+				D44E4A7827C0F4F600B5A373 /* Connection.swift in Sources */,
 				D4B746BD27A3FAEF00984654 /* QuestDetailVC.swift in Sources */,
 				D4CB6B74279EADF000981F25 /* OnboardingVC.swift in Sources */,
 				33A873C727A1C20400383B4A /* PerfilOpstionsCell.swift in Sources */,

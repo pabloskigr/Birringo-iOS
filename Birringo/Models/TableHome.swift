@@ -22,7 +22,6 @@ struct Bares {
     var latitud: Double
     var longitud: Double
     var distance : Double?
-   
 }
 
 struct PerfilData {

@@ -17,52 +17,21 @@ final class NetworkManager {
     static let shared = NetworkManager()
     private init() {}
     
-    static var baseURL = "http://localhost/Birringo/public/api/usuarios/"
-    var loginUserURL = baseURL + "login"
-    var registerUserURL = baseURL + "register"
-    var recoverPassURL = baseURL + "recoverPass"
-    var getEmployeeListURL = baseURL + "listado_empleados?api_token="
-    var getEmployeeProfileURL = baseURL + "ver_perfil?api_token="
-    var editUserDataURL = baseURL + "modificar_datos/"
+    private var imageCache = NSCache<NSString, UIImage>()
+    var loginUserURL = "login"
+    var registerUserURL = "register"
+    var recoverPassURL = "recoverPass"
+    var getUserProfileURL = "getUserProfile?api_token="
+    var uploadProfilImageURL = "uploadProfileImage?api_token="
+    
+    // var getEmployeeListURL = "listado_empleados?api_token="
+    //var editUserDataURL = "modificar_datos/"
+
     
     func registerUser(params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void) {
         
-        guard let url = URL(string: registerUserURL) else {
-            completion(nil, .errorURL)
-            return
-        }
-        var urlRequest = URLRequest(url: url, timeoutInterval: 10)
-        
-        if let params = params {
-            guard let paramsData = try? JSONSerialization.data(withJSONObject: params, options: []) else {
-                completion(nil, .badData)
-                return
-            }
-           
-            urlRequest.httpMethod = "PUT"
-            urlRequest.httpBody = paramsData
-        }
-        let headers = [
-            "Content-Type": "application/json",
-            "Accept":       "application/json"
-        ]
-        let sessionConfiguration = URLSessionConfiguration.default
-        sessionConfiguration.httpAdditionalHeaders = headers
-        let urlSession = URLSession(configuration: sessionConfiguration)
-        
-        let networkTask = urlSession.dataTask(with: urlRequest) {
-            data, response, error in
-    
-            guard response is HTTPURLResponse else {
-                completion(nil, .errorConnection)
-                return
-            }
-            
-            guard error == nil else {
-                print("error al obtener los datos")
-                completion(nil, .badData)
-                return
-            }
+        Connection().connect(httpMethod: "PUT", to: registerUserURL, params: params) {
+            data, error in
             
             guard let data = data else {
                 print("error al convertir a data")
@@ -70,6 +39,11 @@ final class NetworkManager {
                 return
             }
             
+            guard error == nil else {
+                completion(nil, .badData)
+                return
+            }
+
             do {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode(Response.self, from: data)
@@ -80,56 +54,24 @@ final class NetworkManager {
                 completion(nil, .badData)
             }
         }
-        networkTask.resume()
     }
     
     func recoverPassword(params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void){
         
-        guard let url = URL(string: recoverPassURL) else {
-            completion(nil, .errorURL)
-            return
-        }
-        var urlRequest = URLRequest(url: url, timeoutInterval: 10)
-        
-        if let params = params {
-            guard let paramsData = try? JSONSerialization.data(withJSONObject: params, options: []) else {
+        Connection().connect(httpMethod: "POST", to: recoverPassURL, params: params) {
+            data, error in
+            
+            guard let data = data else {
+                print("error al convertir a data")
                 completion(nil, .badData)
-                return
-            }
-           
-            urlRequest.httpMethod = "POST"
-            urlRequest.httpBody = paramsData
-        }
-        let headers = [
-            "Content-Type": "application/json",
-            "Accept":       "application/json"
-        ]
-        
-        let sessionConfiguration = URLSessionConfiguration.default
-        sessionConfiguration.httpAdditionalHeaders = headers
-        let urlSession = URLSession(configuration: sessionConfiguration)
-        
-        let networkTask = urlSession.dataTask(with: urlRequest) {
-            data, response, error in
-        
-            guard response is HTTPURLResponse else {
-                completion(nil, .errorConnection)
                 return
             }
             
             guard error == nil else {
-                print("error al obtener los datos")
                 completion(nil, .badData)
                 return
             }
-            
-            guard let data = data else {
-                print("error al convertir a data")
-                print(data as Any)
-                completion(nil, .badData)
-                return
-            }
-            
+
             do {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode(Response.self, from: data)
@@ -140,54 +82,82 @@ final class NetworkManager {
                 completion(nil, .badData)
             }
         }
-        networkTask.resume()
     }
     
     func login(params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void){
         
-        guard let url = URL(string: loginUserURL) else {
-            completion(nil, .errorURL)
-            return
-        }
-        var urlRequest = URLRequest(url: url, timeoutInterval: 10)
-        
-        if let params = params {
-            guard let paramsData = try? JSONSerialization.data(withJSONObject: params, options: []) else {
+        Connection().connect(httpMethod: "POST", to: loginUserURL, params: params) {
+            data, error in
+            
+            guard let data = data else {
+                print("error al convertir a data")
                 completion(nil, .badData)
                 return
             }
-            urlRequest.httpMethod = "POST"
-            urlRequest.httpBody = paramsData
-        }
-        let headers = [
-            "Content-Type": "application/json",
-            "Accept":       "application/json"
-        ]
-        let sessionConfiguration = URLSessionConfiguration.default
-        sessionConfiguration.httpAdditionalHeaders = headers
-        let urlSession = URLSession(configuration: sessionConfiguration)
-        
-        let networkTask = urlSession.dataTask(with: urlRequest) {
-            data, response, error in
-        
-            guard response is HTTPURLResponse else {
-                completion(nil, .errorConnection)
+            
+            guard error == nil else {
+                completion(nil, .badData)
                 return
             }
 
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(Response.self, from: data)
+                completion(response, nil)
+
+            } catch {
+                print("error al decodificar")
+                completion(nil, .badData)
+            }
+        }
+    }
+
+    func getUserProfile(apiToken: String ,completion: @escaping (Response?, NetworkError?) -> Void){
+     
+        Connection().connectGetData(to: getUserProfileURL + apiToken){
+            data, error in
+            
+            guard let data = data else {
+                completion(nil, .badData)
+                return
+            }
+            
+            guard error == nil else {
+                completion(nil, .badData)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(Response.self, from: data)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    completion(response, nil)
+                }
+            } catch {
+                completion(nil, .badData)
+                print("error al decodificar")
+            }
+            
+        }
+    }
+    
+    func uploadProfileImage(apiToken: String, params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void) {
+        
+        Connection().connect(httpMethod: "POST", to: uploadProfilImageURL + apiToken, params: params) {
+            data, error in
+            
+            guard let data = data else {
+                print("error al convertir a data")
+                completion(nil, .badData)
+                return
+            }
+            
             guard error == nil else {
                 print("error al obtener los datos")
                 completion(nil, .badData)
                 return
             }
             
-            guard let data = data else {
-                print("error al convertir a data")
-                print(data as Any)
-                completion(nil, .badData)
-                return
-            }
-            
             do {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode(Response.self, from: data)
@@ -198,124 +168,21 @@ final class NetworkManager {
                 completion(nil, .badData)
             }
         }
-        networkTask.resume()
+  
     }
     
-    func getEmployeeList(apiToken: String ,completion: @escaping (Response?, NetworkError?) -> Void){
-        guard let url = URL(string: getEmployeeListURL + apiToken) else {
-            completion(nil, .errorURL)
-            return
-        }
-        let urlRequest = URLRequest(url:url)
-        let networkTask = URLSession.shared.dataTask(with: urlRequest) {
-            data, response, error in
-            
-            guard response is HTTPURLResponse else {
-                completion(nil, .errorConnection)
-                return
-            }
-            
-            guard error == nil else {
-                completion(nil, .badData)
-                print("Error al obtener datos")
-                return
-            }
-            
-            guard let data = data else {
-                completion(nil, .badData)
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let response = try decoder.decode(Response.self, from: data)
-                completion(response, nil)
-            } catch {
-                completion(nil, .badData)
-                print("error al decodificar")
-            }
-        }
-        networkTask.resume()
-    }
-    
-    func getEmployeeProfile(apiToken: String ,completion: @escaping (Response?, NetworkError?) -> Void){
-        guard let url = URL(string: getEmployeeProfileURL + apiToken) else {
-            completion(nil, .errorURL)
-            return
-        }
-        let urlRequest = URLRequest(url:url)
-        let networkTask = URLSession.shared.dataTask(with: urlRequest) {
-            data, response, error in
-            
-            guard response is HTTPURLResponse else {
-                completion(nil, .errorConnection)
-                return
-            }
-            
-            guard error == nil else {
-                completion(nil, .badData)
-                print("Error al obtener datos")
-                return
-            }
-            
-            guard let data = data else {
-                completion(nil, .badData)
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let response = try decoder.decode(Response.self, from: data)
-                completion(response, nil)
-            } catch {
-                completion(nil, .badData)
-                print("error al decodificar")
-            }
-        }
-        networkTask.resume()
-    }
-    
+    //El edit no esta hecho aun solo estrcuturado.
     func editUserData(id : String ,apiToken: String, params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void) {
         
-        guard let url = URL(string: editUserDataURL + id + "?api_token=" + apiToken) else {
-            completion(nil, .errorURL)
-            return
-        }
-        var urlRequest = URLRequest(url: url, timeoutInterval: 10)
-        
-        if let params = params {
-            guard let paramsData = try? JSONSerialization.data(withJSONObject: params, options: []) else {
+        /*Connection().connectGetData(to: editUserDataURL + id + "?api_token=" + apiToken){
+            data, error in
+            
+            guard let data = data else {
                 completion(nil, .badData)
-                return
-            }
-           
-            urlRequest.httpMethod = "POST"
-            urlRequest.httpBody = paramsData
-        }
-        let headers = [
-            "Content-Type": "application/json",
-            "Accept":       "application/json"
-        ]
-        let sessionConfiguration = URLSessionConfiguration.default
-        sessionConfiguration.httpAdditionalHeaders = headers
-        let urlSession = URLSession(configuration: sessionConfiguration)
-        
-        let networkTask = urlSession.dataTask(with: urlRequest) {
-            data, response, error in
-    
-            guard response is HTTPURLResponse else {
-                completion(nil, .errorConnection)
                 return
             }
             
             guard error == nil else {
-                print("error al obtener los datos")
-                completion(nil, .badData)
-                return
-            }
-            
-            guard let data = data else {
-                print("error al convertir a data")
                 completion(nil, .badData)
                 return
             }
@@ -323,14 +190,54 @@ final class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode(Response.self, from: data)
-                completion(response, nil)
-
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    completion(response, nil)
+                }
             } catch {
-                print("error al decodificar")
                 completion(nil, .badData)
+                print("error al decodificar")
             }
+        }*/
+    }
+    
+    
+    func getImageFrom(imageUrl: String, completion: @escaping (UIImage?) -> Void) {
+
+        let cacheKey = NSString(string: imageUrl)
+        if let image = imageCache.object(forKey: cacheKey) {
+            completion(image)
+            return
+        }
+
+        guard let url = URL(string: imageUrl) else {
+            completion(nil)
+            return
+        }
+
+        let urlRequest = URLRequest(url: url)
+        let networkTask = URLSession.shared.dataTask(with: urlRequest) {
+
+            data, response, error in
+            guard error == nil else {
+                completion(nil)
+                return
+            }
+
+            guard let data = data else {
+                completion(nil)
+                return
+            }
+
+            guard let image = UIImage(data: data) else {
+                completion(nil)
+                return
+            }
+
+            self.imageCache.setObject(image, forKey: cacheKey)
+            completion(image)
         }
         networkTask.resume()
+
     }
     
     
