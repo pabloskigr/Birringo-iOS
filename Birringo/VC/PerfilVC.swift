@@ -53,23 +53,12 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
         NetworkManager.shared.getUserProfile(apiToken: Session.shared.api_token!){
             response , errors in DispatchQueue.main.async{
                 self.response = response
-                
+        
                 if response?.msg == "Datos obtenidos" && response?.status == 1 {
+                    self.loadProfileImage()
                     self.usernameTextField.text = response?.datos_perfil?.name ?? "Jonathan Miguel"
                     self.userEmailTextField.text = response?.datos_perfil?.email ?? "jonacedev@gmail.com"
-                
-                    NetworkManager.shared.getImageFrom(imageUrl: response?.datos_perfil?.imagen ?? ""){
-                        image in DispatchQueue.main.async {
-                            self.indicatorView.isHidden = true
-                            if let image = image {
-                                self.userProfileImage.image = image
-                                self.userProfileImage.layer.cornerRadius = self.userProfileImage.bounds.size.width / 2.0
-                            } else {
-                                //Si el usuario del cual obtenemos los datos no tiene imagen de perfil en la base de datos se le asignara na por defecto.
-                                self.userProfileImage.image = UIImage(named: "user_img")!
-                            }
-                        }
-                    }
+                    
                 } else if errors == .badData {
                     self.displayAlert(title: "Error", message: "Ha habido un error")
                     
@@ -78,6 +67,21 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
                     
                 } else {
                     self.displayAlert(title: "Error", message: "Ha habido un error")
+                }
+            }
+        }
+    }
+    
+    func loadProfileImage(){
+        NetworkManager.shared.getImageFrom(imageUrl: response?.datos_perfil?.imagen ?? ""){
+            image in DispatchQueue.main.async {
+                self.indicatorView.isHidden = true
+                if let image = image {
+                    self.userProfileImage.image = image
+                    self.userProfileImage.layer.cornerRadius = self.userProfileImage.bounds.size.width / 2.0
+                } else {
+                    //Si el usuario del cual obtenemos los datos no tiene imagen de perfil en la base de datos se le asignara na por defecto.
+                    self.userProfileImage.image = UIImage(named: "user_img")!
                 }
             }
         }
@@ -115,7 +119,8 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let selectedImage = info[.originalImage] as? UIImage {
+        if let selectedImage = info[.originalImage] as? UIImage{
+            self.userProfileImage.image = selectedImage
             let imageStringData = convertImageToBase64(image: selectedImage)
             self.indicatorView.isHidden = false
 
@@ -155,10 +160,9 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
     
     //Funcion para convertir imagen a base64 con el fin de enviarlo posteriormente al servidor donde se almacenara.
     func convertImageToBase64(image: UIImage) -> String {
-            let imageData = image.pngData()!
+        let imageData = image.jpegData(compressionQuality: 0.6)!
             return imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
     }
-    
     
     //Table view functions
     func numberOfSections(in tableView: UITableView) -> Int {
