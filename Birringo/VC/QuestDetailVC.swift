@@ -26,6 +26,7 @@ class QuestDetailVC: UIViewController, CLLocationManagerDelegate {
         setupColors()
         getUserLocation()
         
+        
         questTitle.text = questData?.title
         questLocation.text = String((questData?.location[0].title) ?? "")
         questPoints.text = "Puntos: \(questData?.points ?? 0)"

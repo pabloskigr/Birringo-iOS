@@ -28,13 +28,13 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         beerLocationsTableView.delegate = self
         beerLocationsTableView.dataSource = self
         getUserLocation()
+        beerImage.image = nil
         
         sortButton.setTitle("", for: .normal)
         beerName.text = beer?.titulo
         beerDescription.text = beer?.descripcion
         NetworkManager.shared.getImageFrom(imageUrl: beer?.imagen2 ?? ""){
             image in DispatchQueue.main.async {
-                //self.indicatorView.isHidden = true
                 if let image = image {
                     self.beerImage.image = image
                 } else {

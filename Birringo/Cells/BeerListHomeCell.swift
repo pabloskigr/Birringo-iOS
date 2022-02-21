@@ -23,13 +23,13 @@ class BeerListHomeCell: UITableViewCell {
         guard let data = data else {
             return
         }
+        beerImage.image = nil
         beerTitle.text = data.titulo ?? "No hay titulo"
         beerType.text = data.tipo ?? "No hay tipo"
         beerGraduation.text = "\(data.graduacion ?? "0")%"
         
         NetworkManager.shared.getImageFrom(imageUrl: data.imagen ?? ""){
             image in DispatchQueue.main.async {
-                //self.indicatorView.isHidden = true
                 if let image = image {
                     self.beerImage.image = image
                 } else {

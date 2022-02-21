@@ -37,7 +37,6 @@ class LaunchScreenVC: UIViewController {
     func checkApiToken(){
         if UserDefaults.standard.string(forKey: "api_token") != nil{
             Session.shared.api_token = UserDefaults.standard.string(forKey: "api_token")
-            print(Session.shared.api_token!)
             toHomeview()
         } else {
             if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {

@@ -612,34 +612,37 @@
                                     <string>Title</string>
                                 </scopeButtonTitles>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OmK-an-Qcc">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OmK-an-Qcc">
                                 <rect key="frame" x="0.0" y="265.66666666666669" width="428" height="660.33333333333326"/>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCellid" rowHeight="100" id="RoU-Jo-Kbn" customClass="BeerListHomeCell" customModule="Birringo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCellid" rowHeight="120" id="RoU-Jo-Kbn" customClass="BeerListHomeCell" customModule="Birringo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RoU-Jo-Kbn" id="qmb-oT-zwW">
-                                            <rect key="frame" x="0.0" y="0.0" width="399.33333333333331" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="399.33333333333331" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beer_image" translatesAutoresizingMaskIntoConstraints="NO" id="Adm-Dp-JvV">
-                                                    <rect key="frame" x="36.999999999999993" y="10" width="85.333333333333314" height="80"/>
+                                                    <rect key="frame" x="36.999999999999993" y="12" width="85.333333333333314" height="96"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heineken beers" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="500" translatesAutoresizingMaskIntoConstraints="NO" id="ANE-Fx-H8G">
-                                                    <rect key="frame" x="129.33333333333334" y="29.333333333333329" width="125" height="21.666666666666671"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heineken beers jhdahdklajdlñajdklahlkana" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANE-Fx-H8G">
+                                                    <rect key="frame" x="142.33333333333337" y="28.666666666666671" width="240" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="240" id="NhF-6B-eKd"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7.5%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCz-7w-Ww0">
-                                                    <rect key="frame" x="182.33333333333334" y="53.666666666666664" width="33.333333333333343" height="17.999999999999993"/>
+                                                    <rect key="frame" x="195.33333333333334" y="75.333333333333329" width="33.333333333333343" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rubia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIP-Ng-NxW">
-                                                    <rect key="frame" x="129.33333333333334" y="53" width="41" height="19.333333333333329"/>
+                                                    <rect key="frame" x="142.33333333333334" y="74.666666666666671" width="41" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -650,12 +653,12 @@
                                                 <constraint firstItem="PCz-7w-Ww0" firstAttribute="leading" secondItem="kIP-Ng-NxW" secondAttribute="trailing" constant="12" id="3jY-sw-M31"/>
                                                 <constraint firstItem="kIP-Ng-NxW" firstAttribute="leading" secondItem="ANE-Fx-H8G" secondAttribute="leading" id="DEO-hE-knA"/>
                                                 <constraint firstItem="Adm-Dp-JvV" firstAttribute="centerX" secondItem="qmb-oT-zwW" secondAttribute="centerX" constant="-120" id="DpG-pw-4W6"/>
-                                                <constraint firstItem="ANE-Fx-H8G" firstAttribute="leading" secondItem="Adm-Dp-JvV" secondAttribute="trailing" constant="7" id="IPb-oL-Rho"/>
+                                                <constraint firstItem="ANE-Fx-H8G" firstAttribute="leading" secondItem="Adm-Dp-JvV" secondAttribute="trailing" constant="20" id="IPb-oL-Rho"/>
                                                 <constraint firstItem="Adm-Dp-JvV" firstAttribute="height" secondItem="qmb-oT-zwW" secondAttribute="height" multiplier="0.8" id="bV7-ve-RSm"/>
                                                 <constraint firstItem="Adm-Dp-JvV" firstAttribute="width" secondItem="qmb-oT-zwW" secondAttribute="width" multiplier="0.213904" id="k6R-Ra-eAd"/>
                                                 <constraint firstItem="Adm-Dp-JvV" firstAttribute="centerY" secondItem="qmb-oT-zwW" secondAttribute="centerY" id="lXJ-IT-HQn"/>
                                                 <constraint firstItem="PCz-7w-Ww0" firstAttribute="centerY" secondItem="kIP-Ng-NxW" secondAttribute="centerY" id="uhT-mo-Q0J"/>
-                                                <constraint firstItem="kIP-Ng-NxW" firstAttribute="top" secondItem="ANE-Fx-H8G" secondAttribute="bottom" constant="2" id="xvt-TJ-l5S"/>
+                                                <constraint firstItem="kIP-Ng-NxW" firstAttribute="top" secondItem="ANE-Fx-H8G" secondAttribute="bottom" constant="3" id="xvt-TJ-l5S"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="corneRadius">
@@ -708,8 +711,11 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="399.33333333333331" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heineken" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqf-G5-LgR">
-                                                            <rect key="frame" x="141" y="29.666666666666671" width="75.333333333333314" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heineken jai jfai fiajfajfiajfaj fao f" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqf-G5-LgR">
+                                                            <rect key="frame" x="141" y="18.666666666666671" width="230" height="43"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="230" id="9Fm-Bv-3oP"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -722,13 +728,13 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkP-Qt-Fpj">
-                                                            <rect key="frame" x="194" y="53.333333333333336" width="29.666666666666657" height="18.000000000000007"/>
+                                                            <rect key="frame" x="194" y="66.333333333333329" width="29.666666666666657" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rubia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRD-oK-8bE">
-                                                            <rect key="frame" x="141" y="52.666666666666664" width="41" height="19.333333333333336"/>
+                                                            <rect key="frame" x="141" y="65.666666666666671" width="41" height="19.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -741,7 +747,7 @@
                                                         <constraint firstItem="dkP-Qt-Fpj" firstAttribute="centerY" secondItem="dRD-oK-8bE" secondAttribute="centerY" id="JqE-hX-U8D"/>
                                                         <constraint firstItem="mqf-G5-LgR" firstAttribute="leading" secondItem="NLZ-kV-ve5" secondAttribute="trailing" constant="20" id="MJD-Ud-wUD"/>
                                                         <constraint firstItem="NLZ-kV-ve5" firstAttribute="centerX" secondItem="FV5-bA-04f" secondAttribute="centerX" constant="-120" id="OaS-eQ-qT4"/>
-                                                        <constraint firstItem="dRD-oK-8bE" firstAttribute="top" secondItem="mqf-G5-LgR" secondAttribute="bottom" constant="2" id="Onf-5p-Q6u"/>
+                                                        <constraint firstItem="dRD-oK-8bE" firstAttribute="top" secondItem="mqf-G5-LgR" secondAttribute="bottom" constant="4" id="Onf-5p-Q6u"/>
                                                         <constraint firstItem="dkP-Qt-Fpj" firstAttribute="leading" secondItem="dRD-oK-8bE" secondAttribute="trailing" constant="12" id="rED-Km-LmN"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
@@ -835,20 +841,20 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cervezas-la-Virgen" translatesAutoresizingMaskIntoConstraints="NO" id="9NC-0f-b2S">
                                 <rect key="frame" x="0.0" y="44" width="428" height="324"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITULO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwJ-uT-sXo">
-                                <rect key="frame" x="30" y="393" width="91" height="26"/>
-                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITULO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwJ-uT-sXo">
+                                <rect key="frame" x="30" y="393" width="363.66666666666669" height="24.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cerveza heineken con un toque proveniente de alemania, ingredientes naturales y ademas una textura inigualable." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adc-Nv-yIz">
-                                <rect key="frame" x="30" y="429" width="363.66666666666669" height="59.666666666666686"/>
-                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
+                                <rect key="frame" x="30" y="427.33333333333331" width="363.66666666666669" height="56.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Lta-5J-vXQ">
-                                <rect key="frame" x="0.0" y="518.66666666666663" width="428" height="373.33333333333337"/>
+                                <rect key="frame" x="0.0" y="513.66666666666663" width="428" height="378.33333333333337"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DetailTableCellid" rowHeight="60" id="kfY-3l-3RC" customClass="BeerPubsCell" customModule="Birringo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="60"/>
@@ -922,7 +928,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEz-25-ddk">
-                                <rect key="frame" x="378" y="488.66666666666669" width="40" height="25.000000000000057"/>
+                                <rect key="frame" x="378" y="483.66666666666669" width="40" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="jZD-EU-4Se"/>
                                     <constraint firstAttribute="width" constant="40" id="pj9-uf-7WU"/>
@@ -953,6 +959,7 @@
                             <constraint firstItem="tgj-aR-rMo" firstAttribute="trailing" secondItem="jEz-25-ddk" secondAttribute="trailing" constant="10" id="p67-5N-p3i"/>
                             <constraint firstItem="9NC-0f-b2S" firstAttribute="height" secondItem="iNu-Ev-dLj" secondAttribute="height" multiplier="0.35" id="qhm-br-QlR"/>
                             <constraint firstItem="rjp-Jc-Y5G" firstAttribute="leading" secondItem="9NC-0f-b2S" secondAttribute="trailing" constant="-60" id="rJI-Jw-vys"/>
+                            <constraint firstItem="SwJ-uT-sXo" firstAttribute="trailing" secondItem="adc-Nv-yIz" secondAttribute="trailing" id="seo-I0-8TW"/>
                             <constraint firstItem="tgj-aR-rMo" firstAttribute="trailing" secondItem="9NC-0f-b2S" secondAttribute="trailing" id="xN6-eD-bhr"/>
                             <constraint firstItem="jEz-25-ddk" firstAttribute="top" secondItem="adc-Nv-yIz" secondAttribute="bottom" id="xsc-t5-TuA"/>
                         </constraints>
