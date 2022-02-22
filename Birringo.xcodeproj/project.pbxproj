@@ -28,9 +28,9 @@
 		D43217E527A73DDF00770DA2 /* QRVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43217E427A73DDF00770DA2 /* QRVC.swift */; };
 		D44E4A7827C0F4F600B5A373 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44E4A7727C0F4F600B5A373 /* Connection.swift */; };
 		D473DC8E27A447D5002B88E3 /* BeerPubsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D473DC8D27A447D5002B88E3 /* BeerPubsCell.swift */; };
+		D49ABA6D27C56ACC00D2F5FC /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D49ABA6C27C56ACC00D2F5FC /* IQKeyboardManagerSwift */; };
 		D4A370BC27A01A5C005A2113 /* BeerListHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A370BB27A01A5C005A2113 /* BeerListHomeCell.swift */; };
 		D4A370BE27A063CE005A2113 /* TableHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A370BD27A063CE005A2113 /* TableHome.swift */; };
-		D4B746B127A1507F00984654 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D4B746B027A1507F00984654 /* IQKeyboardManagerSwift */; };
 		D4B746B327A294F000984654 /* GamificacionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B746B227A294F000984654 /* GamificacionVC.swift */; };
 		D4B746B627A2983F00984654 /* RankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B746B427A2983F00984654 /* RankingCell.swift */; };
 		D4B746B727A2983F00984654 /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B746B527A2983F00984654 /* RankingCell.xib */; };
@@ -96,7 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4154148279DEA8A003E8313 /* Lottie in Frameworks */,
-				D4B746B127A1507F00984654 /* IQKeyboardManagerSwift in Frameworks */,
+				D49ABA6D27C56ACC00D2F5FC /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +270,7 @@
 			name = Birringo;
 			packageProductDependencies = (
 				D4154147279DEA8A003E8313 /* Lottie */,
-				D4B746B027A1507F00984654 /* IQKeyboardManagerSwift */,
+				D49ABA6C27C56ACC00D2F5FC /* IQKeyboardManagerSwift */,
 			);
 			productName = Birringo;
 			productReference = 3300E93D27972C77002C5B12 /* Birringo.app */;
@@ -301,7 +301,7 @@
 			mainGroup = 3300E93427972C77002C5B12;
 			packageReferences = (
 				D4154146279DEA8A003E8313 /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				D4B746AF27A1507F00984654 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				D49ABA6B27C56ACC00D2F5FC /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 3300E93E27972C77002C5B12 /* Products */;
 			projectDirPath = "";
@@ -575,12 +575,12 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		D4B746AF27A1507F00984654 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+		D49ABA6B27C56ACC00D2F5FC /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
+				minimumVersion = 6.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -591,9 +591,9 @@
 			package = D4154146279DEA8A003E8313 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
-		D4B746B027A1507F00984654 /* IQKeyboardManagerSwift */ = {
+		D49ABA6C27C56ACC00D2F5FC /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D4B746AF27A1507F00984654 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			package = D49ABA6B27C56ACC00D2F5FC /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
