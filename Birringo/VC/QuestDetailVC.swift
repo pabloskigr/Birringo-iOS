@@ -10,7 +10,7 @@ import CoreLocation
 
 class QuestDetailVC: UIViewController, CLLocationManagerDelegate {
     
-    var questData : QuestData?
+    var questData : Quest?
     var locationManager = CLLocationManager()
     var barCordinates: CLLocation?
     var userCordinate: CLLocation?
@@ -25,33 +25,15 @@ class QuestDetailVC: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         setupColors()
         getUserLocation()
-        
-        
-        questTitle.text = questData?.title
-        questLocation.text = String((questData?.location[0].title) ?? "")
-        questPoints.text = "Puntos: \(questData?.points ?? 0)"
+        questTitle.text = questData?.titulo
+        questLocation.text = String((questData?.pub?.titulo) ?? "")
+        questPoints.text = "Puntos: \(questData?.puntos ?? 0)"
     }
     
     func setupColors(){
         questView.backgroundColor = UIColor(named: "background_views")
         questViewBox.backgroundColor = UIColor(named: "background_white")
-        questDistance.text = "Distancia: \(obtainDistance())"
     }
-    
-    func obtainDistance() -> String{
-        
-        userCordinate = CLLocation(latitude:(locationManager.location?.coordinate.latitude)!,longitude:(locationManager.location?.coordinate.longitude)!)
-        barCordinates = CLLocation(latitude: (questData?.location[0].latitud)!, longitude: (questData?.location[0].longitud)!)
-        var distance = userCordinate?.distance(from: barCordinates!) ?? 0
-        
-        if distance > 1000 {
-            distance = distance / 1000
-            return "\(round(distance))km"
-        } else {
-            return "\(round(distance))m"
-        }
-    }
-    
     
     func getUserLocation(){
         if CLLocationManager.locationServicesEnabled(){
@@ -59,7 +41,7 @@ class QuestDetailVC: UIViewController, CLLocationManagerDelegate {
             locationManagerDidChangeAuthorization(locationManager)
         } else {
             //Notificar al usuario que tiene el gps desactivado
-            print("GPS desactivado")
+            displayAlert(title: "GPS", message: "El GPS esta desactivado")
         }
     }
     
@@ -68,21 +50,39 @@ class QuestDetailVC: UIViewController, CLLocationManagerDelegate {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
         case .restricted:
-            print("Notificar al usuario. Localizacion restringida por configuracion paternal")
+            displayAlert(title: "Permisos restringidos", message: "Permisos de localización restingidos, no es posible obtener la distancia al bar.")
             break
         case .denied:
-            print("Localizacion restringida para la app en ajustes")
+            displayAlert(title: "Permisos denegados", message: "Permisos de localización denegados, no es posible obtener la distancia al bar.")
             break
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
-            userCordinate = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
-            print("Permisos OK")
+            questDistance.text = "Distancia: \(obtainDistance())"
         @unknown default:
             break
         }
     }
     
-
+    func obtainDistance() -> String {
+        
+        var distanceToReturn = ""
+        
+        if let latitudeDouble = locationManager.location?.coordinate.latitude, let longitudeDouble = locationManager.location?.coordinate.longitude {
+            
+            userCordinate = CLLocation(latitude: latitudeDouble, longitude: longitudeDouble)
+            var distance = userCordinate?.distance(from: barCordinates!) ?? 0
+            
+            if distance > 1000 {
+                distance = distance / 1000
+                distanceToReturn = "\(round(distance))km"
+            } else {
+                distanceToReturn = "\(round(distance))m"
+            }
+        }
+        return distanceToReturn
+    }
+    
+    
     @IBAction func ScannerButtonTapped(_ sender: Any) {
         if let qrVC = storyboard?.instantiateViewController(identifier: "QRVC") as? QRVC {
             qrVC.modalPresentationStyle = .fullScreen
@@ -93,13 +93,20 @@ class QuestDetailVC: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func MapsButtonTapped(_ sender: Any) {
         
-        if let mapsVC = storyboard?.instantiateViewController(withIdentifier: "MapsVC") as? MapsVC {
-            let latidud = questData?.location[0].latitud
-            let longitud = questData?.location[0].longitud
-            mapsVC.barName = questData?.location[0].title
+        if let mapsVC = storyboard?.instantiateViewController(withIdentifier: "DetailMapVC") as? DetailMapVC {
+            let latidud = questData?.pub?.latitud
+            let longitud = questData?.pub?.longitud
+            mapsVC.barName = questData?.pub?.titulo
             mapsVC.coordenadas = CLLocationCoordinate2DMake(latidud!, longitud!)
             navigationController?.pushViewController(mapsVC, animated: true)
         }
+    }
+    
+    // Funcion para instanciar alerts.
+    func displayAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }

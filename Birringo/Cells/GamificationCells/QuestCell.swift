@@ -11,18 +11,15 @@ class QuestCell: UITableViewCell {
 
     @IBOutlet weak var questTitle: UILabel!
     @IBOutlet weak var questPoints: UILabel!
-    var questData:QuestData? {
-        didSet {renderUI()}
-    }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    var questData : Quest? {
+        didSet {renderUI()}
     }
     
     private func renderUI(){
         guard let questData = questData else {return}
-        questTitle.text = questData.title
-        questPoints.text = "\(questData.points) pt"
+        questTitle.text = questData.titulo
+        questPoints.text = "\(questData.puntos) pt"
 
     }
     

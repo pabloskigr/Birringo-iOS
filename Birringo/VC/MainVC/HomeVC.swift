@@ -97,12 +97,12 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
     }
     
     func getBeers(tipo : String){
-        NetworkManager.shared.obtenerCervezasTiposMain(apiToken: Session.shared.api_token!, tipo: tipo){
+        NetworkManager.shared.getMainBeers(apiToken: Session.shared.api_token!, tipo: tipo){
             response, errors in DispatchQueue.main.async {
-                self.response = response
                 self.indicatorView.isHidden = true
                 
-                if response?.status == 1 && response?.msg == "Cervezas encontradas" {
+                if response?.status == 1 {
+                    self.response = response
                     self.titleToReturn = tipo
                     self.home_tableView.reloadData()
 
@@ -182,6 +182,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         searchBar.showsCancelButton = true
         searchView.isHidden = false
         self.titleToReturn = "Ultimas novedades"
+        //Obtener ultimas novedades
         searchBeers(input: "")
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -206,7 +207,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
     func searchBeers(input : String){
         self.indicatorView.isHidden = false
         
-        NetworkManager.shared.obtenerCervezasPorBusqueda(apiToken: Session.shared.api_token!, input: input){
+        NetworkManager.shared.getBeers(apiToken: Session.shared.api_token!, input: input){
             response, errors in DispatchQueue.main.async {
                 self.response = response
                 self.indicatorView.isHidden = true
@@ -214,10 +215,10 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
                 if response?.status == 1 && response?.msg == "Cervezas encontradas" {
                     self.searchTableView.reloadData()
                 } else if errors == .badData {
-                    self.displayAlert(title: "Error", message: "Ha habido un error")
+                    self.displayAlert(title: "Error", message: "Ha habido un error, vuelve a intentarlo mas tarde.")
                     
                 } else if errors == .errorConnection {
-                    self.displayAlert(title: "Error", message: "El servidor no responde")
+                    self.displayAlert(title: "Error", message: "Ha habido un error, vuelve a intentarlo mas tarde.")
                     
                 } else if response?.status == 0 {
                     //Si hay algun fallo nos devolvera el error en el response y se le mostrara al usuario mediante un alert
