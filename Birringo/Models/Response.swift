@@ -13,6 +13,9 @@ struct Response: Codable {
     var api_token : String?
     var beers : [Beer]?
     var datos_perfil : UserData?
+    var ranking : [UserData]?
+    var pubs : [Pubs]?
+    var quests : [Quest]?
 }
 
 struct UserData : Codable {
@@ -43,6 +46,15 @@ struct Pubs : Codable {
     var longitud : Double?
     var distance : Double?
 }
+
+struct Quest : Codable {
+    var id : Int?
+    var titulo : String?
+    var puntos : Int?
+    var pub : Pubs?
+}
+
+
 
 
 

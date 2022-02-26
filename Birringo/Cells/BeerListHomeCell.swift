@@ -24,6 +24,7 @@ class BeerListHomeCell: UITableViewCell {
             return
         }
         beerImage.image = nil
+        beerImage.layer.cornerRadius = 6
         beerTitle.text = data.titulo ?? "No hay titulo"
         beerType.text = data.tipo ?? "No hay tipo"
         beerGraduation.text = "\(data.graduacion ?? "0")%"

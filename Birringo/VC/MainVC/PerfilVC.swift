@@ -60,13 +60,13 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
                     self.userEmailTextField.text = response?.datos_perfil?.email ?? "jonacedev@gmail.com"
                     
                 } else if errors == .badData {
-                    self.displayAlert(title: "Error", message: "Ha habido un error")
+                    self.displayAlert(title: "Error", message: "Ha habido un error, vuelve a intentarlo mas tarde.")
                     
                 } else if errors == .errorConnection {
-                    self.displayAlert(title: "Error", message: "El servidor no responde")
+                    self.displayAlert(title: "Error", message: "Ha habido un error, vuelve a intentarlo mas tarde.")
                     
                 } else {
-                    self.displayAlert(title: "Error", message: "Ha habido un error")
+                    self.displayAlert(title: "Error", message: "Ha habido un error, vuelve a intentarlo mas tarde.")
                 }
             }
         }
@@ -136,10 +136,10 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
                         self.loadProfileData()
                         
                     } else if errors == .badData {
-                        self.displayAlert(title: "Error", message: "Ha habido un error")
+                        self.displayAlert(title: "Error", message: "Ha habido un error, vuelve a intentarlo mas tarde.")
                         
                     } else if errors == .errorConnection {
-                        self.displayAlert(title: "Error", message: "El servidor no responde")
+                        self.displayAlert(title: "Error", message: "Ha habido un error, vuelve a intentarlo mas tarde.")
                         
                     } else if response?.status == 0 {
                         //Si hay algun fallo a la hora de subir la imagen nos devolvera el error en el response y se le mostrara al usuario mediante un alert

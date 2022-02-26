@@ -25,6 +25,11 @@ final class NetworkManager {
     var uploadProfilImageURL = "uploadProfileImage?api_token="
     var getCervezasTiposMainURL = "obtenerCervezasTiposMain?api_token="
     var getCervezasPorBusquedaURL = "obtenerCervezas?api_token="
+    var getPubsURL = "getPubs?api_token="
+    var getPubsByNameURL = "getPubsByName?api_token="
+    var getQuestsURL = "getQuests?api_token="
+    var getRankingURL = "getRanking?api_token="
+    
     
     // var getEmployeeListURL = "listado_empleados?api_token="
     //var editUserDataURL = "modificar_datos/"
@@ -173,7 +178,7 @@ final class NetworkManager {
   
     }
     
-    func obtenerCervezasTiposMain(apiToken: String , tipo : String , completion: @escaping (Response?, NetworkError?) -> Void){
+    func getMainBeers(apiToken: String , tipo : String , completion: @escaping (Response?, NetworkError?) -> Void){
      
         Connection().connectGetData(to: getCervezasTiposMainURL + apiToken + "&tipo=" + tipo){
             data, error in
@@ -202,9 +207,125 @@ final class NetworkManager {
         }
     }
     
-    func obtenerCervezasPorBusqueda(apiToken: String , input : String , completion: @escaping (Response?, NetworkError?) -> Void){
+    func getBeers(apiToken: String , input : String , completion: @escaping (Response?, NetworkError?) -> Void){
      
         Connection().connectGetData(to: getCervezasPorBusquedaURL + apiToken + "&busqueda=" + input){
+            data, error in
+            
+            guard let data = data else {
+                completion(nil, .badData)
+                return
+            }
+            
+            guard error == nil else {
+                completion(nil, .badData)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(Response.self, from: data)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    completion(response, nil)
+                }
+            } catch {
+                completion(nil, .badData)
+                print("error al decodificar")
+            }
+            
+        }
+    }
+    
+    func getPubs(apiToken: String, completion: @escaping (Response?, NetworkError?) -> Void){
+     
+        Connection().connectGetData(to: getPubsURL + apiToken){
+            data, error in
+            
+            guard let data = data else {
+                completion(nil, .badData)
+                return
+            }
+            
+            guard error == nil else {
+                completion(nil, .badData)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(Response.self, from: data)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    completion(response, nil)
+                }
+            } catch {
+                completion(nil, .badData)
+                print("error al decodificar")
+            }
+            
+        }
+    }
+    
+    func getPubsByName(apiToken: String , input : String , completion: @escaping (Response?, NetworkError?) -> Void){
+     
+        Connection().connectGetData(to: getPubsByNameURL + apiToken + "&busqueda=" + input){
+            data, error in
+            
+            guard let data = data else {
+                completion(nil, .badData)
+                return
+            }
+            
+            guard error == nil else {
+                completion(nil, .badData)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(Response.self, from: data)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    completion(response, nil)
+                }
+            } catch {
+                completion(nil, .badData)
+                print("error al decodificar")
+            }
+            
+        }
+    }
+    
+    func getQuests(apiToken: String, completion: @escaping (Response?, NetworkError?) -> Void){
+     
+        Connection().connectGetData(to: getQuestsURL + apiToken){
+            data, error in
+            
+            guard let data = data else {
+                completion(nil, .badData)
+                return
+            }
+            
+            guard error == nil else {
+                completion(nil, .badData)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(Response.self, from: data)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    completion(response, nil)
+                }
+            } catch {
+                completion(nil, .badData)
+                print("error al decodificar")
+            }
+            
+        }
+    }
+    
+    func getRanking(apiToken: String, completion: @escaping (Response?, NetworkError?) -> Void){
+     
+        Connection().connectGetData(to: getRankingURL + apiToken){
             data, error in
             
             guard let data = data else {

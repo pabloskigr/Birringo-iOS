@@ -62,9 +62,11 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             manager.requestWhenInUseAuthorization()
         case .restricted:
             print("Notificar al usuario. Localizacion restringida por configuracion paternal")
+            //Evitar null al pulsar en la celda
             break
         case .denied:
             print("Localizacion restringida para la app en ajustes")
+            //Evitar null al pulsar en la celda
             break
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
@@ -99,7 +101,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         beerLocationsTableView.deselectRow(at: indexPath, animated: true)
-        if let mapsVC = storyboard?.instantiateViewController(withIdentifier: "MapsVC") as? MapsVC {
+        if let mapsVC = storyboard?.instantiateViewController(withIdentifier: "DetailMapVC") as? DetailMapVC {
             mapsVC.barName = beer?.pubs![indexPath.row].titulo
             mapsVC.coordenadas = barCordinates?.coordinate
             navigationController?.pushViewController(mapsVC, animated: true)
