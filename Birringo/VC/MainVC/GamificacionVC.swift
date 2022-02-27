@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
  
@@ -152,6 +153,7 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
         if selectedIndex == 1 {
             if let questDetailVC = storyboard?.instantiateViewController(withIdentifier: "QuestDetailVC") as? QuestDetailVC {
                 questDetailVC.questData = response?.quests![indexPath.row]
+                print(response?.quests![indexPath.row])
                 navigationController?.pushViewController(questDetailVC, animated: true)
             }
         }
