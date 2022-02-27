@@ -30,7 +30,6 @@ class RankingCell: UITableViewCell {
                 //self.indicatorView.isHidden = true
                 if let image = image {
                     self.rankingImage.image = image
-                    self.rankingImage.contentMode = .scaleToFill
                 } else {
                     //Si el usuario no tiene imagen de perfil en la base de datos se le asignara na por defecto.
                     self.rankingImage.image = UIImage(named: "user_img")!

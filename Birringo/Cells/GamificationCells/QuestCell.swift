@@ -19,7 +19,7 @@ class QuestCell: UITableViewCell {
     private func renderUI(){
         guard let questData = questData else {return}
         questTitle.text = questData.titulo
-        questPoints.text = "\(questData.puntos) pt"
+        questPoints.text = "\(questData.puntos ?? 0) pt"
 
     }
     

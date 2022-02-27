@@ -25,8 +25,9 @@ class QuestDetailVC: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         setupColors()
         getUserLocation()
+     
         questTitle.text = questData?.titulo
-        questLocation.text = String((questData?.pub?.titulo) ?? "")
+        questLocation.text = String((questData?.pub?.calle) ?? "")
         questPoints.text = "Puntos: \(questData?.puntos ?? 0)"
     }
     
@@ -68,8 +69,10 @@ class QuestDetailVC: UIViewController, CLLocationManagerDelegate {
         var distanceToReturn = ""
         
         if let latitudeDouble = locationManager.location?.coordinate.latitude, let longitudeDouble = locationManager.location?.coordinate.longitude {
-            
             userCordinate = CLLocation(latitude: latitudeDouble, longitude: longitudeDouble)
+            //Si no llegan coordenadas o son erroneas tratar error
+            barCordinates = CLLocation(latitude: (questData?.pub?.latitud)!, longitude: (questData?.pub?.longitud)!)
+            print(barCordinates!)
             var distance = userCordinate?.distance(from: barCordinates!) ?? 0
             
             if distance > 1000 {
