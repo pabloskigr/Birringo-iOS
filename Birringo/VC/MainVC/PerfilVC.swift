@@ -78,12 +78,19 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
                     self.userProfileImage.image = image
                     self.userProfileImage.layer.cornerRadius = self.userProfileImage.bounds.size.width / 2.0
                 } else {
-                    //Si el usuario del cual obtenemos los datos no tiene imagen de perfil en la base de datos se le asignara na por defecto.
+                    //Si el usuario del cual obtenemos los datos no tiene imagen de perfil en la base de datos se le asignara una por defecto.
                     self.userProfileImage.image = UIImage(named: "user_img")!
                 }
             }
         }
     }
+    
+    
+    @IBAction func editProfileTapped(_ sender: Any) {
+        //Cambiar a vista de editar y pasar datos del response.
+    }
+    
+    //Funciones para cambaiar foto de perfil en vista de editar, no aqui (CAMBIARRR)
     
     //Funciones para cambiar la imagen de perfil del usuario.
     @IBAction func changePorfileImageTapped(_ sender: Any) {
