@@ -17,6 +17,8 @@ final class NetworkManager {
     static let shared = NetworkManager()
     private init() {}
     
+    // MARK: - Endpoints
+    
     private var imageCache = NSCache<NSString, UIImage>()
     var loginUserURL = "login"
     var registerUserURL = "register"
@@ -29,6 +31,7 @@ final class NetworkManager {
     var getPubsByNameURL = "getPubsByName?api_token="
     var getQuestsURL = "getQuests?api_token="
     var getRankingURL = "getRanking?api_token="
+    var editUserURL = "editUserData?api_token="
     
     
     // var getEmployeeListURL = "listado_empleados?api_token="
@@ -357,17 +360,19 @@ final class NetworkManager {
     
     
     //El edit no esta hecho aun solo estrcuturado.
-    func editUserData(id : String ,apiToken: String, params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void) {
+    func editUserData(apiToken: String, params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void) {
         
-        /*Connection().connectGetData(to: editUserDataURL + id + "?api_token=" + apiToken){
+        Connection().connect(httpMethod: "POST", to: editUserURL + apiToken, params: params) {
             data, error in
             
             guard let data = data else {
+                print("error al convertir a data")
                 completion(nil, .badData)
                 return
             }
             
             guard error == nil else {
+                print("error al obtener los datos")
                 completion(nil, .badData)
                 return
             }
@@ -375,14 +380,15 @@ final class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode(Response.self, from: data)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                    completion(response, nil)
-                }
+                completion(response, nil)
+
             } catch {
-                completion(nil, .badData)
                 print("error al decodificar")
+                completion(nil, .badData)
             }
-        }*/
+        }
+        
+      
     }
     
     

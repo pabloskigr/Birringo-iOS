@@ -227,33 +227,44 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qN6-AS-Qeu">
-                                <rect key="frame" x="87" y="443" width="240" height="167"/>
+                                <rect key="frame" x="66" y="443" width="282" height="237.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJT-yL-idy">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="282" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="jonacedev@gmail.com" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="E3y-WL-hhm">
-                                        <rect key="frame" x="0.0" y="27.5" width="240" height="34"/>
+                                        <rect key="frame" x="0.0" y="27.5" width="282" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telefono:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMk-bf-T88">
+                                        <rect key="frame" x="0.0" y="69.5" width="282" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Telefono (Opcional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t1b-20-98T">
+                                        <rect key="frame" x="0.0" y="98" width="282" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Biografia:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8o-IF-Rka">
-                                        <rect key="frame" x="0.0" y="69.5" width="240" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="140" width="282" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu." translatesAutoresizingMaskIntoConstraints="NO" id="Jbz-LU-H0b">
-                                        <rect key="frame" x="0.0" y="97" width="240" height="70"/>
+                                        <rect key="frame" x="0.0" y="167.5" width="282" height="70"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="rSi-Th-DmQ"/>
                                         </constraints>
                                         <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
@@ -263,7 +274,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="170" id="P7E-si-DFu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -276,6 +287,7 @@
                             <constraint firstItem="qN6-AS-Qeu" firstAttribute="top" secondItem="ceW-lr-Ppj" secondAttribute="bottom" constant="40" id="GGe-bb-Nxf"/>
                             <constraint firstItem="ceW-lr-Ppj" firstAttribute="top" secondItem="kxi-hT-4qy" secondAttribute="bottom" constant="25.5" id="GwV-tk-QJV"/>
                             <constraint firstItem="W7O-vD-Gbg" firstAttribute="centerY" secondItem="vcM-nP-AED" secondAttribute="centerY" constant="20" id="KLO-qQ-ZQp"/>
+                            <constraint firstItem="qN6-AS-Qeu" firstAttribute="width" secondItem="mdi-n4-viQ" secondAttribute="width" multiplier="0.68" id="Njg-ZP-VDi"/>
                             <constraint firstItem="qN6-AS-Qeu" firstAttribute="centerX" secondItem="ceW-lr-Ppj" secondAttribute="centerX" id="OQY-UT-C04"/>
                             <constraint firstItem="I8v-yX-ckf" firstAttribute="trailing" secondItem="EDm-ZQ-heN" secondAttribute="trailing" constant="20" id="SHK-wL-wzG"/>
                             <constraint firstItem="vcM-nP-AED" firstAttribute="centerX" secondItem="kxi-hT-4qy" secondAttribute="centerX" id="TZ9-vo-Qxg"/>
@@ -295,6 +307,7 @@
                         <outlet property="biographyTextView" destination="Jbz-LU-H0b" id="4Kr-pF-vLr"/>
                         <outlet property="emailTextField" destination="E3y-WL-hhm" id="Un9-EY-Tmu"/>
                         <outlet property="profileView" destination="mdi-n4-viQ" id="EdA-Jk-vWG"/>
+                        <outlet property="telefonoTextField" destination="t1b-20-98T" id="iPr-X0-ueg"/>
                         <outlet property="userImage" destination="kxi-hT-4qy" id="DXb-es-1bK"/>
                         <outlet property="userTextField" destination="ceW-lr-Ppj" id="S5E-7e-5jR"/>
                     </connections>

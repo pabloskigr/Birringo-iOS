@@ -70,6 +70,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
         }
     }
     
+    
     func loadProfileImage(){
         NetworkManager.shared.getImageFrom(imageUrl: response?.datos_perfil?.imagen ?? ""){
             image in DispatchQueue.main.async {
@@ -85,9 +86,16 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
         }
     }
     
-    
     @IBAction func editProfileTapped(_ sender: Any) {
-        //Cambiar a vista de editar y pasar datos del response.
+        
+        if let detailModalView = storyboard?.instantiateViewController(identifier: "EditProfileVC") as? EditProfileVC {
+            detailModalView.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+            detailModalView.modalPresentationStyle = .overFullScreen
+            if let datos = self.response {
+                detailModalView.userResponse = datos
+            }
+            self.present(detailModalView, animated: true, completion: nil)
+        }
     }
     
     //Funciones para cambaiar foto de perfil en vista de editar, no aqui (CAMBIARRR)
@@ -168,7 +176,8 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
         return imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
     }
     
-    //Table view functions
+    //MARK: - Table view Functions:
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
