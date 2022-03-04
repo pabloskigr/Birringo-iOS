@@ -23,7 +23,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
     @IBOutlet var perfilView: UIView!
     @IBOutlet weak var userProfileImage: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var userEmailTextField: UITextField!
+    @IBOutlet weak var editProfileButton: UIButton!
     var response : Response?
     var params : [String : Any]?
     
@@ -34,7 +34,6 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
         perfilTableView.dataSource = self
         perfilTableView.delegate = self
         usernameTextField.text = ""
-        userEmailTextField.text = ""
         self.title = ""
         self.navigationController?.tabBarItem.title = "Perfil"
     }
@@ -45,7 +44,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
         perfilTableView.backgroundColor = UIColor(named: "background_white")
         perfilTableView.corneRadius = 30
         perfilTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        userEmailTextField.backgroundColor = UIColor(named: "background_views")
+        editProfileButton.layer.cornerRadius = 6
        
     }
     
@@ -57,7 +56,6 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
                 if response?.msg == "Datos obtenidos" && response?.status == 1 {
                     self.loadProfileImage()
                     self.usernameTextField.text = response?.datos_perfil?.name ?? "Jonathan Miguel"
-                    self.userEmailTextField.text = response?.datos_perfil?.email ?? "jonacedev@gmail.com"
                     
                 } else if errors == .badData {
                     self.displayAlert(title: "Error", message: "Ha habido un error, vuelve a intentarlo mas tarde.")

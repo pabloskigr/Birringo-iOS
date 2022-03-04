@@ -47,6 +47,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XsX-zd-YPW">
                                 <rect key="frame" x="0.0" y="436" width="414" height="377"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="377" id="PA6-Md-QTP"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="perfilCellId" rowHeight="90" id="QDM-4f-ES5" customClass="PerfilOpstionsCell" customModule="Birringo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="90"/>
@@ -84,21 +87,12 @@
                                 </prototypes>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Jonathan Miguel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OnE-Wh-M7c">
-                                <rect key="frame" x="139.5" y="336" width="135" height="34"/>
+                                <rect key="frame" x="139.5" y="320.5" width="135" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="ZBI-Ml-VqT"/>
-                                    <constraint firstAttribute="height" constant="34" id="gNu-Fk-f63"/>
+                                    <constraint firstAttribute="height" constant="20" id="gNu-Fk-f63"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="jonacedev@gmail.com" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JCr-MD-Hw2">
-                                <rect key="frame" x="107" y="382" width="200" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="Pr8-N8-M4g"/>
-                                    <constraint firstAttribute="width" constant="200" id="abe-pE-QYl"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHa-gd-d73">
@@ -117,6 +111,22 @@
                                     <constraint firstAttribute="height" constant="100" id="mht-Yn-lpw"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0g-Ys-bwe">
+                                <rect key="frame" x="157.5" y="355.5" width="99" height="31"/>
+                                <color key="backgroundColor" red="0.90196073060000004" green="0.60000002379999995" blue="0.25490197539999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="ipU-Jq-RaQ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Editar perfil">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="corneRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -124,21 +134,20 @@
                             <constraint firstItem="XsX-zd-YPW" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="0WJ-m8-bNR"/>
                             <constraint firstItem="TgX-2N-7lW" firstAttribute="centerX" secondItem="TQz-hs-XdC" secondAttribute="centerX" id="5Zj-gP-we2"/>
                             <constraint firstItem="XsX-zd-YPW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6dt-hv-K8n"/>
-                            <constraint firstItem="JCr-MD-Hw2" firstAttribute="top" secondItem="OnE-Wh-M7c" secondAttribute="bottom" constant="12" id="DHC-8U-Zj2"/>
+                            <constraint firstItem="C0g-Ys-bwe" firstAttribute="centerX" secondItem="OnE-Wh-M7c" secondAttribute="centerX" id="9VL-fG-ttb"/>
                             <constraint firstItem="AfQ-pZ-YBu" firstAttribute="top" secondItem="TQz-hs-XdC" secondAttribute="bottom" constant="40" id="ENE-U2-FPQ"/>
                             <constraint firstAttribute="trailing" secondItem="TQz-hs-XdC" secondAttribute="trailing" constant="-5" id="GIo-to-cXk"/>
                             <constraint firstItem="RHa-gd-d73" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="LRZ-eE-tm6"/>
-                            <constraint firstItem="JCr-MD-Hw2" firstAttribute="centerX" secondItem="OnE-Wh-M7c" secondAttribute="centerX" id="QA0-X6-kax"/>
                             <constraint firstItem="RHa-gd-d73" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="TV4-Zw-L3W"/>
                             <constraint firstItem="TQz-hs-XdC" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="-5" id="WcB-Ei-owY"/>
+                            <constraint firstItem="C0g-Ys-bwe" firstAttribute="top" secondItem="OnE-Wh-M7c" secondAttribute="bottom" constant="15" id="gBa-bn-ZLL"/>
                             <constraint firstItem="TQz-hs-XdC" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="gkk-Ni-3do"/>
                             <constraint firstItem="OnE-Wh-M7c" firstAttribute="centerX" secondItem="AfQ-pZ-YBu" secondAttribute="centerX" id="irM-RR-Md6"/>
                             <constraint firstItem="TgX-2N-7lW" firstAttribute="centerY" secondItem="TQz-hs-XdC" secondAttribute="centerY" constant="20" id="jKY-wv-m4m"/>
                             <constraint firstItem="XsX-zd-YPW" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="nqI-vK-UZo"/>
                             <constraint firstItem="XsX-zd-YPW" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="opd-DS-Grt"/>
-                            <constraint firstItem="OnE-Wh-M7c" firstAttribute="top" secondItem="AfQ-pZ-YBu" secondAttribute="bottom" constant="30.5" id="pZf-In-IXJ"/>
+                            <constraint firstItem="OnE-Wh-M7c" firstAttribute="top" secondItem="AfQ-pZ-YBu" secondAttribute="bottom" constant="15" id="pZf-In-IXJ"/>
                             <constraint firstItem="AfQ-pZ-YBu" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="q0H-eg-XC9"/>
-                            <constraint firstItem="XsX-zd-YPW" firstAttribute="top" secondItem="JCr-MD-Hw2" secondAttribute="bottom" constant="20" id="rd1-c7-eM7"/>
                             <constraint firstItem="kYF-wG-5hh" firstAttribute="centerY" secondItem="AfQ-pZ-YBu" secondAttribute="centerY" constant="50" id="s3S-8t-dMk"/>
                             <constraint firstItem="TQz-hs-XdC" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.14" id="sKs-nu-odm"/>
                             <constraint firstItem="kYF-wG-5hh" firstAttribute="centerX" secondItem="AfQ-pZ-YBu" secondAttribute="centerX" constant="37" id="z4P-8p-FXF"/>
@@ -147,10 +156,10 @@
                     <tabBarItem key="tabBarItem" enabled="NO" title="" image="person.fill" catalog="system" id="4jb-KH-kwM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="editProfileButton" destination="C0g-Ys-bwe" id="KdE-nF-95U"/>
                         <outlet property="indicatorView" destination="RHa-gd-d73" id="tjq-4j-MYi"/>
                         <outlet property="perfilTableView" destination="XsX-zd-YPW" id="QK4-Oe-R0V"/>
                         <outlet property="perfilView" destination="5EZ-qb-Rvc" id="ru3-ez-5ZX"/>
-                        <outlet property="userEmailTextField" destination="JCr-MD-Hw2" id="EJn-qH-rUs"/>
                         <outlet property="userProfileImage" destination="AfQ-pZ-YBu" id="ubI-ql-kHu"/>
                         <outlet property="usernameTextField" destination="OnE-Wh-M7c" id="ohI-5O-cmZ"/>
                     </connections>

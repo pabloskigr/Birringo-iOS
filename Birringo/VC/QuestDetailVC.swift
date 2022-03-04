@@ -41,7 +41,6 @@ class QuestDetailVC: UIViewController, CLLocationManagerDelegate {
             locationManager.delegate = self
             locationManagerDidChangeAuthorization(locationManager)
         } else {
-            //Notificar al usuario que tiene el gps desactivado
             displayAlert(title: "GPS", message: "El GPS esta desactivado")
         }
     }
@@ -67,12 +66,10 @@ class QuestDetailVC: UIViewController, CLLocationManagerDelegate {
     func obtainDistance() -> String {
         
         var distanceToReturn = ""
-        
         if let latitudeDouble = locationManager.location?.coordinate.latitude, let longitudeDouble = locationManager.location?.coordinate.longitude {
             userCordinate = CLLocation(latitude: latitudeDouble, longitude: longitudeDouble)
             //Si no llegan coordenadas o son erroneas tratar error
             barCordinates = CLLocation(latitude: (questData?.pub?.latitud)!, longitude: (questData?.pub?.longitud)!)
-            print(barCordinates!)
             var distance = userCordinate?.distance(from: barCordinates!) ?? 0
             
             if distance > 1000 {

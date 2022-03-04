@@ -43,7 +43,6 @@ class MapsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UI
             locationManager.delegate = self
             locationManagerDidChangeAuthorization(locationManager)
         } else {
-            print("GPS desactivado")
             displayAlert(title: "GPS", message: "El GPS esta desactivado")
         }
     }
