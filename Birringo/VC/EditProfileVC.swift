@@ -127,15 +127,19 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
                     }
                     
                 } else if response?.status == 0 {
+                    self.indicatorView.isHidden = true
                     self.displayAlert(title: "Error", message: response?.msg ?? "Ha ocurrido un error, intentalo mas tarde.")
                     
                 } else if errors == .errorConnection {
+                    self.indicatorView.isHidden = true
                     self.displayAlert(title: "Error", message: "Ha habido un error, intrentalo mas tarde.")
                     
                 } else if errors == .badData {
+                    self.indicatorView.isHidden = true
                     self.displayAlert(title: "Error", message: "Ha habido un error, intrentalo mas tarde.")
                     
                 } else {
+                    self.indicatorView.isHidden = true
                     self.displayAlert(title: "Error", message: "Ha habido un error, intrentalo mas tarde.")
                 }
                 

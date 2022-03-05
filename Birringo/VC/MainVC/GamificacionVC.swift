@@ -12,6 +12,7 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
  
 
     @IBOutlet var gamificacionView: UIView!
+    @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var gamificacion_tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     var nib = UINib(nibName: "RankingCell", bundle: nil)
@@ -43,9 +44,9 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func checkSegmentedIndex(){
-        //self.indicatorView.isHidden = false
-        
+        self.indicatorView.isHidden = false
         let selectedIndex = self.segmentedControl.selectedSegmentIndex
+        
          switch selectedIndex
          {
          case 0:
@@ -67,6 +68,8 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
         NetworkManager.shared.getRanking(apiToken: Session.shared.api_token!){
             response, errors in DispatchQueue.main.async {
+                self.indicatorView.isHidden = true
+                
                 if response?.status == 1 {
                     self.response = response
                     self.gamificacion_tableView.reloadData()
@@ -90,6 +93,8 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
         NetworkManager.shared.getQuests(apiToken: Session.shared.api_token!){
             response, errors in DispatchQueue.main.async {
+                self.indicatorView.isHidden = true
+                
                 if response?.status == 1 {
                     self.response = response
                     self.gamificacion_tableView.reloadData()

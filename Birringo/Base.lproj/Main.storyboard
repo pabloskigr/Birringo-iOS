@@ -1022,6 +1022,22 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFL-SP-fw1">
+                                <rect key="frame" x="164" y="413" width="100" height="100"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Vh8-3b-aFg">
+                                        <rect key="frame" x="31.666666666666657" y="31.666666666666686" width="37" height="37"/>
+                                        <color key="color" red="0.90196073060000004" green="0.60000002379999995" blue="0.25490197539999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="EG2-HH-bVN"/>
+                                    <constraint firstItem="Vh8-3b-aFg" firstAttribute="centerY" secondItem="ZFL-SP-fw1" secondAttribute="centerY" id="INO-DD-3kf"/>
+                                    <constraint firstAttribute="width" constant="100" id="nBs-cd-5JM"/>
+                                    <constraint firstItem="Vh8-3b-aFg" firstAttribute="centerX" secondItem="ZFL-SP-fw1" secondAttribute="centerX" id="sA9-ZZ-we5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QPv-4o-mTw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1034,18 +1050,21 @@
                             <constraint firstItem="Vcj-ny-mFa" firstAttribute="height" secondItem="oc7-l7-tmI" secondAttribute="height" multiplier="0.14" id="H2d-NO-mkJ"/>
                             <constraint firstItem="ia6-fK-zZe" firstAttribute="centerX" secondItem="Vcj-ny-mFa" secondAttribute="centerX" id="IqL-dx-52L"/>
                             <constraint firstItem="txg-hQ-F25" firstAttribute="trailing" secondItem="QPv-4o-mTw" secondAttribute="trailing" id="KJJ-YT-yij"/>
+                            <constraint firstItem="ZFL-SP-fw1" firstAttribute="centerX" secondItem="oc7-l7-tmI" secondAttribute="centerX" id="SWe-L4-sUb"/>
                             <constraint firstItem="txg-hQ-F25" firstAttribute="top" secondItem="b2J-qo-fef" secondAttribute="bottom" constant="15" id="Sub-xI-7cN"/>
                             <constraint firstItem="txg-hQ-F25" firstAttribute="centerX" secondItem="oc7-l7-tmI" secondAttribute="centerX" id="a8g-ve-efF"/>
                             <constraint firstAttribute="bottom" secondItem="txg-hQ-F25" secondAttribute="bottom" id="o1J-Ra-bei"/>
                             <constraint firstItem="Vcj-ny-mFa" firstAttribute="top" secondItem="oc7-l7-tmI" secondAttribute="top" id="p7A-TO-5ZY"/>
                             <constraint firstItem="b2J-qo-fef" firstAttribute="trailing" secondItem="Vcj-ny-mFa" secondAttribute="trailing" constant="-50" id="pgx-eb-Maj"/>
                             <constraint firstItem="b2J-qo-fef" firstAttribute="leading" secondItem="Vcj-ny-mFa" secondAttribute="leading" constant="50" id="weK-ZO-qMb"/>
+                            <constraint firstItem="ZFL-SP-fw1" firstAttribute="centerY" secondItem="oc7-l7-tmI" secondAttribute="centerY" id="xNr-gu-8eV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OHi-KL-mXr"/>
                     <connections>
                         <outlet property="gamificacionView" destination="oc7-l7-tmI" id="me0-V3-9Dt"/>
                         <outlet property="gamificacion_tableView" destination="txg-hQ-F25" id="D7o-Og-3EE"/>
+                        <outlet property="indicatorView" destination="ZFL-SP-fw1" id="Yg9-uF-DUE"/>
                         <outlet property="segmentedControl" destination="b2J-qo-fef" id="eiW-eA-znP"/>
                     </connections>
                 </viewController>
