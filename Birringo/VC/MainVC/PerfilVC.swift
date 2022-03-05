@@ -32,6 +32,10 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
         super.viewDidLoad()
         setupColors()
         loadProfileData()
+        editProfileButton.isEnabled = false
+        usernameTextField.text = nil
+        userBiographyTextView.text = nil
+        userProfileImage.image = nil
         perfilTableView.dataSource = self
         perfilTableView.delegate = self
         usernameTextField.text = ""
@@ -58,7 +62,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
         
                 if response?.msg == "Datos obtenidos" && response?.status == 1 {
                     self.loadProfileImage()
-                    self.usernameTextField.text = response?.datos_perfil?.name ?? "Jonathan Miguel"
+                    self.usernameTextField.text = response?.datos_perfil?.name?.capitalized ?? "Jonathan Miguel"
                     self.userBiographyTextView.text = response?.datos_perfil?.biografia ?? ""
                     
                 } else if errors == .badData {
@@ -79,6 +83,8 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
         NetworkManager.shared.getImageFrom(imageUrl: response?.datos_perfil?.imagen ?? ""){
             image in DispatchQueue.main.async {
                 self.indicatorView.isHidden = true
+                self.editProfileButton.isEnabled = true
+                
                 if let image = image {
                     self.userProfileImage.image = image
                     self.userProfileImage.layer.cornerRadius = self.userProfileImage.bounds.size.width / 2.0

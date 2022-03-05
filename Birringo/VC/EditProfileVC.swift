@@ -28,11 +28,13 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupColors()
         indicatorView.isHidden = true
         userTextField.delegate = self
         emailTextField.delegate = self
         biographyTextView.delegate = self
         telefonoTextField.delegate = self
+        userImage.layer.cornerRadius = userImage.bounds.size.width / 2.0
         
         //MARK: - Funcion para comprobar conexion a internet y cargar los datos del usuario o no.
         checkInternetConnection()
@@ -83,16 +85,15 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             telefonoTextField.placeholder = "Telefono (Opcional)"
         }
         
-        userTextField.text = userResponse?.datos_perfil?.name
+        userTextField.text = userResponse?.datos_perfil?.name?.capitalized
         emailTextField.text = userResponse?.datos_perfil?.email
         biographyTextView.text = userResponse?.datos_perfil?.biografia
         
-        NetworkManager.shared.getImageFrom(imageUrl: (userResponse?.datos_perfil?.imagen)!){
+        NetworkManager.shared.getImageFrom(imageUrl: userResponse?.datos_perfil?.imagen ?? ""){
             image in DispatchQueue.main.async {
     
                 if let image = image {
                     self.userImage.image = image
-                    self.userImage.layer.cornerRadius = self.userImage.bounds.size.width / 2.0
                 } else {
                     //Si el usuario no tiene imagen de perfil, se le asignara una por defecto.
                     self.userImage.image = UIImage(named: "user_img")!
@@ -211,11 +212,13 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             self.displayAlert(title: "Error", message: "El medio seleccionado no esta disponible, intentalo mas tarde.")
             return
         }
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.sourceType = selectedSource
-        imagePickerController.allowsEditing = true
-        self.present(imagePickerController, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = selectedSource
+            imagePickerController.allowsEditing = true
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

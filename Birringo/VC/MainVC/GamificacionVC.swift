@@ -29,6 +29,10 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColors()
+        userPositionName.text = nil
+        userPositionPoints.text = nil
+        userPosition.text = nil
+        userPositionImage.image = nil
         gamificacion_tableView.delegate = self
         gamificacion_tableView.dataSource = self
         gamificacion_tableView.register(nib, forCellReuseIdentifier: "RankingCellid")
@@ -136,7 +140,7 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
                     self.userPositionName.text = self.userPositionResponse?.datos_perfil?.name
                     self.userPositionPoints.text = "\(self.userPositionResponse?.datos_perfil?.puntos ?? 0) pt"
                     
-                    NetworkManager.shared.getImageFrom(imageUrl: (self.userPositionResponse?.datos_perfil?.imagen)!){
+                    NetworkManager.shared.getImageFrom(imageUrl: self.userPositionResponse?.datos_perfil?.imagen ?? ""){
                         image in DispatchQueue.main.async {
                 
                             if let image = image {
@@ -233,6 +237,7 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
         gamificacion_tableView.backgroundColor = UIColor(named: "background_white")
         gamificacion_tableView.layer.cornerRadius = 30
         gamificacion_tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        userRankingView.backgroundColor = UIColor(named: "background_views")
     }
     
     // Funcion para instanciar alerts.
