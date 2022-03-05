@@ -24,9 +24,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_img" translatesAutoresizingMaskIntoConstraints="NO" id="XK1-O3-YGU">
-                        <rect key="frame" x="65" y="13" width="55" height="54"/>
+                        <rect key="frame" x="65" y="12.5" width="55" height="55"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="55" id="8ns-wI-u9b"/>
+                            <constraint firstAttribute="height" constant="55" id="r8y-Vs-z47"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="0RM-Eb-Xyl">
@@ -51,7 +52,6 @@
                     <constraint firstItem="0RM-Eb-Xyl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6bm-bv-jCl"/>
                     <constraint firstItem="OD3-lv-1Kb" firstAttribute="centerY" secondItem="XK1-O3-YGU" secondAttribute="centerY" id="78B-RZ-PAp"/>
                     <constraint firstItem="XK1-O3-YGU" firstAttribute="centerY" secondItem="0RM-Eb-Xyl" secondAttribute="centerY" id="Fx8-Xj-dWr"/>
-                    <constraint firstItem="XK1-O3-YGU" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.68" id="LoG-RM-uKM"/>
                     <constraint firstItem="OD3-lv-1Kb" firstAttribute="leading" secondItem="XK1-O3-YGU" secondAttribute="trailing" constant="15" id="S1u-pz-2KU"/>
                     <constraint firstItem="H3l-zH-TLz" firstAttribute="width" secondItem="OD3-lv-1Kb" secondAttribute="width" multiplier="0.55" id="bdT-2G-giu"/>
                     <constraint firstItem="0RM-Eb-Xyl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="bpX-Nb-Yb1"/>

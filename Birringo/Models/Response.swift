@@ -12,6 +12,7 @@ struct Response: Codable {
     var msg : String
     var api_token : String?
     var beers : [Beer]?
+    var posicion : Int?
     var datos_perfil : UserData?
     var ranking : [UserData]?
     var pubs : [Pubs]?

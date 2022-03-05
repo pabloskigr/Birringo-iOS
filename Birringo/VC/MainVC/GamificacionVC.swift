@@ -10,14 +10,20 @@ import CoreLocation
 
 class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
  
-
     @IBOutlet var gamificacionView: UIView!
+    @IBOutlet weak var userRankingView: UIView!
     @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var gamificacion_tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    @IBOutlet weak var userPosition: UILabel!
+    @IBOutlet weak var userPositionImage: UIImageView!
+    @IBOutlet weak var userPositionName: UILabel!
+    @IBOutlet weak var userPositionPoints: UILabel!
     var nib = UINib(nibName: "RankingCell", bundle: nil)
     var counter = 0
     var response : Response?
+    var userPositionResponse : Response?
     var titleToReturn : String?
     
     override func viewDidLoad() {
@@ -50,11 +56,13 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
          switch selectedIndex
          {
          case 0:
+             userRankingView.isHidden = false
              nib = UINib(nibName: "RankingCell", bundle: nil)
              gamificacion_tableView.register(nib, forCellReuseIdentifier: "RankingCellid")
-             titleToReturn = "Top 100"
+             titleToReturn = "Top 50"
              getRanking()
          case 1:
+             userRankingView.isHidden = true
              nib = UINib(nibName: "QuestCell", bundle: nil)
              gamificacion_tableView.register(nib, forCellReuseIdentifier: "QuestCellid")
              titleToReturn = "Ultimos retos"
@@ -68,20 +76,22 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
         NetworkManager.shared.getRanking(apiToken: Session.shared.api_token!){
             response, errors in DispatchQueue.main.async {
-                self.indicatorView.isHidden = true
-                
                 if response?.status == 1 {
                     self.response = response
+                    self.getUserPositionInRanking()
                     self.gamificacion_tableView.reloadData()
                     
                 } else if errors == .badData {
+                    self.indicatorView.isHidden = true
                     self.displayAlert(title: "Error", message: "Ha habido un error")
                     
                 } else if errors == .errorConnection {
+                    self.indicatorView.isHidden = true
                     self.displayAlert(title: "Error", message: "El servidor no responde")
                     
                 } else if response?.status == 0 {
                     //Si hay algun fallo se le mostrara al usuario mediante un alert.
+                    self.indicatorView.isHidden = true
                     self.displayAlert(title: "Error", message: "\(response?.msg ?? "Se ha producido un error")")
                 }
             }
@@ -108,6 +118,45 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
                 } else if response?.status == 0 {
                     //Si hay algun fallo se le mostrara al usuario mediante un alert.
                     self.displayAlert(title: "Error", message: "\(response?.msg ?? "Se ha producido un error")")
+                }
+            }
+        }
+        
+    }
+    
+    func getUserPositionInRanking(){
+        
+        NetworkManager.shared.getUserPositionInRanking(apiToken: Session.shared.api_token!) {
+            response, errors in DispatchQueue.main.async {
+                self.indicatorView.isHidden = true
+                
+                if response?.status == 1 {
+                    self.userPositionResponse = response
+                    self.userPosition.text = "\(self.userPositionResponse?.posicion ?? 0)"
+                    self.userPositionName.text = self.userPositionResponse?.datos_perfil?.name
+                    self.userPositionPoints.text = "\(self.userPositionResponse?.datos_perfil?.puntos ?? 0) pt"
+                    
+                    NetworkManager.shared.getImageFrom(imageUrl: (self.userPositionResponse?.datos_perfil?.imagen)!){
+                        image in DispatchQueue.main.async {
+                
+                            if let image = image {
+                                self.userPositionImage.image = image
+                                self.userPositionImage.layer.cornerRadius = self.userPositionImage.bounds.size.width / 2.0
+                            } else {
+                                //Si el usuario no tiene imagen de perfil, se le asignara una por defecto.
+                                self.userPositionImage.image = UIImage(named: "user_img")!
+                            }
+                        }
+                    }
+                    
+                } else if response?.status == 0 {
+                    
+                } else if errors == .badData {
+                    self.displayAlert(title: "Error", message: "Ha ocurrido un error, intentalo mas tarde.")
+                } else if errors == .errorConnection {
+                    self.displayAlert(title: "Error", message: "Ha ocurrido un error, intentalo mas tarde.")
+                } else {
+                    self.displayAlert(title: "Error", message: "Ha ocurrido un error, intentalo mas tarde.")
                 }
             }
         }
@@ -158,7 +207,6 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
         if selectedIndex == 1 {
             if let questDetailVC = storyboard?.instantiateViewController(withIdentifier: "QuestDetailVC") as? QuestDetailVC {
                 questDetailVC.questData = response?.quests![indexPath.row]
-                print(response?.quests![indexPath.row])
                 navigationController?.pushViewController(questDetailVC, animated: true)
             }
         }

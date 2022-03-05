@@ -16,10 +16,9 @@ final class NetworkManager {
     
     static let shared = NetworkManager()
     private init() {}
+    private var imageCache = NSCache<NSString, UIImage>()
     
     // MARK: - Endpoints
-    
-    private var imageCache = NSCache<NSString, UIImage>()
     var loginUserURL = "login"
     var registerUserURL = "register"
     var recoverPassURL = "recoverPass"
@@ -31,13 +30,10 @@ final class NetworkManager {
     var getPubsByNameURL = "getPubsByName?api_token="
     var getQuestsURL = "getQuests?api_token="
     var getRankingURL = "getRanking?api_token="
+    var getUserPositionInRankingURL = "getUserPositionRanking?api_token="
     var editUserURL = "editUserData?api_token="
     
-    
-    // var getEmployeeListURL = "listado_empleados?api_token="
-    //var editUserDataURL = "modificar_datos/"
-
-    
+    //MARK: - Peticion Registro.
     func registerUser(params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void) {
         
         Connection().connect(httpMethod: "PUT", to: registerUserURL, params: params) {
@@ -65,7 +61,7 @@ final class NetworkManager {
             }
         }
     }
-    
+    //MARK: - Peticion Recuperar Contraseña.
     func recoverPassword(params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void){
         
         Connection().connect(httpMethod: "POST", to: recoverPassURL, params: params) {
@@ -94,6 +90,7 @@ final class NetworkManager {
         }
     }
     
+    //MARK: - Peticion Login.
     func login(params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void){
         
         Connection().connect(httpMethod: "POST", to: loginUserURL, params: params) {
@@ -122,6 +119,7 @@ final class NetworkManager {
         }
     }
 
+    //MARK: - Peticion para obtener datos del usuario logueado.
     func getUserProfile(apiToken: String ,completion: @escaping (Response?, NetworkError?) -> Void){
      
         Connection().connectGetData(to: getUserProfileURL + apiToken){
@@ -151,6 +149,7 @@ final class NetworkManager {
         }
     }
     
+    //MARK: - Peticion para subir imagen de perfil.
     func uploadProfileImage(apiToken: String, params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void) {
         
         Connection().connect(httpMethod: "POST", to: uploadProfilImageURL + apiToken, params: params) {
@@ -181,6 +180,7 @@ final class NetworkManager {
   
     }
     
+    //MARK: - Peticion para obtener los 5 tipos de cervezas principales del home.
     func getMainBeers(apiToken: String , tipo : String , completion: @escaping (Response?, NetworkError?) -> Void){
      
         Connection().connectGetData(to: getCervezasTiposMainURL + apiToken + "&tipo=" + tipo){
@@ -210,6 +210,7 @@ final class NetworkManager {
         }
     }
     
+    //MARK: - Peticion busqueda cervezas.
     func getBeers(apiToken: String , input : String , completion: @escaping (Response?, NetworkError?) -> Void){
      
         Connection().connectGetData(to: getCervezasPorBusquedaURL + apiToken + "&busqueda=" + input){
@@ -239,6 +240,7 @@ final class NetworkManager {
         }
     }
     
+    //MARK: - Peticion para obetener los bares para mostrar en el mapa.
     func getPubs(apiToken: String, completion: @escaping (Response?, NetworkError?) -> Void){
      
         Connection().connectGetData(to: getPubsURL + apiToken){
@@ -268,6 +270,7 @@ final class NetworkManager {
         }
     }
     
+    //MARK: - Peticion para obtener los bares por busqueda y mostrarlos en mapa.
     func getPubsByName(apiToken: String , input : String , completion: @escaping (Response?, NetworkError?) -> Void){
      
         Connection().connectGetData(to: getPubsByNameURL + apiToken + "&busqueda=" + input){
@@ -297,6 +300,7 @@ final class NetworkManager {
         }
     }
     
+    //MARK: - Peticion para obtener los Quests
     func getQuests(apiToken: String, completion: @escaping (Response?, NetworkError?) -> Void){
      
         Connection().connectGetData(to: getQuestsURL + apiToken){
@@ -326,6 +330,7 @@ final class NetworkManager {
         }
     }
     
+    //MARK: - Peticion para obtener el ranking.
     func getRanking(apiToken: String, completion: @escaping (Response?, NetworkError?) -> Void){
      
         Connection().connectGetData(to: getRankingURL + apiToken){
@@ -355,11 +360,37 @@ final class NetworkManager {
         }
     }
     
+    //MARK: - Peticion para obtener la posicion del usuario logueado en el ranking.
+    func getUserPositionInRanking(apiToken: String, completion: @escaping (Response?, NetworkError?) -> Void){
+     
+        Connection().connectGetData(to: getUserPositionInRankingURL + apiToken){
+            data, error in
+            
+            guard let data = data else {
+                completion(nil, .badData)
+                return
+            }
+            
+            guard error == nil else {
+                completion(nil, .badData)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(Response.self, from: data)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    completion(response, nil)
+                }
+            } catch {
+                completion(nil, .badData)
+                print("error al decodificar")
+            }
+            
+        }
+    }
     
-    
-    
-    
-    //El edit no esta hecho aun solo estrcuturado.
+    //MARK: - Peticion para editar los datos del usuario en la vista "Editar Perfil"
     func editUserData(apiToken: String, params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void) {
         
         Connection().connect(httpMethod: "POST", to: editUserURL + apiToken, params: params) {
@@ -391,7 +422,7 @@ final class NetworkManager {
       
     }
     
-    
+    //MARK: - Peticion para obtener las imagenes de perfil, listado de cervesas etc(Se guardaran en cache para optimizar el rendimiento de la app).
     func getImageFrom(imageUrl: String, completion: @escaping (UIImage?) -> Void) {
 
         let cacheKey = NSString(string: imageUrl)
