@@ -23,7 +23,8 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
     @IBOutlet var perfilView: UIView!
     @IBOutlet weak var userProfileImage: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var userEmailTextField: UITextField!
+    @IBOutlet weak var userBiographyTextView: UITextView!
+    @IBOutlet weak var editProfileButton: UIButton!
     var response : Response?
     var params : [String : Any]?
     
@@ -34,19 +35,20 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
         perfilTableView.dataSource = self
         perfilTableView.delegate = self
         usernameTextField.text = ""
-        userEmailTextField.text = ""
         self.title = ""
         self.navigationController?.tabBarItem.title = "Perfil"
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadProfileData), name: Notification.Name("reloadProfileData"), object: nil)
     }
     
-    private func setupColors(){
-        tabBarController?.tabBar.backgroundColor = UIColor(named: "background_views")
-        perfilView.backgroundColor = UIColor(named: "background_views")
-        perfilTableView.backgroundColor = UIColor(named: "background_white")
-        perfilTableView.corneRadius = 30
-        perfilTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        userEmailTextField.backgroundColor = UIColor(named: "background_views")
-       
+    override func viewDidAppear(_ animated: Bool) {
+        loadProfileData()
+    }
+    
+    @objc func reloadProfileData (notification: NSNotification){
+        //Esta funcion sirve para recargar los datos del usaurio desde la vista de editar cuando el usaurio guarde los cambios.
+        self.indicatorView.isHidden = false
+        loadProfileData()
     }
     
     func loadProfileData(){
@@ -57,7 +59,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
                 if response?.msg == "Datos obtenidos" && response?.status == 1 {
                     self.loadProfileImage()
                     self.usernameTextField.text = response?.datos_perfil?.name ?? "Jonathan Miguel"
-                    self.userEmailTextField.text = response?.datos_perfil?.email ?? "jonacedev@gmail.com"
+                    self.userBiographyTextView.text = response?.datos_perfil?.biografia ?? ""
                     
                 } else if errors == .badData {
                     self.displayAlert(title: "Error", message: "Ha habido un error, vuelve a intentarlo mas tarde.")
@@ -72,6 +74,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
         }
     }
     
+    
     func loadProfileImage(){
         NetworkManager.shared.getImageFrom(imageUrl: response?.datos_perfil?.imagen ?? ""){
             image in DispatchQueue.main.async {
@@ -80,90 +83,27 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
                     self.userProfileImage.image = image
                     self.userProfileImage.layer.cornerRadius = self.userProfileImage.bounds.size.width / 2.0
                 } else {
-                    //Si el usuario del cual obtenemos los datos no tiene imagen de perfil en la base de datos se le asignara na por defecto.
+                    //Si el usuario del cual obtenemos los datos no tiene imagen de perfil en la base de datos se le asignara una por defecto.
                     self.userProfileImage.image = UIImage(named: "user_img")!
                 }
             }
         }
     }
     
-    //Funciones para cambiar la imagen de perfil del usuario.
-    @IBAction func changePorfileImageTapped(_ sender: Any) {
+    @IBAction func editProfileTapped(_ sender: Any) {
         
-        let ac = UIAlertController(title: "Añade una foto  de perfil", message: "Selecciona una imagen desde:", preferredStyle: .actionSheet)
-        let cameraBtn = UIAlertAction(title: "Camera", style: .default) { (_)  in
-            self.showImagePicker(selectedSource: .camera)
-            print("Camera pressed")
-        }
-        let galleryBtn = UIAlertAction(title: "Galeria", style: .default) { (_)  in
-            self.showImagePicker(selectedSource: .photoLibrary)
-            print("Galeria seleccionada")
-        }
-        let cancelBtn = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        ac.addAction(cameraBtn)
-        ac.addAction(galleryBtn)
-        ac.addAction(cancelBtn)
-        self.present(ac, animated: true, completion: nil)
-    }
-    
-    func showImagePicker(selectedSource: UIImagePickerController.SourceType){
-        guard UIImagePickerController.isSourceTypeAvailable(selectedSource) else {
-            print("Seleccion no disponible")
-            return
-        }
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.sourceType = selectedSource
-        imagePickerController.allowsEditing = false
-        self.present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let selectedImage = info[.originalImage] as? UIImage{
-            let imageStringData = convertImageToBase64(image: selectedImage)
-            self.indicatorView.isHidden = false
-
-            params = [
-                "image" : imageStringData,
-            ]
-            
-            NetworkManager.shared.uploadProfileImage(apiToken: Session.shared.api_token!, params: params){
-                response, errors in DispatchQueue.main.async {
-                    self.response = response
-        
-                    if response?.status == 1 && response?.msg == "Imagen guardada" {
-                        //Recargar datos del perfil
-                        self.loadProfileData()
-                        
-                    } else if errors == .badData {
-                        self.displayAlert(title: "Error", message: "Ha habido un error, vuelve a intentarlo mas tarde.")
-                        
-                    } else if errors == .errorConnection {
-                        self.displayAlert(title: "Error", message: "Ha habido un error, vuelve a intentarlo mas tarde.")
-                        
-                    } else if response?.status == 0 {
-                        //Si hay algun fallo a la hora de subir la imagen nos devolvera el error en el response y se le mostrara al usuario mediante un alert
-                        self.displayAlert(title: "Error", message: "\(response?.msg ?? "Se ha producido un error")")
-                    }
-                }
+        if let detailModalView = storyboard?.instantiateViewController(identifier: "EditProfileVC") as? EditProfileVC {
+            detailModalView.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+            detailModalView.modalPresentationStyle = .overFullScreen
+            if let datos = self.response {
+                detailModalView.userResponse = datos
             }
-        } else {
-            self.displayAlert(title: "Error", message: "Ha habido un error")
+            self.present(detailModalView, animated: true, completion: nil)
         }
-        picker.dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
+    //MARK: - Table view Functions:
     
-    //Funcion para convertir imagen a base64 con el fin de enviarlo posteriormente al servidor donde se almacenara.
-    func convertImageToBase64(image: UIImage) -> String {
-        let imageData = image.jpegData(compressionQuality: 0.6)!
-        return imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
-    }
-    
-    //Table view functions
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -186,7 +126,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
        return "Ajustes"
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         perfilTableView.deselectRow(at: indexPath, animated: true)
         
         if (indexPath.row == ajustes.rawValue)  {
@@ -208,6 +148,17 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
             }
 
         }
+    }
+    
+    private func setupColors(){
+        tabBarController?.tabBar.backgroundColor = UIColor(named: "background_views")
+        perfilView.backgroundColor = UIColor(named: "background_views")
+        perfilTableView.backgroundColor = UIColor(named: "background_white")
+        perfilTableView.corneRadius = 30
+        perfilTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        editProfileButton.layer.cornerRadius = 6
+        userBiographyTextView.backgroundColor = UIColor(named: "background_views")
+       
     }
     
     // Funcion para instanciar alerts.

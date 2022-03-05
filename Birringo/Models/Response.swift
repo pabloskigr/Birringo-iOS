@@ -22,6 +22,7 @@ struct UserData : Codable {
     var id : Int?
     var name : String?
     var email : String?
+    var biografia : String?
     var imagen : String?
     var telefono : Int?
     var puntos : Int?
