@@ -29,8 +29,10 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         beerLocationsTableView.delegate = self
         beerLocationsTableView.dataSource = self
         getUserLocation()
-        beerImage.image = nil
         
+        beer?.isFav = false
+        checkFav()
+        beerImage.image = nil
         sortButton.setTitle("", for: .normal)
         beerName.text = beer?.titulo
         beerDescription.text = beer?.descripcion
@@ -45,6 +47,18 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             }
         }
       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        checkFav()
+    }
+    
+    func checkFav(){
+        if beer?.isFav != false {
+            favButton.isSelected = true
+        } else {
+            favButton.isSelected = false
+        }
     }
     
     func getUserLocation(){
@@ -115,12 +129,12 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func favTapped(_ sender: Any) {
         favButton.isSelected = !favButton.isSelected
-        
+        beer?.isFav?.toggle()
         beerToAdd = [
             "beerID" : beer?.id ?? -1
         ]
         
-        if favButton.isSelected {
+        if favButton.isSelected{
             //Lanzar peticion para añadir
             
             NetworkManager.shared.addBeerToFav(apiToken: Session.shared.api_token!, params: beerToAdd){
@@ -140,8 +154,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             }
         } else {
             //Lanzar peticion para eliminar
-            
-            
+    
         }
          
     }
