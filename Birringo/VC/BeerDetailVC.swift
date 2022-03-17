@@ -117,17 +117,27 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         favButton.isSelected = !favButton.isSelected
         
         beerToAdd = [
-            "id" : beer?.id ?? -1
+            "beerID" : beer?.id ?? -1
         ]
         
         if favButton.isSelected {
             //Lanzar peticion para añadir
             
-            /*NetworkManager.shared.addBeerToFav(params: beerToAdd){
+            NetworkManager.shared.addBeerToFav(apiToken: Session.shared.api_token!, params: beerToAdd){
                 response, error in DispatchQueue.main.async {
-                   //  1 :- Si el response es status 1 se ha añadido a favoritos.
+                    if response?.status == 1 {
+                        self.displayAlert(title: "Todo Ok", message: response?.msg ?? "")
+                    } else if error == .badData {
+                        self.displayAlert(title: "Error", message: "Ha ocurrido un error")
+                        
+                    } else if error == .errorConnection {
+                        self.displayAlert(title: "Error", message: "Ha ocurrido un error")
+                        
+                    } else {
+                        self.displayAlert(title: "Error", message: "Ha ocurrido un error")
+                    }
                 }
-            }*/
+            }
         } else {
             //Lanzar peticion para eliminar
             
@@ -147,4 +157,11 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         }
         
     }
+    
+    func displayAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }

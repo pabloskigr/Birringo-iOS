@@ -11,8 +11,8 @@ class FavoritosCell: UITableViewCell {
 
     
     @IBOutlet weak var favoritosTitle: UILabel!
-    @IBOutlet weak var favoritosIcons: UIImageView!
-    var favoritosData:beerData? {
+    @IBOutlet weak var favoritosImage: UIImageView!
+    var favoritosData:Beer? {
         didSet {renderUI()}
     }
     
@@ -23,7 +23,17 @@ class FavoritosCell: UITableViewCell {
     private func renderUI(){
         guard let favoritosData = favoritosData else {return}
         favoritosTitle.text = favoritosData.titulo
-        favoritosIcons.image = favoritosData.image
+        //favoritosIcons.image = favoritosData.imagen
+        
+        NetworkManager.shared.getImageFrom(imageUrl: favoritosData.imagen ?? ""){
+            image in DispatchQueue.main.async {
+                if let image = image {
+                    self.favoritosImage.image = image
+                } else {
+                    self.favoritosImage.image = UIImage(named: "cerveza-almeria")
+                }
+            }
+        }
     }
 
 }

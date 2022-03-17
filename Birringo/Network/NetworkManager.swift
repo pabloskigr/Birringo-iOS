@@ -32,6 +32,8 @@ final class NetworkManager {
     var getRankingURL = "getRanking?api_token="
     var getUserPositionInRankingURL = "getUserPositionRanking?api_token="
     var editUserURL = "editUserData?api_token="
+    var addBeerToFavURL = "addBeerToFavourites?api_token="
+    var getFavoritesFromUserURL = "getFavouritesBeersFromUser?api_token="
     
     //MARK: - Peticion Registro.
     func registerUser(params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void) {
@@ -460,6 +462,63 @@ final class NetworkManager {
         }
         networkTask.resume()
 
+    }
+    func addBeerToFav (apiToken: String, params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void) {
+        
+        Connection().connect(httpMethod: "POST", to: addBeerToFavURL + apiToken, params: params) {
+            data, error in
+            
+            guard let data = data else {
+                print("error al convertir a data")
+                completion(nil, .badData)
+                return
+            }
+            
+            guard error == nil else {
+                print("error al obtener los datos")
+                completion(nil, .badData)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(Response.self, from: data)
+                completion(response, nil)
+
+            } catch {
+                print("error al decodificar")
+                completion(nil, .badData)
+            }
+        }
+    }
+    
+    func getFavsFromUser(apiToken: String , completion: @escaping (Response?, NetworkError?) -> Void){
+        
+        Connection().connectGetData(to: getFavoritesFromUserURL  + apiToken){
+            data, error in
+            
+            guard let data = data else {
+                completion(nil, .badData)
+                return
+            }
+            
+            guard error == nil else {
+                completion(nil, .badData)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(Response.self, from: data)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    completion(response, nil)
+                }
+            } catch {
+                completion(nil, .badData)
+                print("error al decodificar")
+            }
+            
+        }
     }
     
     
