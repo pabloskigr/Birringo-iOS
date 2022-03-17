@@ -21,6 +21,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var beerLocationsTableView: UITableView!
     @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var sortButton: UIButton!
+    var beerToAdd : [String : Any]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,6 +115,25 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func favTapped(_ sender: Any) {
         favButton.isSelected = !favButton.isSelected
+        
+        beerToAdd = [
+            "id" : beer?.id ?? -1
+        ]
+        
+        if favButton.isSelected {
+            //Lanzar peticion para añadir
+            
+            /*NetworkManager.shared.addBeerToFav(params: beerToAdd){
+                response, error in DispatchQueue.main.async {
+                   //  1 :- Si el response es status 1 se ha añadido a favoritos.
+                }
+            }*/
+        } else {
+            //Lanzar peticion para eliminar
+            
+            
+        }
+         
     }
         //si esta en modo default al pulsarlo añadir a favoritos, si esta en modo pulsado al pulsarlo quitar de favoritos
     @IBAction func sortButtonTapped(_ sender: Any) {
