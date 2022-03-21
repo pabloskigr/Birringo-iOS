@@ -28,6 +28,9 @@ struct PerfilData {
     var title: String
     var image: UIImage
 }
+struct AjustesData {
+    var title: String
+}
 
 struct RankingData {
     var image : UIImage
@@ -42,6 +45,12 @@ struct QuestData {
     //habira que añadir localizacion y descripcion para el detail.
 }
 struct MockData{
+    
+    static let ajustes: [AjustesData] = [
+        AjustesData(title: "POLITICA DE PRIVACIDAD"),
+        AjustesData(title: "TUTORIAL"),
+        AjustesData(title: "TERMINOS LEGALES")
+    ]
     
     static let datos: [beerData] = [
         beerData(titulo: "Heineken", ml: "750", image: UIImage(named: "beer_image")!, description: "Cerveza de Holanda de renombre conocida por todo el mundial", location: bares1),
