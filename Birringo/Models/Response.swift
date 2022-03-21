@@ -37,8 +37,8 @@ struct Beer : Codable {
     var imagen : String?
     var imagen2 : String?
     var descripcion : String?
+    var isFav : Int?
     var pubs : [Pubs]?
-    var isFav : Bool?
 }
 
 struct Pubs : Codable {

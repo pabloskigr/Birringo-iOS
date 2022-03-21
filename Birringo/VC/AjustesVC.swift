@@ -26,7 +26,7 @@ class AjustesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupColors()
+        //setupColors()
         indicatorView.isHidden = true
         self.title = ""
         ajustesTableView.dataSource = self
@@ -35,13 +35,13 @@ class AjustesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.tabBarItem.title = "Ajustes"
     }
     
-    private func setupColors(){
-        ajustesView.backgroundColor = UIColor(named: "background_views")
-        ajustesTableView.backgroundColor = UIColor(named: "background_white")
-        ajustesTableView.corneRadius = 30
-        ajustesTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-       
-    }
+//    private func setupColors(){
+//        ajustesView.backgroundColor = UIColor(named: "background_views")
+//        ajustesTableView.backgroundColor = UIColor(named: "background_white")
+//        ajustesTableView.corneRadius = 30
+//        ajustesTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+//
+//    }
     func numberOfSections(in tutorialTableView: UITableView) -> Int {
         return 1
     }

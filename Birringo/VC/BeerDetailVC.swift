@@ -30,7 +30,6 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         beerLocationsTableView.dataSource = self
         getUserLocation()
         
-        beer?.isFav = false
         checkFav()
         beerImage.image = nil
         sortButton.setTitle("", for: .normal)
@@ -48,13 +47,11 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         }
       
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        checkFav()
-    }
+
     
     func checkFav(){
-        if beer?.isFav != false {
+        guard let favorita = beer?.isFav else{return}
+        if favorita != 0 {
             favButton.isSelected = true
         } else {
             favButton.isSelected = false
@@ -129,7 +126,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func favTapped(_ sender: Any) {
         favButton.isSelected = !favButton.isSelected
-        beer?.isFav?.toggle()
+        //beer?.isFav?.toggle()
         beerToAdd = [
             "beerID" : beer?.id ?? -1
         ]

@@ -15,7 +15,7 @@ class FavoritosVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var indicatorView: UIView!
     
     var response : Response?
-    var userResponse : Response?
+    //var userResponse : Response?
     let networkMonitor = NWPathMonitor()
     
     override func viewDidLoad() {
@@ -37,32 +37,7 @@ class FavoritosVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         favoritosTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
        
     }
-    func checkInternetConnection(){
-        networkMonitor.pathUpdateHandler = { path in
-            if path.status == .satisfied {
-                DispatchQueue.main.async {
-                    if let _ = self.userResponse {
-                        self.networkMonitor.cancel()
-                    } else {
-                        self.errorConnectionAlert(title: "Error", message: "No se han podido cargar los datos, intentalo mas tarde.")
-                        self.networkMonitor.cancel()
-                    }
-                }
 
-            } else {
-                DispatchQueue.main.async {
-                    self.noConnection()
-                    self.networkMonitor.cancel()
-                }
-            }
-        }
-        let queue = DispatchQueue.global(qos: .background)
-            networkMonitor.start(queue: queue)
-    }
-    func noConnection(){
-            indicatorView.isHidden = false
-            errorConnectionAlert(title: "Error de conexion", message: "No se han podido cargar los datos, intentalo mas tarde.")
-    }
     
     func obtainFavBeers(){
         NetworkManager.shared.getFavsFromUser(apiToken: Session.shared.api_token!){
@@ -70,10 +45,10 @@ class FavoritosVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
                 if response?.status == 1 {
                     self.response = response
                     self.favoritosTableView.reloadData()
+                } else if response?.status == 0 {
+                    print(response?.msg ?? "No llega nada")
                 }
-                
             }
-            
         }
     }
     
