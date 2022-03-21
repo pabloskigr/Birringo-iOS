@@ -25,6 +25,8 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(beer?.pubs!)
         setupColors()
         beerLocationsTableView.delegate = self
         beerLocationsTableView.dataSource = self
@@ -51,7 +53,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func checkFav(){
         guard let favorita = beer?.isFav else{return}
-        if favorita != 0 {
+        if favorita != 0  {
             favButton.isSelected = true
         } else {
             favButton.isSelected = false
@@ -99,7 +101,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return beer!.pubs?.count ?? 0
+        return beer?.pubs?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

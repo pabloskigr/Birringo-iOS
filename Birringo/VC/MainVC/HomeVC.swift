@@ -19,6 +19,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
     
     var counter = 0
     var response : Response?
+    var searchResponse : Response?
     var titleToReturn = ""
     
     override func viewDidLoad() {
@@ -130,7 +131,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         if tableView == home_tableView {
             countToReturn = response?.beers?.count ?? 0
         } else if tableView == searchTableView {
-            countToReturn = response?.beers?.count ?? 0
+            countToReturn = searchResponse?.beers?.count ?? 0
         }
         return countToReturn
     }
@@ -146,7 +147,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         } else if tableView == searchTableView {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "homeCellid", for: indexPath) as? BeerListHomeCell {
                 cell.backgroundColor = UIColor(named: "background_white")
-                cell.data = response?.beers![indexPath.row]
+                cell.data = searchResponse?.beers![indexPath.row]
                 cellToReturn = cell
             } else {
                 cellToReturn = UITableViewCell()
@@ -166,7 +167,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         } else if tableView == searchTableView {
             searchTableView.deselectRow(at: indexPath, animated: true)
             if let detailVC = self.storyboard?.instantiateViewController(identifier: "BeerDetailVC") as? BeerDetailVC {
-                detailVC.beer = response?.beers![indexPath.row]
+                detailVC.beer = searchResponse?.beers![indexPath.row]
                 self.navigationController?.pushViewController(detailVC, animated: true)
             }
         }
@@ -187,7 +188,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchView.isHidden = true
-        response = nil
+        searchResponse = nil
         self.titleToReturn = "Ultimas novedades"
         self.searchTableView.reloadData()
         self.isEditing = false
@@ -199,7 +200,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         searchBar.resignFirstResponder()
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        response = nil
+        searchResponse = nil
         self.titleToReturn = "Resultados"
         searchBeers(input: searchText.uppercased())
     }
@@ -209,7 +210,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         
         NetworkManager.shared.getBeers(apiToken: Session.shared.api_token!, input: input){
             response, errors in DispatchQueue.main.async {
-                self.response = response
+                self.searchResponse = response
                 self.indicatorView.isHidden = true
                 
                 if response?.status == 1 && response?.msg == "Cervezas encontradas" {
