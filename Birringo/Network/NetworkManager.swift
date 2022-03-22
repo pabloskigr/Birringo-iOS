@@ -463,6 +463,9 @@ final class NetworkManager {
         networkTask.resume()
 
     }
+    
+    //MARK: - Añadir cerveza a favoritos.
+    
     func addBeerToFav (apiToken: String, params: [String: Any]?, completion: @escaping (Response?, NetworkError?) -> Void) {
         
         Connection().connect(httpMethod: "POST", to: addBeerToFavURL + apiToken, params: params) {
@@ -491,6 +494,8 @@ final class NetworkManager {
             }
         }
     }
+    
+    //MARK: - Obtener cervezas favoritas de usuario.
     
     func getFavsFromUser(apiToken: String , completion: @escaping (Response?, NetworkError?) -> Void){
         
