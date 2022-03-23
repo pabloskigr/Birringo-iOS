@@ -15,6 +15,8 @@ class QRVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     @IBOutlet weak var labelQR: UILabel!
     @IBOutlet weak var qrCodeFrameView: UIView!
     @IBOutlet weak var volverButton: UIButton!
+    var params : [String : Any]?
+    var quest : Quest?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,32 +63,59 @@ class QRVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func metadataOutput(_ output:AVCaptureMetadataOutput,didOutput metadataObjects:[AVMetadataObject], from connection : AVCaptureConnection){
-        
-        if metadataObjects.count == 0 {
-            qrCodeFrameView.frame = CGRect.zero
-            labelQR.text = "No se ha encontrado ningun QR"
-            qrCodeFrameView.layer.borderColor = UIColor.red.cgColor
-            return
+    
+        if let metadataObj = metadataObjects.first {
+            guard let readableObj = metadataObj as? AVMetadataMachineReadableCodeObject else {return}
+    
+            if readableObj.stringValue != nil{
+                checkCode(codeToCheck: readableObj.stringValue ?? "defaultCode")
+            }
         }
+    }
+    
+    func checkCode(codeToCheck: String){
+        self.captureSession.stopRunning()
+        params = [
+         "id" : quest?.id ?? 0 ,
+         "codigo" : codeToCheck ,
+         "puntos" : quest?.puntos ?? 0,
+        ]
         
-        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
-        if metadataObj.type == AVMetadataObject.ObjectType.qr {
-               // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
-               let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
-               qrCodeFrameView?.frame = barCodeObject!.bounds
+        NetworkManager.shared.checkQrCode(apiToken: Session.shared.api_token ?? "", params: params){
+            response, errors in DispatchQueue.main.async {
+                
+                if response?.status == 1 {
+                    self.qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
+                    self.labelQR.text = response?.msg ?? "El codigo es correcto"
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                   
+                    
+                } else if response?.status == 0 {
+                    self.labelQR.text = response?.msg ?? "El codigo no es correcto"
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                        self.labelQR.text = "Buscando QR.."
+                        self.captureSession.startRunning()
+                    }
+                   
+                    
+                } else if errors == .badData || errors == .errorConnection {
+                    self.labelQR.text = "Ha ocurrido un error"
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                        self.labelQR.text = "Buscando QR.."
+                        self.captureSession.startRunning()
+                    }
+                  
 
-               if metadataObj.stringValue != nil {
-                   labelQR.text = metadataObj.stringValue!
-                   if metadataObj.stringValue == "https://jonacedev.com/"{
-                       qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
-                       DispatchQueue.main.asyncAfter(deadline: .now() + 3.5){
-                           self.dismiss(animated: true, completion: nil)
-                       }
-                   } else {
-                       qrCodeFrameView.layer.borderColor = UIColor.red.cgColor
-                       labelQR.text = "El codigo no es correcto"
-                   }
-               }
+                } else {
+                    self.labelQR.text = "Ha ocurrido un error"
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                        self.labelQR.text = "Buscando QR.."
+                        self.captureSession.startRunning()
+                    }
+                }
+            }
         }
     }
     

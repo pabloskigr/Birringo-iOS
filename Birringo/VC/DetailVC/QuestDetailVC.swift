@@ -85,6 +85,7 @@ class QuestDetailVC: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func ScannerButtonTapped(_ sender: Any) {
         if let qrVC = storyboard?.instantiateViewController(identifier: "QRVC") as? QRVC {
+            qrVC.quest = questData
             qrVC.modalPresentationStyle = .fullScreen
             qrVC.modalTransitionStyle = .crossDissolve
         self.present(qrVC, animated: true, completion: nil)

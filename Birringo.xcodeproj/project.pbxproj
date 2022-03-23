@@ -155,7 +155,6 @@
 				D415414D279DF5FD003E8313 /* LaunchScreenVC.swift */,
 				D40EB9A9279F344B0026044E /* HomeVC.swift */,
 				D43217E227A7060000770DA2 /* MapsVC.swift */,
-				D49ABAB027C9565100D2F5FC /* DetailMapVC.swift */,
 				D4B746B227A294F000984654 /* GamificacionVC.swift */,
 				33D1DD9927A06201009CE75E /* PerfilVC.swift */,
 			);
@@ -209,6 +208,17 @@
 			path = TutorialVC;
 			sourceTree = "<group>";
 		};
+		D4A8390C27EB1B00002BC162 /* DetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				D49ABAB027C9565100D2F5FC /* DetailMapVC.swift */,
+				D4B746BE27A4149700984654 /* BeerDetailVC.swift */,
+				D4B746BC27A3FAEF00984654 /* QuestDetailVC.swift */,
+				D43217E427A73DDF00770DA2 /* QRVC.swift */,
+			);
+			path = DetailVC;
+			sourceTree = "<group>";
+		};
 		D4B859FD27B9149A00F73278 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,12 +235,10 @@
 				D44E4A7E27C1A71400B5A373 /* TutorialVC */,
 				D44E4A7A27C1A4A400B5A373 /* LoginRegisterVC */,
 				D44E4A7927C1A47A00B5A373 /* MainVC */,
-				E97ED38827B1173000F4052B /* AjustesVC.swift */,
+				D4A8390C27EB1B00002BC162 /* DetailVC */,
 				33A873C027A1A40D00383B4A /* FavoritosVC.swift */,
-				D43217E427A73DDF00770DA2 /* QRVC.swift */,
-				D4B746BC27A3FAEF00984654 /* QuestDetailVC.swift */,
-				D4B746BE27A4149700984654 /* BeerDetailVC.swift */,
 				D438025027D269CC009DFCA0 /* EditProfileVC.swift */,
+				E97ED38827B1173000F4052B /* AjustesVC.swift */,
 				E92198F227E899070089DFA7 /* PoliticasVC.swift */,
 				E92198F427E89C420089DFA7 /* TerminosVC.swift */,
 			);
