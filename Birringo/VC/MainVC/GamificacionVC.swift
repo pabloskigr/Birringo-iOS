@@ -60,13 +60,11 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
          switch selectedIndex
          {
          case 0:
-             userRankingView.isHidden = false
              nib = UINib(nibName: "RankingCell", bundle: nil)
              gamificacion_tableView.register(nib, forCellReuseIdentifier: "RankingCellid")
              titleToReturn = "Top 50"
              getRanking()
          case 1:
-             userRankingView.isHidden = true
              nib = UINib(nibName: "QuestCell", bundle: nil)
              gamificacion_tableView.register(nib, forCellReuseIdentifier: "QuestCellid")
              titleToReturn = "Ultimos retos"
@@ -80,6 +78,7 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
         NetworkManager.shared.getRanking(apiToken: Session.shared.api_token!){
             response, errors in DispatchQueue.main.async {
+                self.userRankingView.isHidden = false
                 if response?.status == 1 {
                     self.response = response
                     self.getUserPositionInRanking()
@@ -107,6 +106,7 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
         NetworkManager.shared.getQuests(apiToken: Session.shared.api_token!){
             response, errors in DispatchQueue.main.async {
+                self.userRankingView.isHidden = true
                 self.indicatorView.isHidden = true
                 
                 if response?.status == 1 {

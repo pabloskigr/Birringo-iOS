@@ -6,42 +6,52 @@
 //
 
 import UIKit
-import Network
 
 class FavoritosVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var favoritosTableView: UITableView!
+    @IBOutlet var favoritosView: UIView!
     
     @IBOutlet weak var indicatorView: UIView!
     
     var response : Response?
+    let refreshControl = UIRefreshControl()
     //var userResponse : Response?
-    let networkMonitor = NWPathMonitor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColors()
         obtainFavBeers()
-        indicatorView.isHidden = true
         self.title = ""
         self.navigationController?.tabBarItem.title = "Perfil"
         favoritosTableView.dataSource = self
         favoritosTableView.delegate = self
+        favoritosTableView.addSubview(refreshControl)
+        
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         
     }
     
     private func setupColors(){
         tabBarController?.tabBar.backgroundColor = UIColor(named: "background_views")
         favoritosTableView.backgroundColor = UIColor(named: "background_white")
+        favoritosView.backgroundColor = UIColor(named: "background_white")
         favoritosTableView.corneRadius = 30
         favoritosTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
        
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+       obtainFavBeers()
     }
 
     
     func obtainFavBeers(){
         NetworkManager.shared.getFavsFromUser(apiToken: Session.shared.api_token!){
             response, errors in DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
+                self.indicatorView.isHidden = true
+                
                 if response?.status == 1 {
                     self.response = response
                     self.favoritosTableView.reloadData()
@@ -82,12 +92,12 @@ class FavoritosVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     //MARK: - Eliminar favoritos pendiente de terminar API.
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             MockData.favoritos.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
-    }
+    }*/
     
     func errorConnectionAlert(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)

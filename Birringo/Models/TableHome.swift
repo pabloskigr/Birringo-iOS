@@ -28,9 +28,6 @@ struct PerfilData {
     var title: String
     var image: UIImage
 }
-struct AjustesData {
-    var title: String
-}
 
 struct RankingData {
     var image : UIImage

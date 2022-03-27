@@ -60,7 +60,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
             response , errors in DispatchQueue.main.async{
                 self.response = response
         
-                if response?.msg == "Datos obtenidos" && response?.status == 1 {
+                if response?.status == 1 {
                     self.loadProfileImage()
                     self.usernameTextField.text = response?.datos_perfil?.name?.capitalized ?? "Jonathan Miguel"
                     self.userBiographyTextView.text = response?.datos_perfil?.biografia ?? ""
@@ -129,7 +129,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-       return "Ajustes"
+       return "Opciones"
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -137,6 +137,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
         
         if (indexPath.row == ajustes.rawValue)  {
             let ajustesVC = storyboard2.instantiateViewController(identifier: "AjustesVC") as? AjustesVC
+            ajustesVC?.usuario = response?.datos_perfil
             navigationController?.pushViewController(ajustesVC!, animated: true)
         }
         

@@ -26,7 +26,6 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(beer?.pubs!)
         setupColors()
         beerLocationsTableView.delegate = self
         beerLocationsTableView.dataSource = self
@@ -139,7 +138,7 @@ class BeerDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             NetworkManager.shared.addBeerToFav(apiToken: Session.shared.api_token!, params: beerToAdd){
                 response, error in DispatchQueue.main.async {
                     if response?.status == 1 {
-                        self.displayAlert(title: "Todo Ok", message: response?.msg ?? "")
+                        self.displayAlert(title: "Favoritos", message: response?.msg ?? "")
                     } else if error == .badData {
                         self.displayAlert(title: "Error", message: "Ha ocurrido un error")
                         

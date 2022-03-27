@@ -17,17 +17,12 @@ class LaunchScreenVC: UIViewController {
         let animation = Animation.named(jsonName)
         // Load animation to AnimationView
         let animationView = AnimationView(animation: animation)
-        animationView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        animationView.frame = view.bounds
         // Add animationView as subview
+        animationView.contentMode = .scaleAspectFill
         view.addSubview(animationView)
         animationView.play()
-        animationView.translatesAutoresizingMaskIntoConstraints = false
-                NSLayoutConstraint.activate([
-                    animationView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-                    animationView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-                    animationView.topAnchor.constraint(equalTo: self.view.topAnchor),
-                    animationView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-                ])
+      
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.checkApiToken()
         }

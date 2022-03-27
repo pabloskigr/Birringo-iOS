@@ -12,6 +12,7 @@ class QRVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     var captureSession = AVCaptureSession()
     var videoPreviewLayer : AVCaptureVideoPreviewLayer?
+    @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var labelQR: UILabel!
     @IBOutlet weak var qrCodeFrameView: UIView!
     @IBOutlet weak var volverButton: UIButton!
@@ -21,6 +22,7 @@ class QRVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         initQRScanner()
+        indicatorView.isHidden = true
         labelQR.text = "Buscando QR.."
         if let qrCodeFrameView = qrCodeFrameView {
             qrCodeFrameView.layer.borderColor = UIColor.red.cgColor
@@ -68,6 +70,7 @@ class QRVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             guard let readableObj = metadataObj as? AVMetadataMachineReadableCodeObject else {return}
     
             if readableObj.stringValue != nil{
+                indicatorView.isHidden = false
                 checkCode(codeToCheck: readableObj.stringValue ?? "defaultCode")
             }
         }
@@ -83,7 +86,7 @@ class QRVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         NetworkManager.shared.checkQrCode(apiToken: Session.shared.api_token ?? "", params: params){
             response, errors in DispatchQueue.main.async {
-                
+                self.indicatorView.isHidden = true
                 if response?.status == 1 {
                     self.qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
                     self.labelQR.text = response?.msg ?? "El codigo es correcto"

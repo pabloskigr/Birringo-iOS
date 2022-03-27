@@ -31,6 +31,10 @@ class MapsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UI
         self.navigationController?.navigationBar.isHidden = true
         map.delegate = self
         searchBar.delegate = self
+        searchBar.backgroundImage = UIImage()
+        searchBar.searchTextField.borderStyle = .none
+        searchBar.layer.cornerRadius = 15
+        searchBar.backgroundColor = UIColor(named: "background_white")?.withAlphaComponent(0.9)
         
     }
 
@@ -169,7 +173,7 @@ class MapsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UI
                             self.map.addAnnotation(point)
                         }
 
-                        let region = MKCoordinateRegion(center: self.madridLocation, latitudinalMeters: 6000, longitudinalMeters: 6000)
+                        let region = MKCoordinateRegion(center: self.madridLocation, latitudinalMeters: 5000, longitudinalMeters: 5000)
                         self.map.setRegion(region, animated: true)
                         
                     } else {
@@ -203,13 +207,12 @@ class MapsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UI
     }
     
     @IBAction func pubsLocationTapped(_ sender: Any) {
-        let region = MKCoordinateRegion(center: madridLocation, latitudinalMeters: 8000, longitudinalMeters: 8000)
+        let region = MKCoordinateRegion(center: madridLocation, latitudinalMeters: 5000, longitudinalMeters: 5000)
         map.setRegion(region, animated: true)
     }
     
     func setUpColors(){
         mapsView.backgroundColor = UIColor(named: "background_views")
-        searchBar.barTintColor = UIColor(named: "background_views")
     }
     
     // Funcion para instanciar alerts.

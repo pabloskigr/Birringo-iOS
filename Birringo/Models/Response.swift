@@ -57,6 +57,10 @@ struct Quest : Codable {
     var pub : Pubs?
 }
 
+struct AjustesData : Codable {
+    var title: String
+}
+
 
 
 

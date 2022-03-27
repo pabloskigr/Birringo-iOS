@@ -23,7 +23,7 @@ class FavoritosCell: UITableViewCell {
     private func renderUI(){
         guard let favoritosData = favoritosData else {return}
         favoritosTitle.text = favoritosData.titulo
-        //favoritosIcons.image = favoritosData.imagen
+        self.favoritosImage.layer.cornerRadius = 10
         
         NetworkManager.shared.getImageFrom(imageUrl: favoritosData.imagen ?? ""){
             image in DispatchQueue.main.async {
