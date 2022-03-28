@@ -37,15 +37,12 @@ class AjustesVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColors()
-        indicatorView.isHidden = true
         ajustesTableView.delegate = self
         ajustesTableView.dataSource = self
         self.title = ""
         self.navigationController?.tabBarItem.title = "Ajustes"
         
         loadUserData()
-       
-        
     }
     
     func loadUserData(){
@@ -54,6 +51,7 @@ class AjustesVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
         NetworkManager.shared.getImageFrom(imageUrl: usuario?.imagen ?? "") {
             image in DispatchQueue.main.async {
+                
                 if let image = image {
                     self.userImage.image = image
                 } else {

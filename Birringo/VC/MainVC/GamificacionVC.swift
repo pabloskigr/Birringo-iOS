@@ -38,9 +38,10 @@ class GamificacionVC: UIViewController, SkeletonTableViewDataSource, UITableView
         gamificacion_tableView.register(nib, forCellReuseIdentifier: "RankingCellid")
         
         segmentedControl.selectedSegmentIndex = counter
-        getRanking()
         loadSkeletonView()
         loadUserSkeleton()
+        getRanking()
+        
         
     
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handlegesture(gesture:)))

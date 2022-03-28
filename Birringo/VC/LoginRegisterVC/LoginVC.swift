@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Lottie
 
 class LoginVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var email_login: UITextField!
+    @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var password_login: UITextField!
     @IBOutlet weak var view_loginBox: UIView!
     @IBOutlet weak var passwordbutton: UIButton!
@@ -19,8 +21,15 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColors()
+        loadAnimation()
         email_login.delegate = self
         password_login.delegate = self
+    }
+    
+    func loadAnimation(){
+        animationView.contentMode = .scaleAspectFill
+        animationView.loopMode = .playOnce
+        animationView.play()
     }
     
     private func setupColors(){

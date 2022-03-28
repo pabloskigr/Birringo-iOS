@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Lottie
 
 class RegisterVC: UIViewController, UITextFieldDelegate{
     
     //añadir view
+    @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var username_register: UITextField!
     @IBOutlet weak var email_register: UITextField!
     @IBOutlet weak var view_registerBox: UIView!
@@ -24,10 +26,17 @@ class RegisterVC: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColors()
+        loadAnimation()
         username_register.delegate = self
         email_register.delegate = self
         phone_register.delegate = self
         password_register.delegate = self
+    }
+    
+    func loadAnimation(){
+        animationView.contentMode = .scaleAspectFill
+        animationView.loopMode = .playOnce
+        animationView.play()
     }
     
     private func setupColors(){

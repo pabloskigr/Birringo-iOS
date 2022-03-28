@@ -12,6 +12,7 @@ import CoreLocation
 class MapsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate {
 
     @IBOutlet var mapsView: UIView!
+    @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var pubsLocationButton: UIButton!
     @IBOutlet weak var userLocationButton: UIButton!
@@ -76,11 +77,13 @@ class MapsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UI
     }
     
     func getPubsMarkers(){
+        indicatorView.isHidden = false
         //Obtener bares de api y mostrar los marcadores
         
         NetworkManager.shared.getPubs(apiToken: Session.shared.api_token!){
             response, errors in DispatchQueue.main.async {
                 self.response = response
+                self.indicatorView.isHidden = true
                 
                 if response?.status == 1 {
                     
@@ -127,16 +130,10 @@ class MapsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UI
     //Search bar functions
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
-        //searchView.isHidden = false
-        //self.titleToReturn = "Ultimas novedades"
-        //searchBeers(input: "")
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        //searchView.isHidden = true
         ///Obtener los marcadores por defecto de Madrid
         getPubsMarkers()
-        //self.titleToReturn = "Ultimas novedades"
-        //self.searchTableView.reloadData()
         self.isEditing = false
         searchBar.text = ""
         searchBar.showsCancelButton = false
@@ -147,17 +144,16 @@ class MapsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UI
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         response = nil
-        //self.titleToReturn = "Resultados"
+        indicatorView.isHidden = false
         searchPubs(input: searchText.uppercased())
     }
     
     func searchPubs(input : String){
-        //Falta indicator View
         
         NetworkManager.shared.getPubsByName(apiToken: Session.shared.api_token!, input: input){
             response, errors in DispatchQueue.main.async {
-       
-                //self.indicatorView.isHidden = true
+                self.indicatorView.isHidden = true
+                
                 if response?.status == 1 {
                     self.map.removeAnnotations(self.map.annotations)
                     self.response = response

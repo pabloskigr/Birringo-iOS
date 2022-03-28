@@ -26,14 +26,14 @@ class HomeVC: UIViewController, SkeletonTableViewDataSource, UITableViewDelegate
         super.viewDidLoad()
       
         setupColors()
-        getBeers(tipo: "IPA")
-        
+    
         searchBar.delegate = self
         home_tableView.dataSource = self
         home_tableView.delegate = self
         searchTableView.delegate = self
         searchTableView.dataSource = self
         loadSkeletonView()
+        getBeers(tipo: "IPA")
         
         segmentedControlHome.selectedSegmentIndex = counter
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handlegesture(gesture:)))
@@ -42,7 +42,6 @@ class HomeVC: UIViewController, SkeletonTableViewDataSource, UITableViewDelegate
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handlegesture(gesture:)))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
-        
         
     }
 
@@ -87,11 +86,11 @@ class HomeVC: UIViewController, SkeletonTableViewDataSource, UITableViewDelegate
          case 1:
              getBeers(tipo: "Ale")
          case 2:
-             getBeers(tipo : "Rubia")
+             getBeers(tipo : "Tostada")
          case 3:
              getBeers(tipo : "Rubia")
          case 4:
-             getBeers(tipo : "Rubia")
+             getBeers(tipo : "Negra")
          default:
              getBeers(tipo: "IPA")
          }
@@ -182,6 +181,7 @@ class HomeVC: UIViewController, SkeletonTableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return titleToReturn
     }
+
     
     
     //Search bar functions
@@ -224,10 +224,10 @@ class HomeVC: UIViewController, SkeletonTableViewDataSource, UITableViewDelegate
                     self.searchView.hideSkeleton(reloadDataAfter: true)
                     self.searchTableView.stopSkeletonAnimation()
                 } else if errors == .badData {
-                    self.displayAlert(title: "Error", message: "Ha habido un error, vuelve a intentarlo mas tarde.")
+                    self.displayAlert(title: "Error", message: "Ha ocurrido un error, vuelve a intentarlo mas tarde.")
                     
                 } else if errors == .errorConnection {
-                    self.displayAlert(title: "Error", message: "Ha habido un error, vuelve a intentarlo mas tarde.")
+                    self.displayAlert(title: "Error", message: "Ha ocurrido un error, vuelve a intentarlo mas tarde.")
                     
                 } else if response?.status == 0 {
                     //Si hay algun fallo nos devolvera el error en el response y se le mostrara al usuario mediante un alert

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource {
     
@@ -19,7 +20,6 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
     let storyboard2 = UIStoryboard(name: "Accesory", bundle: nil)
     
     @IBOutlet weak var perfilTableView: UITableView!
-    @IBOutlet weak var indicatorView: UIView!
     @IBOutlet var perfilView: UIView!
     @IBOutlet weak var userProfileImage: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -41,8 +41,13 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
         usernameTextField.text = ""
         self.title = ""
         self.navigationController?.tabBarItem.title = "Perfil"
+        loadSkeletonView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadProfileData), name: Notification.Name("reloadProfileData"), object: nil)
+    }
+    
+    func loadSkeletonView(){
+        view.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .silver), animation: nil, transition: .crossDissolve(0.25))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,7 +56,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
     
     @objc func reloadProfileData (notification: NSNotification){
         //Esta funcion sirve para recargar los datos del usaurio desde la vista de editar cuando el usaurio guarde los cambios.
-        self.indicatorView.isHidden = false
+        loadSkeletonView()
         loadProfileData()
     }
     
@@ -82,12 +87,12 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
     func loadProfileImage(){
         NetworkManager.shared.getImageFrom(imageUrl: response?.datos_perfil?.imagen ?? ""){
             image in DispatchQueue.main.async {
-                self.indicatorView.isHidden = true
+                self.view.stopSkeletonAnimation()
+                self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
                 self.editProfileButton.isEnabled = true
                 
                 if let image = image {
                     self.userProfileImage.image = image
-                    self.userProfileImage.layer.cornerRadius = self.userProfileImage.bounds.size.width / 2.0
                 } else {
                     //Si el usuario del cual obtenemos los datos no tiene imagen de perfil en la base de datos se le asignara una por defecto.
                     self.userProfileImage.image = UIImage(named: "user_img")!
@@ -165,6 +170,7 @@ class PerfilVC: UIViewController,  UITableViewDelegate, UIImagePickerControllerD
         perfilTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         editProfileButton.layer.cornerRadius = 6
         userBiographyTextView.backgroundColor = UIColor(named: "background_views")
+        userProfileImage.layer.cornerRadius = userProfileImage.bounds.size.width / 2.0
        
     }
     
