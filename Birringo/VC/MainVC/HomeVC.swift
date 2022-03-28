@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SkeletonView
 
-class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
+class HomeVC: UIViewController, SkeletonTableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
   
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -15,7 +16,6 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet var home_view: UIView!
     @IBOutlet weak var segmentedControlHome: UISegmentedControl!
-    @IBOutlet weak var indicatorView: UIView!
     
     var counter = 0
     var response : Response?
@@ -26,35 +26,26 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         super.viewDidLoad()
       
         setupColors()
+        getBeers(tipo: "IPA")
+        
         searchBar.delegate = self
         home_tableView.dataSource = self
         home_tableView.delegate = self
         searchTableView.delegate = self
         searchTableView.dataSource = self
+        loadSkeletonView()
         
         segmentedControlHome.selectedSegmentIndex = counter
-        getBeers(tipo: "IPA")
-        
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handlegesture(gesture:)))
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handlegesture(gesture:)))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
+        
+        
     }
-    
-    private func setupColors(){
-        tabBarController?.tabBar.backgroundColor = UIColor(named: "background_views")
-        home_tableView.backgroundColor = UIColor(named: "background_white")
-        searchTableView.backgroundColor = UIColor(named: "background_white")
-        home_view.backgroundColor = UIColor(named: "background_views")
-        searchView.backgroundColor = UIColor(named: "background_views")
-        home_tableView.layer.cornerRadius = 30
-        searchTableView.layer.cornerRadius = 30
-        home_tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        searchTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-    }
-    
+
     //Segmented control functions
     @IBAction func onChangedSegmentedControl(_ sender: UISegmentedControl) {
         counter = segmentedControlHome.selectedSegmentIndex
@@ -75,9 +66,18 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         }
     }
     
- 
+    func loadSkeletonView(){
+        home_tableView.isSkeletonable = true
+        home_tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .silver), animation: nil, transition: .crossDissolve(0.25))
+    }
+    
+    func loadSearchSkeletonView(){
+        searchTableView.isSkeletonable = true
+        searchTableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .silver), animation: nil, transition: .crossDissolve(0.25))
+    }
+    
     func checkSegmentedIndex(){
-        self.indicatorView.isHidden = false
+        loadSkeletonView()
         
         let selectedIndex = self.segmentedControlHome.selectedSegmentIndex
          switch selectedIndex
@@ -100,11 +100,12 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
     func getBeers(tipo : String){
         NetworkManager.shared.getMainBeers(apiToken: Session.shared.api_token!, tipo: tipo){
             response, errors in DispatchQueue.main.async {
-                self.indicatorView.isHidden = true
-                
+            
                 if response?.status == 1 {
                     self.response = response
                     self.titleToReturn = tipo
+                    self.view.hideSkeleton(reloadDataAfter: true)
+                    self.home_tableView.stopSkeletonAnimation()
                     self.home_tableView.reloadData()
 
                 } else if errors == .badData {
@@ -119,6 +120,11 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
                 }
             }
         }
+    }
+    
+    // Skeleton function for table view
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return "homeCellid"
     }
     
     //Table view functions
@@ -183,6 +189,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
         searchBar.showsCancelButton = true
         searchView.isHidden = false
         self.titleToReturn = "Ultimas novedades"
+        loadSearchSkeletonView()
         //Obtener ultimas novedades
         searchBeers(input: "")
     }
@@ -202,19 +209,20 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchResponse = nil
         self.titleToReturn = "Resultados"
+        loadSearchSkeletonView()
         searchBeers(input: searchText.uppercased())
     }
     
     func searchBeers(input : String){
-        self.indicatorView.isHidden = false
         
         NetworkManager.shared.getBeers(apiToken: Session.shared.api_token!, input: input){
             response, errors in DispatchQueue.main.async {
                 self.searchResponse = response
-                self.indicatorView.isHidden = true
-                
+              
                 if response?.status == 1 && response?.msg == "Cervezas encontradas" {
                     self.searchTableView.reloadData()
+                    self.searchView.hideSkeleton(reloadDataAfter: true)
+                    self.searchTableView.stopSkeletonAnimation()
                 } else if errors == .badData {
                     self.displayAlert(title: "Error", message: "Ha habido un error, vuelve a intentarlo mas tarde.")
                     
@@ -228,6 +236,18 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISe
             }
         }
         
+    }
+    
+    private func setupColors(){
+        tabBarController?.tabBar.backgroundColor = UIColor(named: "background_views")
+        home_tableView.backgroundColor = UIColor(named: "background_white")
+        searchTableView.backgroundColor = UIColor(named: "background_white")
+        home_view.backgroundColor = UIColor(named: "background_views")
+        searchView.backgroundColor = UIColor(named: "background_views")
+        home_tableView.layer.cornerRadius = 30
+        searchTableView.layer.cornerRadius = 30
+        home_tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        searchTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     // Funcion para instanciar alerts.

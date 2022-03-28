@@ -23,6 +23,7 @@ class RankingCell: UITableViewCell {
         rankingImage.image = nil
         rankingImage.layer.cornerRadius = rankingImage.bounds.size.width / 2.0
         rankingName.text = rankingData.name
+        rankingName.skeletonTextNumberOfLines = 2
         rankingPoints.text = "\(rankingData.puntos ?? 0) pt"
         
         NetworkManager.shared.getImageFrom(imageUrl: rankingData.imagen ?? ""){

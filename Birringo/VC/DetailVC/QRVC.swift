@@ -22,15 +22,16 @@ class QRVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         initQRScanner()
-        indicatorView.isHidden = true
         labelQR.text = "Buscando QR.."
         if let qrCodeFrameView = qrCodeFrameView {
             qrCodeFrameView.layer.borderColor = UIColor.red.cgColor
             qrCodeFrameView.layer.borderWidth = 2
             view.addSubview(qrCodeFrameView)
+            view.addSubview(indicatorView)
             view.bringSubviewToFront(labelQR)
             view.bringSubviewToFront(volverButton)
             view.bringSubviewToFront(qrCodeFrameView)
+            view.bringSubviewToFront(indicatorView)
         }
     }
     
@@ -68,9 +69,9 @@ class QRVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
         if let metadataObj = metadataObjects.first {
             guard let readableObj = metadataObj as? AVMetadataMachineReadableCodeObject else {return}
+            indicatorView.isHidden = false
     
             if readableObj.stringValue != nil{
-                indicatorView.isHidden = false
                 checkCode(codeToCheck: readableObj.stringValue ?? "defaultCode")
             }
         }
@@ -86,11 +87,11 @@ class QRVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         NetworkManager.shared.checkQrCode(apiToken: Session.shared.api_token ?? "", params: params){
             response, errors in DispatchQueue.main.async {
-                self.indicatorView.isHidden = true
                 if response?.status == 1 {
                     self.qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
                     self.labelQR.text = response?.msg ?? "El codigo es correcto"
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                        self.indicatorView.isHidden = true
                         self.dismiss(animated: true, completion: nil)
                     }
                    
@@ -99,6 +100,7 @@ class QRVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     self.labelQR.text = response?.msg ?? "El codigo no es correcto"
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                         self.labelQR.text = "Buscando QR.."
+                        self.indicatorView.isHidden = true
                         self.captureSession.startRunning()
                     }
                    
@@ -107,14 +109,15 @@ class QRVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     self.labelQR.text = "Ha ocurrido un error"
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                         self.labelQR.text = "Buscando QR.."
+                        self.indicatorView.isHidden = true
                         self.captureSession.startRunning()
                     }
                   
-
                 } else {
                     self.labelQR.text = "Ha ocurrido un error"
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                         self.labelQR.text = "Buscando QR.."
+                        self.indicatorView.isHidden = true
                         self.captureSession.startRunning()
                     }
                 }

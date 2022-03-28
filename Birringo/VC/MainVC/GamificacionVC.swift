@@ -7,12 +7,12 @@
 
 import UIKit
 import CoreLocation
+import SkeletonView
 
-class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GamificacionVC: UIViewController, SkeletonTableViewDataSource, UITableViewDelegate {
  
     @IBOutlet var gamificacionView: UIView!
     @IBOutlet weak var userRankingView: UIView!
-    @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var gamificacion_tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -39,6 +39,9 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
         segmentedControl.selectedSegmentIndex = counter
         getRanking()
+        loadSkeletonView()
+        loadUserSkeleton()
+        
     
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handlegesture(gesture:)))
         swipeLeft.direction = .left
@@ -53,8 +56,18 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
         checkSegmentedIndex()
     }
     
+    func loadSkeletonView(){
+        gamificacion_tableView.isSkeletonable = true
+        gamificacion_tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .silver), animation: nil, transition: .crossDissolve(0.25))
+    }
+    
+    func loadUserSkeleton(){
+        userRankingView.isSkeletonable = true
+        userRankingView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .silver), animation: nil, transition: .crossDissolve(0.25))
+    }
+    
     func checkSegmentedIndex(){
-        self.indicatorView.isHidden = false
+        loadSkeletonView()
         let selectedIndex = self.segmentedControl.selectedSegmentIndex
         
          switch selectedIndex
@@ -63,11 +76,13 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
              nib = UINib(nibName: "RankingCell", bundle: nil)
              gamificacion_tableView.register(nib, forCellReuseIdentifier: "RankingCellid")
              titleToReturn = "Top 50"
+             loadUserSkeleton()
              getRanking()
          case 1:
              nib = UINib(nibName: "QuestCell", bundle: nil)
              gamificacion_tableView.register(nib, forCellReuseIdentifier: "QuestCellid")
              titleToReturn = "Ultimos retos"
+             userRankingView.isHidden = true
              getQuests()
          default:
              getRanking()
@@ -76,25 +91,24 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func getRanking(){
         
+        userRankingView.isHidden = false
+        
         NetworkManager.shared.getRanking(apiToken: Session.shared.api_token!){
             response, errors in DispatchQueue.main.async {
-                self.userRankingView.isHidden = false
+        
                 if response?.status == 1 {
                     self.response = response
                     self.getUserPositionInRanking()
                     self.gamificacion_tableView.reloadData()
                     
                 } else if errors == .badData {
-                    self.indicatorView.isHidden = true
                     self.displayAlert(title: "Error", message: "Ha habido un error")
                     
                 } else if errors == .errorConnection {
-                    self.indicatorView.isHidden = true
                     self.displayAlert(title: "Error", message: "El servidor no responde")
                     
                 } else if response?.status == 0 {
                     //Si hay algun fallo se le mostrara al usuario mediante un alert.
-                    self.indicatorView.isHidden = true
                     self.displayAlert(title: "Error", message: "\(response?.msg ?? "Se ha producido un error")")
                 }
             }
@@ -106,11 +120,11 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
         NetworkManager.shared.getQuests(apiToken: Session.shared.api_token!){
             response, errors in DispatchQueue.main.async {
-                self.userRankingView.isHidden = true
-                self.indicatorView.isHidden = true
-                
+            
                 if response?.status == 1 {
                     self.response = response
+                    self.view.hideSkeleton(reloadDataAfter: true)
+                    self.gamificacion_tableView.stopSkeletonAnimation()
                     self.gamificacion_tableView.reloadData()
                     
                 } else if errors == .badData {
@@ -132,7 +146,9 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
         NetworkManager.shared.getUserPositionInRanking(apiToken: Session.shared.api_token!) {
             response, errors in DispatchQueue.main.async {
-                self.indicatorView.isHidden = true
+                self.view.hideSkeleton(reloadDataAfter: true)
+                self.userRankingView.hideSkeleton(reloadDataAfter: true)
+                self.gamificacion_tableView.stopSkeletonAnimation()
                 
                 if response?.status == 1 {
                     self.userPositionResponse = response
@@ -166,7 +182,20 @@ class GamificacionVC: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
     }
-    
+    //Skeleton Table View
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        let selectedIndex = self.segmentedControl.selectedSegmentIndex
+         switch selectedIndex
+         {
+         case 0:
+             return "RankingCellid"
+         case 1:
+             return "QuestCellid"
+         default:
+             return "RankingCellid"
+         }
+         
+    }
  
     //TableView functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

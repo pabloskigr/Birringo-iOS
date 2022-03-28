@@ -47,6 +47,7 @@
 		D4CB6B77279EB30D00981F25 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B76279EB30D00981F25 /* UIView+Extension.swift */; };
 		D4CB6B79279EB40C00981F25 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B78279EB40C00981F25 /* OnboardingSlide.swift */; };
 		D4CB6B7C279EB94700981F25 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB6B7B279EB94700981F25 /* OnboardingCollectionViewCell.swift */; };
+		D4CE9DA427F1157200632E4C /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = D4CE9DA327F1157200632E4C /* SkeletonView */; };
 		E92198EF27E8962C0089DFA7 /* AjustesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92198EE27E8962C0089DFA7 /* AjustesCell.swift */; };
 		E92198F327E899070089DFA7 /* PoliticasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92198F227E899070089DFA7 /* PoliticasVC.swift */; };
 		E92198F527E89C420089DFA7 /* TerminosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92198F427E89C420089DFA7 /* TerminosVC.swift */; };
@@ -106,6 +107,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4154148279DEA8A003E8313 /* Lottie in Frameworks */,
+				D4CE9DA427F1157200632E4C /* SkeletonView in Frameworks */,
 				D49ABA6D27C56ACC00D2F5FC /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +296,7 @@
 			packageProductDependencies = (
 				D4154147279DEA8A003E8313 /* Lottie */,
 				D49ABA6C27C56ACC00D2F5FC /* IQKeyboardManagerSwift */,
+				D4CE9DA327F1157200632E4C /* SkeletonView */,
 			);
 			productName = Birringo;
 			productReference = 3300E93D27972C77002C5B12 /* Birringo.app */;
@@ -325,6 +328,7 @@
 			packageReferences = (
 				D4154146279DEA8A003E8313 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				D49ABA6B27C56ACC00D2F5FC /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				D4CE9DA227F1157200632E4C /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 3300E93E27972C77002C5B12 /* Products */;
 			projectDirPath = "";
@@ -611,6 +615,14 @@
 				minimumVersion = 6.5.0;
 			};
 		};
+		D4CE9DA227F1157200632E4C /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -623,6 +635,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D49ABA6B27C56ACC00D2F5FC /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		D4CE9DA327F1157200632E4C /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4CE9DA227F1157200632E4C /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -25,8 +25,11 @@ class BeerListHomeCell: UITableViewCell {
         }
         beerImage.image = nil
         beerImage.layer.cornerRadius = 6
+        beerTitle.skeletonTextNumberOfLines = 2
+        beerTitle.skeletonLineSpacing = 5
+        beerTitle.skeletonPaddingInsets = .init(top: 0, left: 0, bottom: 0, right: 20)
         beerTitle.text = data.titulo ?? "No hay titulo"
-        beerType.text = data.tipo ?? "No hay tipo"
+        beerType.text = "\(data.tipo ?? "") "
         beerGraduation.text = "\(data.graduacion ?? "0")%"
         
         NetworkManager.shared.getImageFrom(imageUrl: data.imagen ?? ""){
